@@ -221,7 +221,7 @@ export default function App() {
                             onDoubleClick={goToAdmin}
                             title="Doble clic para admin"
                         >
-                            <img src="./logo-oscuro.png" alt="upeFR Logo" className="h-[46px] w-auto relative z-10 transition-transform duration-300 group-hover:scale-105" />
+                            <img src={`${import.meta.env.BASE_URL}logo-oscuro.png`} alt="upeFR Logo" className="h-[46px] w-auto relative z-10 transition-transform duration-300 group-hover:scale-105" />
                             <motion.div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></motion.div>
                         </div>
                     </div>
@@ -323,7 +323,7 @@ export default function App() {
             <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div className="mb-4">
-                        <img src="./logo-blanco.png" alt="upeFR Logo" className="h-10 w-auto opacity-90" />
+                        <img src={`${import.meta.env.BASE_URL}logo-blanco.png`} alt="upeFR Logo" className="h-10 w-auto opacity-90" />
                     </div>
                     <p className="text-sm mb-4">Especialistas en ropa de protección profesional, equipos FR (Flame Resistant) y uniformes de alta calidad para la industria.</p>
                     <div className="flex space-x-4">
