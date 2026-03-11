@@ -1839,40 +1839,40 @@ export default function App() {
                                 <X className="w-6 h-6" />
                             </button>
 
-                            <div className="text-center p-8 pb-4 relative z-10">
-                                <h2 className="text-3xl font-extrabold text-[#0c345f] mb-2">¡Bienvenido a <span className="text-blue-500">upe</span>FR!</h2>
-                                <p className="text-gray-500 text-lg">Por favor, selecciona el portal que deseas visitar hoy.</p>
+                            <div className="text-center p-6 pb-2 md:p-8 md:pb-4 relative z-10">
+                                <h2 className="text-2xl md:text-3xl font-extrabold text-[#0c345f] mb-1 md:mb-2">¡Bienvenido a <span className="text-blue-500">upe</span>FR!</h2>
+                                <p className="text-gray-500 text-sm md:text-lg">Por favor, selecciona el portal que deseas visitar hoy.</p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8 pt-4 relative z-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 p-6 pt-2 md:p-8 md:pt-4 relative z-10 max-h-[60vh] overflow-y-auto">
                                 {/* Portal UPE FR */}
                                 <a
                                     href="#"
                                     onClick={(e) => { e.preventDefault(); setShowModal(false); }} // Cierra y se queda en la página actual
-                                    className="group block border-2 border-gray-100 rounded-2xl p-6 text-center hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-gray-50/50 hover:bg-white relative overflow-hidden"
+                                    className="group block border-2 border-gray-100 rounded-2xl p-4 md:p-6 text-center hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-gray-50/50 hover:bg-white relative overflow-hidden"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                    <div className="h-40 flex items-center justify-center mb-4 bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 relative z-10">
-                                        <img src="./logo-oscuro.png" alt="Logotipo upeFR" className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                                    <div className="h-24 md:h-40 flex items-center justify-center mb-3 md:mb-4 bg-white/80 backdrop-blur-sm rounded-xl p-3 md:p-4 shadow-sm border border-gray-100 relative z-10">
+                                        <img src={`${import.meta.env.BASE_URL}logo-oscuro.png`} alt="Logotipo upeFR" className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
                                     </div>
-                                    <h3 className="text-xl font-extrabold text-[#0c345f] group-hover:text-blue-600 transition-colors relative z-10">upeFR</h3>
-                                    <p className="text-sm text-gray-500 mt-2 font-medium relative z-10">Ropa Ignífuga y Equipos de Protección Personal de Alta Gama</p>
+                                    <h3 className="text-lg md:text-xl font-extrabold text-[#0c345f] group-hover:text-blue-600 transition-colors relative z-10">upeFR</h3>
+                                    <p className="text-xs md:text-sm text-gray-500 mt-1 md:mt-2 font-medium relative z-10">Ropa Ignífuga y EPP de Alta Gama</p>
                                 </a>
 
                                 {/* Portal UPE Uniformes */}
                                 <a
-                                    href="https://uniformesprofesionales.mx" // Reemplaza con el link real si es diferente
+                                    href="https://flowmx.github.io/upeuniformes/" // URL corregida
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     onClick={() => setShowModal(false)}
-                                    className="group block border-2 border-gray-100 rounded-2xl p-6 text-center hover:border-[#b3a48e]/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-gray-50/50 hover:bg-white relative overflow-hidden"
+                                    className="group block border-2 border-gray-100 rounded-2xl p-4 md:p-6 text-center hover:border-[#b3a48e]/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-gray-50/50 hover:bg-white relative overflow-hidden"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-br from-[#b3a48e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                    <div className="h-40 flex flex-col items-center justify-center mb-4 bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 relative z-10">
-                                        <img src="./logo-uniformes.png" alt="Logotipo upe Uniformes Profesionales" className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                                    <div className="h-24 md:h-40 flex flex-col items-center justify-center mb-3 md:mb-4 bg-white/80 backdrop-blur-sm rounded-xl p-3 md:p-4 shadow-sm border border-gray-100 relative z-10">
+                                        <img src={`${import.meta.env.BASE_URL}logo-uniformes.png`} alt="Logotipo upe Uniformes Profesionales" className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
                                     </div>
-                                    <h3 className="text-xl font-extrabold text-[#0c345f] group-hover:text-[#b3a48e] transition-colors relative z-10">upe Uniformes</h3>
-                                    <p className="text-sm text-gray-500 mt-2 font-medium relative z-10">Uniformes Corporativos, Industriales, Ejecutivos y Clínicos</p>
+                                    <h3 className="text-lg md:text-xl font-extrabold text-[#0c345f] group-hover:text-[#b3a48e] transition-colors relative z-10">upe Uniformes</h3>
+                                    <p className="text-xs md:text-sm text-gray-500 mt-1 md:mt-2 font-medium relative z-10">Uniformes Corporativos e Industriales</p>
                                 </a>
                             </div>
                         </motion.div>
