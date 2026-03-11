@@ -221,7 +221,7 @@ export default function App() {
                             onDoubleClick={goToAdmin}
                             title="Doble clic para admin"
                         >
-                            <img src="/logo-oscuro.png" alt="upeFR Logo" className="h-[46px] w-auto relative z-10 transition-transform duration-300 group-hover:scale-105" />
+                            <img src="./logo-oscuro.png" alt="upeFR Logo" className="h-[46px] w-auto relative z-10 transition-transform duration-300 group-hover:scale-105" />
                             <motion.div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></motion.div>
                         </div>
                     </div>
@@ -323,7 +323,7 @@ export default function App() {
             <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div className="mb-4">
-                        <img src="/logo-blanco.png" alt="upeFR Logo" className="h-10 w-auto opacity-90" />
+                        <img src="./logo-blanco.png" alt="upeFR Logo" className="h-10 w-auto opacity-90" />
                     </div>
                     <p className="text-sm mb-4">Especialistas en ropa de protección profesional, equipos FR (Flame Resistant) y uniformes de alta calidad para la industria.</p>
                     <div className="flex space-x-4">
@@ -405,9 +405,9 @@ export default function App() {
         const [currentHeroImg, setCurrentHeroImg] = useState(0);
 
         const heroImages = [
-            "/hero-slider-1.jpg",
-            "/hero-slider-2.jpg",
-            "/hero-slider-3.jpg"
+            "./hero-slider-1.jpg",
+            "./hero-slider-2.jpg",
+            "./hero-slider-3.jpg"
         ];
 
         useEffect(() => {
@@ -418,45 +418,45 @@ export default function App() {
         }, [heroImages.length]);
 
         const brandsList = [
-            { name: "3M", img: "/3 M.svg" },
-            { name: "5.11", img: "/5.11.svg" },
-            { name: "Ansell", img: "/ansell.svg" },
-            { name: "Ariat Work FR", img: "/ariat work fr.svg" },
-            { name: "Ariat Work", img: "/ariat work.svg" },
-            { name: "Axe FR", img: "/axe fr.svg" },
-            { name: "Benchmark", img: "/benchmark.svg" },
-            { name: "Best Welds", img: "/bestwelds.svg" },
-            { name: "Black Stallion", img: "/blackstallion.svg" },
-            { name: "Bullard", img: "/bullard.svg" },
-            { name: "Bulwark", img: "/bulwark.svg" },
-            { name: "CAT FR", img: "/cat fr.svg" },
-            { name: "CAT", img: "/cat.svg" },
-            { name: "Die Hard", img: "/die hard.svg" },
-            { name: "Dickies", img: "/dikies.svg" },
-            { name: "DuPont", img: "/dunpont.svg" },
-            { name: "Eagle FR", img: "/eagle fr.svg" },
-            { name: "Carhartt FR", img: "/frcarhart.svg" },
-            { name: "Georgia Boot", img: "/georgia boot.svg" },
-            { name: "Honeywell", img: "/honeywell.svg" },
-            { name: "IFR", img: "/ifr.svg" },
-            { name: "Keen", img: "/keen.svg" },
-            { name: "Kishigo", img: "/kishigo.svg" },
-            { name: "Kodiak", img: "/kodiak.svg" },
-            { name: "Lakeland", img: "/lakeland.svg" },
-            { name: "Lapco FR", img: "/lapco fr.svg" },
-            { name: "MCR Safety", img: "/mcr safety.svg" },
-            { name: "MSA", img: "/MSA.svg" },
-            { name: "Oberon", img: "/oberon.svg" },
-            { name: "Portwest", img: "/portwest.svg" },
-            { name: "Rasco FR", img: "/rasco fr.svg" },
-            { name: "Red Kap", img: "/redkap.svg" },
-            { name: "Stanco", img: "/stanco.svg" },
-            { name: "Terra", img: "/terra.svg" },
-            { name: "Tillman", img: "/tillman.svg" },
-            { name: "Timberland PRO FR", img: "/timberland pro fr.svg" },
-            { name: "Timberland PRO", img: "/timberland pro.svg" },
-            { name: "Wolverine", img: "/wolverine.svg" },
-            { name: "Workrite", img: "/workrite.svg" }
+            { name: "3M", img: "./3 M.svg" },
+            { name: "5.11", img: "./5.11.svg" },
+            { name: "Ansell", img: "./ansell.svg" },
+            { name: "Ariat Work FR", img: "./ariat work fr.svg" },
+            { name: "Ariat Work", img: "./ariat work.svg" },
+            { name: "Axe FR", img: "./axe fr.svg" },
+            { name: "Benchmark", img: "./benchmark.svg" },
+            { name: "Best Welds", img: "./bestwelds.svg" },
+            { name: "Black Stallion", img: "./blackstallion.svg" },
+            { name: "Bullard", img: "./bullard.svg" },
+            { name: "Bulwark", img: "./bulwark.svg" },
+            { name: "CAT FR", img: "./cat fr.svg" },
+            { name: "CAT", img: "./cat.svg" },
+            { name: "Die Hard", img: "./die hard.svg" },
+            { name: "Dickies", img: "./dikies.svg" },
+            { name: "DuPont", img: "./dunpont.svg" },
+            { name: "Eagle FR", img: "./eagle fr.svg" },
+            { name: "Carhartt FR", img: "./frcarhart.svg" },
+            { name: "Georgia Boot", img: "./georgia boot.svg" },
+            { name: "Honeywell", img: "./honeywell.svg" },
+            { name: "IFR", img: "./ifr.svg" },
+            { name: "Keen", img: "./keen.svg" },
+            { name: "Kishigo", img: "./kishigo.svg" },
+            { name: "Kodiak", img: "./kodiak.svg" },
+            { name: "Lakeland", img: "./lakeland.svg" },
+            { name: "Lapco FR", img: "./lapco fr.svg" },
+            { name: "MCR Safety", img: "./mcr safety.svg" },
+            { name: "MSA", img: "./MSA.svg" },
+            { name: "Oberon", img: "./oberon.svg" },
+            { name: "Portwest", img: "./portwest.svg" },
+            { name: "Rasco FR", img: "./rasco fr.svg" },
+            { name: "Red Kap", img: "./redkap.svg" },
+            { name: "Stanco", img: "./stanco.svg" },
+            { name: "Terra", img: "./terra.svg" },
+            { name: "Tillman", img: "./tillman.svg" },
+            { name: "Timberland PRO FR", img: "./timberland pro fr.svg" },
+            { name: "Timberland PRO", img: "./timberland pro.svg" },
+            { name: "Wolverine", img: "./wolverine.svg" },
+            { name: "Workrite", img: "./workrite.svg" }
         ];
 
         // Just double it to have enough for infinite scroll effect 
@@ -1005,7 +1005,7 @@ export default function App() {
             {/* Hero Banner */}
             <div className="relative bg-[#0c345f] text-white py-32 overflow-hidden">
                 <div className="absolute inset-0 bg-blue-900/60 mix-blend-multiply z-10"></div>
-                <img src="/conoce_upe.jpg" alt="About Hero" className="absolute inset-0 w-full h-full object-cover z-0 scale-105" />
+                <img src="./conoce_upe.jpg" alt="About Hero" className="absolute inset-0 w-full h-full object-cover z-0 scale-105" />
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 z-10"></div>
                 <div className="relative z-20 max-w-7xl mx-auto px-4 text-center">
                     <motion.div
@@ -1246,7 +1246,7 @@ export default function App() {
             {/* Hero Banner upeFR 360 */}
             <div className="relative bg-[#0c345f] text-white py-32 overflow-hidden">
                 <div className="absolute inset-0 bg-blue-900/60 mix-blend-multiply z-10"></div>
-                <img src="/banner_upefr360.jpg" alt="Ingeniero con equipo de seguridad" className="absolute inset-0 w-full h-full object-cover z-0 scale-105" />
+                <img src="./banner_upefr360.jpg" alt="Ingeniero con equipo de seguridad" className="absolute inset-0 w-full h-full object-cover z-0 scale-105" />
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 z-10"></div>
                 <div className="relative z-20 max-w-7xl mx-auto px-4 text-center">
                     <motion.div
@@ -1352,7 +1352,7 @@ export default function App() {
                             className="md:w-1/2 w-full order-2 md:order-1 relative"
                         >
                             <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-transparent rounded-[2.5rem] -z-10 transform rotate-2 blur-sm group-hover:rotate-3 transition-transform duration-500"></div>
-                            <img src="/img_pc.jpg" alt="Tienda en línea B2B" className="relative rounded-[2rem] shadow-2xl w-full h-[450px] object-cover border-4 border-white group-hover:scale-[1.02] transition-transform duration-500" />
+                            <img src="./img_pc.jpg" alt="Tienda en línea B2B" className="relative rounded-[2rem] shadow-2xl w-full h-[450px] object-cover border-4 border-white group-hover:scale-[1.02] transition-transform duration-500" />
                         </motion.div>
                         <motion.div
                             initial={{ x: 30, opacity: 0 }}
@@ -1389,7 +1389,7 @@ export default function App() {
                             className="md:w-1/2 w-full relative"
                         >
                             <div className="absolute -inset-4 bg-gradient-to-l from-[#b3a48e]/20 to-transparent rounded-[2.5rem] -z-10 transform -rotate-2 blur-sm group-hover:-rotate-3 transition-transform duration-500"></div>
-                            <img src="/img_asigtallas.jpg" alt="Gestión de tallas" className="relative rounded-[2rem] shadow-2xl w-full h-[450px] object-cover border-4 border-white group-hover:scale-[1.02] transition-transform duration-500" />
+                            <img src="./img_asigtallas.jpg" alt="Gestión de tallas" className="relative rounded-[2rem] shadow-2xl w-full h-[450px] object-cover border-4 border-white group-hover:scale-[1.02] transition-transform duration-500" />
                         </motion.div>
                     </div>
 
@@ -1402,7 +1402,7 @@ export default function App() {
                             className="md:w-1/2 w-full order-2 md:order-1 relative"
                         >
                             <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-transparent rounded-[2.5rem] -z-10 transform rotate-2 blur-sm group-hover:rotate-3 transition-transform duration-500"></div>
-                            <img src="/img_logistica.jpg" alt="Logística optimizada" className="relative rounded-[2rem] shadow-2xl w-full h-[450px] object-cover border-4 border-white group-hover:scale-[1.02] transition-transform duration-500" />
+                            <img src="./img_logistica.jpg" alt="Logística optimizada" className="relative rounded-[2rem] shadow-2xl w-full h-[450px] object-cover border-4 border-white group-hover:scale-[1.02] transition-transform duration-500" />
                         </motion.div>
                         <motion.div
                             initial={{ x: 30, opacity: 0 }}
@@ -1439,7 +1439,7 @@ export default function App() {
                             className="md:w-1/2 w-full relative"
                         >
                             <div className="absolute -inset-4 bg-gradient-to-l from-[#b3a48e]/20 to-transparent rounded-[2.5rem] -z-10 transform -rotate-2 blur-sm group-hover:-rotate-3 transition-transform duration-500"></div>
-                            <img src="/img_Softlog.jpg" alt="Reportes y control" className="relative rounded-[2rem] shadow-2xl w-full h-[450px] object-cover border-4 border-white group-hover:scale-[1.02] transition-transform duration-500" />
+                            <img src="./img_Softlog.jpg" alt="Reportes y control" className="relative rounded-[2rem] shadow-2xl w-full h-[450px] object-cover border-4 border-white group-hover:scale-[1.02] transition-transform duration-500" />
                         </motion.div>
                     </div>
 
@@ -1448,7 +1448,7 @@ export default function App() {
 
             {/* Differentiators (Producción & Soporte) - Copia exacta del Folleto */}
             <div className="bg-[#0c345f] py-32 text-white relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/img_work.jpg')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+                <div className="absolute inset-0 bg-[url('./img_work.jpg')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
                 <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
 
                     <motion.div
@@ -1566,7 +1566,7 @@ export default function App() {
 
                     <div className="text-center mb-8">
                         <div className="flex justify-center mb-6">
-                            <img src="/logo-oscuro.png" alt="upeFR Logo" className="h-[46px] w-auto" />
+                            <img src="./logo-oscuro.png" alt="upeFR Logo" className="h-[46px] w-auto" />
                         </div>
                         <h2 className="text-2xl font-bold text-[#0c345f]">Acceso Restringido</h2>
                         <p className="text-gray-500 text-sm mt-1">Ingresa tu contraseña de administrador para continuar.</p>
@@ -1853,7 +1853,7 @@ export default function App() {
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                     <div className="h-40 flex items-center justify-center mb-4 bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 relative z-10">
-                                        <img src="/logo-oscuro.png" alt="Logotipo upeFR" className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                                        <img src="./logo-oscuro.png" alt="Logotipo upeFR" className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
                                     </div>
                                     <h3 className="text-xl font-extrabold text-[#0c345f] group-hover:text-blue-600 transition-colors relative z-10">upeFR</h3>
                                     <p className="text-sm text-gray-500 mt-2 font-medium relative z-10">Ropa Ignífuga y Equipos de Protección Personal de Alta Gama</p>
@@ -1869,7 +1869,7 @@ export default function App() {
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-br from-[#b3a48e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                     <div className="h-40 flex flex-col items-center justify-center mb-4 bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-gray-100 relative z-10">
-                                        <img src="/logo-uniformes.png" alt="Logotipo upe Uniformes Profesionales" className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                                        <img src="./logo-uniformes.png" alt="Logotipo upe Uniformes Profesionales" className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
                                     </div>
                                     <h3 className="text-xl font-extrabold text-[#0c345f] group-hover:text-[#b3a48e] transition-colors relative z-10">upe Uniformes</h3>
                                     <p className="text-sm text-gray-500 mt-2 font-medium relative z-10">Uniformes Corporativos, Industriales, Ejecutivos y Clínicos</p>
