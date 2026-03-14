@@ -1,16 +1,20 @@
-// Constantes globales del catálogo
-
-export const CATALOG_MENU = {
-    "Uniformes FR": ["Ariat FR", "Axe FR", "Best Welds", "Black Stallion FR", "Bulwark", "Carhartt", "CAT", "Dickies", "Kishigo", "Lakeland", "MCR Safety", "Oberon", "PortWest", "Red Kap", "Stanco FR", "Timberland", "Workrite"],
-    "Calzado": ["Ariat", "Kodiak", "Terra", "Timberland", "Wolverine", "Cat Footwear"],
-    "EPP": ["3M", "Ansell", "Bullard", "Dupont", "Honeywell", "MCR Safety", "MSA", "Tillman"]
+export const COMPANY_INFO = {
+    nombre: 'Uniformes Profesionales',
+    slogan: 'Elevate your brand with your vision and our commitment to quality.',
+    direccion: 'Av. Libertad 1723, Maestros, 22840 Ensenada, B.C., México',
+    email: 'info@uniformesprofesionales.mx',
+    whatsapp: '+526465961975',
+    whatsappDisplay: '+52 646 596 1975',
+    telefonos: ['+52 646 596 1975', '+52 646 295 2269'],
+    contactos: [
+        { nombre: 'Gerente de Desarrollo de Negocios', email: 'josec@uniformesprofesionales.mx', tel: '+52 646 454 8538' },
+        { nombre: 'Gerente de Ventas', email: 'ricardom@uniformesprofesionales.mx', tel: '+52 646 452 1789' },
+    ],
+    redes: {
+        facebook: 'https://facebook.com/uniformesprofesionales',
+        instagram: 'https://instagram.com/uniformesprofesionales',
+        linkedin: 'https://linkedin.com/company/uniformesprofesionales',
+    },
 };
 
-export const CATEGORIES_DATA = [
-    { name: "Pantalones FR" },
-    { name: "Camisas FR" },
-    { name: "Chamarras FR" },
-    { name: "Chalecos FR" },
-    { name: "Calzado FR" },
-    { name: "Mandiles FR" }
-];
+export const MENSAJE_MAYOREO = '🎉 Descuento especial en pedidos a partir de 12 piezas — Cotiza tu proyecto y obtén precio preferencial';

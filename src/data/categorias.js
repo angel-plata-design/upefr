@@ -1,0 +1,88 @@
+export const CATEGORIAS = [
+    {
+        id: 'corporativo',
+        nombre: 'Corporativo',
+        imagen: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800',
+        descripcion: 'Uniformes ejecutivos y corporativos que proyectan profesionalismo.',
+        tipos: ['Camisa de vestir', 'Pantalón de vestir', 'Blazer', 'Polo', 'Chaleco'],
+        marcas: ['Dickies', 'Red Kap', 'Portwest', 'Benchmark'],
+    },
+    {
+        id: 'industrial',
+        nombre: 'Industrial',
+        imagen: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=800',
+        descripcion: 'Protección y durabilidad para los entornos más exigentes.',
+        tipos: ['Camisa industrial', 'Pantalón cargo', 'Overol', 'Chamarra', 'Playera industrial'],
+        marcas: ['Bulwark', 'Carhartt', 'Ariat FR', 'Workrite', 'Lapco FR'],
+    },
+    {
+        id: 'restaurante',
+        nombre: 'Restaurante',
+        imagen: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=800',
+        descripcion: 'Uniformes para cocina y servicio al cliente.',
+        tipos: ['Filipina', 'Delantal', 'Gorro de cocina', 'Pantalón chef', 'Polo mesero'],
+        marcas: ['Dickies', 'RedKap', 'Benchmark'],
+    },
+    {
+        id: 'medico',
+        nombre: 'Médico',
+        imagen: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&q=80&w=800',
+        descripcion: 'Prendas médicas cómodas y funcionales para profesionales de la salud.',
+        tipos: ['Scrub', 'Filipina médica', 'Bata', 'Pantalón médico', 'Cofia'],
+        marcas: ['Dickies Medical', 'Cherokee', 'Allheart'],
+    },
+    {
+        id: 'calzado',
+        nombre: 'Calzado',
+        imagen: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&q=80&w=800',
+        descripcion: 'Botas y zapatos de seguridad para todo tipo de industria.',
+        tipos: ['Bota industrial', 'Bota dieléctrica', 'Zapato de seguridad', 'Bota impermeable'],
+        marcas: ['Terra', 'Timberland PRO', 'Wolverine', 'Georgia Boot', 'CAT', 'Keen'],
+    },
+    {
+        id: 'epp',
+        nombre: 'EPP',
+        imagen: 'https://images.unsplash.com/photo-1631556097045-917e5b8d1e24?auto=format&fit=crop&q=80&w=800',
+        descripcion: 'Equipo de Protección Personal certificado para máxima seguridad.',
+        tipos: ['Casco', 'Lentes de seguridad', 'Guantes', 'Tapones auditivos', 'Respirador'],
+        marcas: ['3M', 'MSA', 'Honeywell', 'Ansell', 'Bullard', 'Oberon'],
+    },
+    {
+        id: 'accesorios',
+        nombre: 'Accesorios',
+        imagen: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800',
+        descripcion: 'Complementos y accesorios para completar el uniforme.',
+        tipos: ['Cinturón', 'Calcetín industrial', 'Gorra', 'Bufanda', 'Chaleco de alta visibilidad'],
+        marcas: ['Kishigo', '5.11', 'Portwest'],
+    },
+];
+
+export const MARCAS_DESTACADAS_POR_CATEGORIA = {
+    industrial: [
+        { nombre: 'Bulwark', logo: 'bulwark.svg' },
+        { nombre: 'Carhartt FR', logo: 'frcarhart.svg' },
+        { nombre: 'Ariat Work FR', logo: 'ariat work fr.svg' },
+        { nombre: 'Workrite', logo: 'workrite.svg' },
+        { nombre: 'Lapco FR', logo: 'lapco fr.svg' },
+    ],
+    corporativo: [
+        { nombre: 'Red Kap', logo: 'redkap.svg' },
+        { nombre: 'Dickies', logo: 'dikies.svg' },
+        { nombre: 'Portwest', logo: 'portwest.svg' },
+        { nombre: 'Benchmark', logo: 'benchmark.svg' },
+    ],
+    calzado: [
+        { nombre: 'Terra', logo: 'terra.svg' },
+        { nombre: 'Timberland PRO', logo: 'timberland pro.svg' },
+        { nombre: 'Wolverine', logo: 'wolverine.svg' },
+        { nombre: 'Georgia Boot', logo: 'georgia boot.svg' },
+        { nombre: 'CAT', logo: 'cat.svg' },
+    ],
+    epp: [
+        { nombre: '3M', logo: '3 M.svg' },
+        { nombre: 'MSA', logo: 'MSA.svg' },
+        { nombre: 'Honeywell', logo: 'honeywell.svg' },
+        { nombre: 'Ansell', logo: 'ansell.svg' },
+        { nombre: 'Bullard', logo: 'bullard.svg' },
+    ],
+};

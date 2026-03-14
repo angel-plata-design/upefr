@@ -1,114 +1,83 @@
-import React, { useState } from 'react';
-import { INITIAL_PRODUCTS } from './data/productos';
-
-// Componentes reutilizables
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-
-// Vistas
+import WhatsAppButton from './components/WhatsAppButton';
+import SubscriptionPopup from './components/SubscriptionPopup';
 import HomeView from './views/HomeView';
 import StoreView from './views/StoreView';
 import ProductView from './views/ProductView';
+import QuoteView from './views/QuoteView';
 import AboutView from './views/AboutView';
-import ContactView from './views/ContactView';
+import ServicesView from './views/ServicesView';
 import View360 from './views/View360';
-import LoginView from './views/LoginView';
-import AdminView from './views/AdminView';
-import WelcomeModal from './views/WelcomeModal';
+import TermsView from './views/TermsView';
+import PrivacyView from './views/PrivacyView';
+import { INITIAL_PRODUCTS } from './data/productos';
 
-export default function App() {
-    // Estado de navegación
-    const [currentView, setCurrentView] = useState('home');
-    const [products, setProducts] = useState(INITIAL_PRODUCTS);
-    const [selectedProductId, setSelectedProductId] = useState(null);
+const App = () => {
+    const [view, setView] = useState('home');
     const [storeFilter, setStoreFilter] = useState(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [selectedProductId, setSelectedProductId] = useState(null);
+    const [products] = useState(INITIAL_PRODUCTS);
 
-    // Funciones de navegación
-    const goHome = () => { setCurrentView('home'); window.scrollTo(0, 0); };
+    // Scroll to top on view change
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [view, selectedProductId]);
 
-    const goToStore = (filter = null) => {
-        setStoreFilter(filter);
-        setCurrentView('store');
-        window.scrollTo(0, 0);
-    };
-
-    const goToProduct = (id) => {
-        setSelectedProductId(id);
-        setCurrentView('product');
-        window.scrollTo(0, 0);
-    };
-
-    const goToAbout = () => { setCurrentView('about'); window.scrollTo(0, 0); };
-    const goToContact = () => { setCurrentView('contact'); window.scrollTo(0, 0); };
-    const goTo360 = () => { setCurrentView('360'); window.scrollTo(0, 0); };
-    const goToAdmin = () => { setCurrentView('admin'); window.scrollTo(0, 0); };
-
-    // WhatsApp
-    const handleWhatsAppClick = (product = null) => {
-        const phoneNumber = "526462952269";
-        let message = "Hola, me gustaría recibir asesoría sobre sus productos y uniformes industriales.";
-        if (product) {
-            message = `Hola, me interesa obtener más información sobre el producto:\n\n*${product.title}*\nSKU: ${product.sku}\nEstilo: ${product.style}\n\n¿Podrían apoyarme con una cotización?`;
+    // navigate(viewName, extraParams)
+    const navigate = (viewName, extra) => {
+        if (viewName === 'store') {
+            setStoreFilter(extra || null);
+            setView('store');
+        } else if (viewName === 'product') {
+            setSelectedProductId(extra?.id || null);
+            setView('product');
+        } else {
+            setView(viewName);
         }
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
     };
 
-    // Props comunes de navegación para Navbar
-    const navProps = { currentView, goHome, goToStore, goToAbout, goToContact, goTo360, goToAdmin };
+    const selectedProduct = products.find(p => p.id === selectedProductId);
 
-    // Props comunes para Footer
-    const footerProps = { goHome, goToAbout, goTo360, goToStore, goToContact };
+    const NavbarPaddingTop = 'pt-[90px]'; // topbar ~32px + header 64px
 
-    const showFooter = currentView !== 'admin' && currentView !== '360';
+    const renderView = () => {
+        switch (view) {
+            case 'home':
+                return <HomeView products={products} navigate={navigate} />;
+            case 'store':
+                return <StoreView products={products} storeFilter={storeFilter} navigate={navigate} />;
+            case 'product':
+                return <ProductView product={selectedProduct} navigate={navigate} />;
+            case 'quote':
+                return <QuoteView />;
+            case 'about':
+                return <AboutView navigate={navigate} />;
+            case 'services':
+                return <ServicesView navigate={navigate} />;
+            case 'upe360':
+                return <View360 navigate={navigate} />;
+            case 'terms':
+                return <TermsView />;
+            case 'privacy':
+                return <PrivacyView />;
+            default:
+                return <HomeView products={products} navigate={navigate} />;
+        }
+    };
 
     return (
-        <div className="min-h-screen flex flex-col font-sans bg-gray-50">
-            <WelcomeModal />
-            <Navbar {...navProps} />
-
-            {currentView === 'home' && (
-                <HomeView
-                    products={products}
-                    goToStore={goToStore}
-                    goToProduct={goToProduct}
-                />
-            )}
-
-            {currentView === 'store' && (
-                <StoreView
-                    products={products}
-                    storeFilter={storeFilter}
-                    goToProduct={goToProduct}
-                />
-            )}
-
-            {currentView === 'product' && (
-                <ProductView
-                    products={products}
-                    selectedProductId={selectedProductId}
-                    goToStore={goToStore}
-                    goToProduct={goToProduct}
-                    handleWhatsAppClick={handleWhatsAppClick}
-                />
-            )}
-
-            {currentView === 'about' && <AboutView />}
-
-            {currentView === 'contact' && (
-                <ContactView handleWhatsAppClick={handleWhatsAppClick} />
-            )}
-
-            {currentView === '360' && <View360 />}
-
-            {currentView === 'admin' && (
-                isAuthenticated
-                    ? <AdminView products={products} setProducts={setProducts} />
-                    : <LoginView goHome={goHome} setIsAuthenticated={setIsAuthenticated} />
-            )}
-
-            {showFooter && <Footer {...footerProps} />}
+        <div className="min-h-screen flex flex-col bg-white">
+            <Navbar currentView={view} navigate={navigate} />
+            <main className={`flex-1 flex flex-col ${NavbarPaddingTop}`}>
+                {renderView()}
+            </main>
+            <Footer navigate={navigate} />
+            <WhatsAppButton />
+            <SubscriptionPopup />
         </div>
     );
-}
+};
+
+export default App;
