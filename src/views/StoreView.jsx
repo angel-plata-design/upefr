@@ -46,7 +46,7 @@ const StoreView = ({ products, storeFilter, navigate }) => {
 
     const RadioOpt = ({ label, checked, onChange }) => (
         <label className="flex items-center gap-2 cursor-pointer group py-1">
-            <input type="radio" className="accent-[#c84126]" checked={checked} onChange={onChange} />
+            <input type="radio" className="accent-[#0057B8]" checked={checked} onChange={onChange} />
             <span className={`text-sm transition-colors ${checked ? 'text-black font-semibold' : 'text-gray-500 group-hover:text-black'}`}>{label}</span>
         </label>
     );
@@ -56,7 +56,7 @@ const StoreView = ({ products, storeFilter, navigate }) => {
             <div className="flex items-center justify-between mb-5">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{displayed.length} resultado{displayed.length !== 1 ? 's' : ''}</span>
                 {hasFilters && (
-                    <button onClick={clearAll} className="text-[10px] text-[#c84126] font-bold uppercase tracking-wider hover:underline">Limpiar todo</button>
+                    <button onClick={clearAll} className="text-[10px] text-[#0057B8] font-bold uppercase tracking-wider hover:underline">Limpiar todo</button>
                 )}
             </div>
 
@@ -193,7 +193,7 @@ const StoreView = ({ products, storeFilter, navigate }) => {
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             />
                                             {product.popular && (
-                                                <span className="absolute top-2 left-2 bg-[#c84126] text-white text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full">
+                                                <span className="absolute top-2 left-2 bg-[#0057B8] text-white text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full">
                                                     Popular
                                                 </span>
                                             )}
@@ -209,7 +209,7 @@ const StoreView = ({ products, storeFilter, navigate }) => {
                                         <div className="p-3">
                                             <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">{product.brand}</p>
                                             <h3 className="text-xs font-semibold text-black leading-snug line-clamp-2 mb-2">{product.title}</h3>
-                                            <span className="text-[10px] font-bold text-[#c84126] uppercase tracking-wider">Cotizar →</span>
+                                            <span className="text-[10px] font-bold text-[#0057B8] uppercase tracking-wider">Cotizar →</span>
                                         </div>
                                     </div>
                                 ))}

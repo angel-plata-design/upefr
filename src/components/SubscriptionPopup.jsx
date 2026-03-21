@@ -36,7 +36,7 @@ const SubscriptionPopup = () => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
             <div className="relative bg-white max-w-md w-full rounded-xl shadow-2xl overflow-hidden">
                 {/* Image header */}
-                <div className="h-40 bg-gradient-to-br from-[#1a1a2e] to-[#c84126] flex items-center justify-center relative overflow-hidden">
+                <div className="h-40 bg-gradient-to-br from-[#0A1628] to-[#0057B8] flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10">
                         {[...Array(6)].map((_, i) => (
                             <div key={i} className="absolute border border-white rounded-full"
@@ -68,11 +68,11 @@ const SubscriptionPopup = () => {
                                     placeholder="tu@empresa.com"
                                     value={email}
                                     onChange={e => setEmail(e.target.value)}
-                                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c84126] focus:border-transparent"
+                                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:border-transparent"
                                 />
                                 <button
                                     type="submit"
-                                    className="bg-[#c84126] text-white py-3 rounded-lg text-sm font-bold hover:bg-[#a8341e] transition-colors"
+                                    className="bg-[#0057B8] text-white py-3 rounded-lg text-sm font-bold hover:bg-[#004A9E] transition-colors"
                                 >
                                     Suscribirme y obtener mi descuento
                                 </button>

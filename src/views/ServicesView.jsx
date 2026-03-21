@@ -12,7 +12,7 @@ const services = [
         description: 'El bordado aporta una presencia duradera y de alta gama a tus uniformes corporativos. Utilizamos maquinaria computarizada de última generación que garantiza una fidelidad perfecta a tu logotipo y colores institucionales.',
         features: ['Alta resolución y definición de colores', 'Resistente a lavados industriales', 'Compatible con cualquier tela', 'Ideal para logos, nombres y áreas de bordado grandes'],
         image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1000',
-        color: '#c84126',
+        color: '#0057B8',
     },
     {
         id: 'dtf',
@@ -22,7 +22,7 @@ const services = [
         description: 'La tecnología DTF permite imprimir diseños de alta complejidad con degradados, sombras y fotografías directamente sobre la prenda. Es la opción ideal cuando los detalles del diseño son fundamentales.',
         features: ['Impresión full color sin límite de colores', 'Acabado suave y flexible al tacto', 'Sin cargos adicionales por número de colores', 'Perfecto para logos multitono y arte detallado'],
         image: 'https://images.unsplash.com/photo-1570125909517-53cb21c89ff2?auto=format&fit=crop&q=80&w=1000',
-        color: '#1a1a2e',
+        color: '#0A1628',
     },
     {
         id: 'serigrafia',
@@ -49,12 +49,12 @@ const services = [
 const ServicesView = ({ navigate }) => (
     <div className="flex-1 bg-white">
         {/* Hero */}
-        <div className="relative bg-[#1a1a2e] text-white py-28 overflow-hidden">
+        <div className="relative bg-[#0A1628] text-white py-28 overflow-hidden">
             <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1600')] bg-cover bg-center" />
-            <div className="absolute inset-0 bg-[#1a1a2e]/80" />
+            <div className="absolute inset-0 bg-[#0A1628]/80" />
             <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                    <span className="inline-block bg-[#c84126] text-white text-[10px] font-bold uppercase tracking-[0.25em] px-4 py-1.5 rounded-full mb-6">
+                    <span className="inline-block bg-[#0057B8] text-white text-[10px] font-bold uppercase tracking-[0.25em] px-4 py-1.5 rounded-full mb-6">
                         Personalización
                     </span>
                     <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tight">Servicios de Decorado</h1>
@@ -117,7 +117,7 @@ const ServicesView = ({ navigate }) => (
                 </p>
                 <button
                     onClick={() => navigate('quote')}
-                    className="inline-flex items-center gap-2 bg-[#c84126] text-white px-10 py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#a8341e] transition-colors"
+                    className="inline-flex items-center gap-2 bg-[#0057B8] text-white px-10 py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#004A9E] transition-colors"
                 >
                     Cotizar decorado <ArrowRight className="w-4 h-4" />
                 </button>

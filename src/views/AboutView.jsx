@@ -10,7 +10,7 @@ const AboutView = ({ navigate }) => (
             <img src={`${import.meta.env.BASE_URL}conoce_upe.jpg`} alt="Sobre Nosotros" className="absolute inset-0 w-full h-full object-cover opacity-40 z-0" />
             <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
                 <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }}
-                    className="inline-block bg-[#c84126] text-white font-bold px-4 py-1.5 text-[10px] mb-6 uppercase tracking-[0.25em] rounded-full">
+                    className="inline-block bg-[#0057B8] text-white font-bold px-4 py-1.5 text-[10px] mb-6 uppercase tracking-[0.25em] rounded-full">
                     Nuestra Historia
                 </motion.span>
                 <motion.h1 initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}
@@ -30,7 +30,7 @@ const AboutView = ({ navigate }) => (
                 <h2 className="text-4xl md:text-5xl font-black text-black mb-6 leading-[1.1] tracking-tight uppercase">
                     Expertos en soluciones uniformes para empresas.
                 </h2>
-                <div className="w-16 h-1 bg-[#c84126] mb-8" />
+                <div className="w-16 h-1 bg-[#0057B8] mb-8" />
                 <p className="text-gray-600 mb-5 leading-relaxed">
                     En <strong className="text-black">Uniformes Profesionales</strong> comprendemos que el uniforme de tus colaboradores comunica la esencia de tu empresa. Somos especialistas en diseñar, fabricar y gestionar programas de uniformes para empresas de todos los tamaños.
                 </p>
@@ -44,7 +44,7 @@ const AboutView = ({ navigate }) => (
                         { n: '24-48h', l: 'Tiempo de\nrespuesta' },
                         { n: '100%', l: 'Entregas\npuntuales' },
                     ].map((s, i) => (
-                        <div key={i} className={`p-5 text-center rounded-xl ${i % 2 === 0 ? 'bg-[#f5f5f5]' : 'bg-[#1a1a2e]'}`}>
+                        <div key={i} className={`p-5 text-center rounded-xl ${i % 2 === 0 ? 'bg-[#f5f5f5]' : 'bg-[#0A1628]'}`}>
                             <span className={`block text-3xl font-black mb-1 ${i % 2 !== 0 ? 'text-white' : 'text-black'}`}>{s.n}</span>
                             <span className={`text-[10px] font-bold uppercase tracking-widest ${i % 2 !== 0 ? 'text-gray-400' : 'text-gray-500'} whitespace-pre-line`}>{s.l}</span>
                         </div>
@@ -56,7 +56,7 @@ const AboutView = ({ navigate }) => (
                     <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=1000"
                         alt="Uniformes" className="absolute inset-0 w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6 border-l-4 border-[#c84126] pl-4">
+                    <div className="absolute bottom-6 left-6 right-6 border-l-4 border-[#0057B8] pl-4">
                         <p className="text-white font-black text-xl leading-tight">Seguridad y estilo.<br />Sin compromisos.</p>
                     </div>
                 </div>
@@ -68,9 +68,9 @@ const AboutView = ({ navigate }) => (
             <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                     { icon: <Target className="w-8 h-8 text-black" />, title: 'Misión', bg: 'bg-white', text: 'text-black', body: 'Proveer soluciones avanzadas en uniformes corporativos, industriales y médicos, garantizando la máxima calidad, personalización y cumplimiento de tiempos. Simplificamos cada aspecto del programa de uniformes de nuestros clientes.' },
-                    { icon: <Eye className="w-8 h-8 text-white" />, title: 'Visión', bg: 'bg-[#1a1a2e]', text: 'text-white', body: 'Ser el principal socio estratégico nacional en la gestión integral de programas de uniformes, reconocidos por nuestra excelencia operativa, capacidad logística y compromiso absoluto con la satisfacción del cliente.' },
+                    { icon: <Eye className="w-8 h-8 text-white" />, title: 'Visión', bg: 'bg-[#0A1628]', text: 'text-white', body: 'Ser el principal socio estratégico nacional en la gestión integral de programas de uniformes, reconocidos por nuestra excelencia operativa, capacidad logística y compromiso absoluto con la satisfacción del cliente.' },
                 ].map((item, i) => (
-                    <div key={i} className={`${item.bg} p-12 rounded-2xl border ${i === 0 ? 'border-gray-100' : 'border-[#1a1a2e]'}`}>
+                    <div key={i} className={`${item.bg} p-12 rounded-2xl border ${i === 0 ? 'border-gray-100' : 'border-[#0A1628]'}`}>
                         <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 ${i === 0 ? 'bg-gray-100' : 'bg-white/10'}`}>{item.icon}</div>
                         <h3 className={`text-2xl font-black ${item.text} mb-4 uppercase tracking-widest`}>{item.title}</h3>
                         <div className={`w-10 h-0.5 mb-5 ${i === 0 ? 'bg-gray-300' : 'bg-white/20'}`} />
@@ -84,7 +84,7 @@ const AboutView = ({ navigate }) => (
         <div className="max-w-7xl mx-auto px-4 py-20">
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-black text-black mb-3 uppercase tracking-tight">Por qué elegirnos</h2>
-                <div className="w-12 h-1 bg-[#c84126] mx-auto" />
+                <div className="w-12 h-1 bg-[#0057B8] mx-auto" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {[
@@ -95,7 +95,7 @@ const AboutView = ({ navigate }) => (
                 ].map((b, i) => (
                     <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                         className="text-center p-8 bg-[#f5f5f5] rounded-2xl border border-gray-100 hover:border-black group transition-all duration-300 hover:-translate-y-1">
-                        <div className="w-14 h-14 mx-auto bg-white text-black rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#c84126] group-hover:text-white transition-colors duration-300">
+                        <div className="w-14 h-14 mx-auto bg-white text-black rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#0057B8] group-hover:text-white transition-colors duration-300">
                             {React.cloneElement(b.icon, { className: 'w-6 h-6' })}
                         </div>
                         <h4 className="font-black text-black text-sm uppercase tracking-wide mb-2">{b.t}</h4>
@@ -106,14 +106,14 @@ const AboutView = ({ navigate }) => (
         </div>
 
         {/* Contact info */}
-        <div className="bg-[#1a1a2e] py-16">
+        <div className="bg-[#0A1628] py-16">
             <div className="max-w-7xl mx-auto px-4">
                 <h2 className="text-2xl font-black text-white text-center mb-10">Contáctanos</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                     {[
-                        { icon: <Phone className="w-5 h-5 text-[#c84126]" />, label: 'Teléfono', val: COMPANY_INFO.whatsappDisplay },
-                        { icon: <Mail className="w-5 h-5 text-[#c84126]" />, label: 'Email', val: COMPANY_INFO.email },
-                        { icon: <MapPin className="w-5 h-5 text-[#c84126]" />, label: 'Oficina', val: COMPANY_INFO.direccion },
+                        { icon: <Phone className="w-5 h-5 text-[#0057B8]" />, label: 'Teléfono', val: COMPANY_INFO.whatsappDisplay },
+                        { icon: <Mail className="w-5 h-5 text-[#0057B8]" />, label: 'Email', val: COMPANY_INFO.email },
+                        { icon: <MapPin className="w-5 h-5 text-[#0057B8]" />, label: 'Oficina', val: COMPANY_INFO.direccion },
                     ].map((c, i) => (
                         <div key={i} className="flex flex-col items-center gap-2">
                             {c.icon}
@@ -123,7 +123,7 @@ const AboutView = ({ navigate }) => (
                     ))}
                 </div>
                 <div className="text-center mt-8">
-                    <button onClick={() => navigate('quote')} className="bg-[#c84126] text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-[#a8341e] transition-colors">
+                    <button onClick={() => navigate('quote')} className="bg-[#0057B8] text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-[#004A9E] transition-colors">
                         Cotiza tu Proyecto
                     </button>
                 </div>

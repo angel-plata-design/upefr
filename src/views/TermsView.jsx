@@ -53,7 +53,7 @@ const TermsView = () => (
                 <p>Estos Términos se rigen por las leyes de los Estados Unidos Mexicanos. Para cualquier controversia derivada del uso del Sitio, las partes se someten a la jurisdicción de los tribunales competentes de la ciudad de Ensenada, Baja California, México.</p>
             </Section>
             <Section title="11. Contacto">
-                <p>Para dudas sobre estos Términos: <a href="mailto:info@uniformesprofesionales.mx" className="text-[#c84126] hover:underline">info@uniformesprofesionales.mx</a></p>
+                <p>Para dudas sobre estos Términos: <a href="mailto:info@uniformesprofesionales.mx" className="text-[#0057B8] hover:underline">info@uniformesprofesionales.mx</a></p>
             </Section>
         </div>
     </div>

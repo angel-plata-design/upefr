@@ -43,7 +43,7 @@ const QuoteView = () => {
         </div>
     );
 
-    const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c84126] focus:border-transparent transition-all";
+    const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:border-transparent transition-all";
 
     if (submitted) return (
         <div className="flex-1 flex items-center justify-center py-32 px-4">
@@ -71,9 +71,9 @@ const QuoteView = () => {
     return (
         <div className="flex-1 bg-[#f8f8f8]">
             {/* Hero */}
-            <div className="bg-[#1a1a2e] text-white py-16 px-4">
+            <div className="bg-[#0A1628] text-white py-16 px-4">
                 <div className="max-w-7xl mx-auto text-center">
-                    <span className="text-[#c84126] text-xs font-bold uppercase tracking-[0.25em] mb-3 block">Paso 1 de 1</span>
+                    <span className="text-[#0057B8] text-xs font-bold uppercase tracking-[0.25em] mb-3 block">Paso 1 de 1</span>
                     <h1 className="text-4xl md:text-5xl font-black mb-3 tracking-tight">Cotiza tu Proyecto</h1>
                     <p className="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">
                         Cuéntanos los detalles. Te asignamos un asesor especializado sin costo y te respondemos en menos de 24 horas.
@@ -102,7 +102,7 @@ const QuoteView = () => {
                             <div className="mt-5 pt-4 border-t border-gray-100">
                                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Contacto directo</p>
                                 <a href={`tel:${COMPANY_INFO.telefonos[0].replace(/\s/g,'')}`}
-                                    className="text-sm font-semibold text-[#c84126] hover:underline block">{COMPANY_INFO.whatsappDisplay}</a>
+                                    className="text-sm font-semibold text-[#0057B8] hover:underline block">{COMPANY_INFO.whatsappDisplay}</a>
                                 <a href={`mailto:${COMPANY_INFO.email}`}
                                     className="text-xs text-gray-400 hover:text-black transition-colors break-all">{COMPANY_INFO.email}</a>
                             </div>
@@ -163,7 +163,7 @@ const QuoteView = () => {
                                         <div>
                                             <input ref={fileRef} type="file" accept=".pdf,.jpg,.jpeg,.png,.xlsx,.doc,.docx" onChange={handleFile} className="hidden" id="file-upload" />
                                             {!archivo ? (
-                                                <label htmlFor="file-upload" className="flex items-center gap-3 border-2 border-dashed border-gray-200 rounded-lg p-4 cursor-pointer hover:border-[#c84126] transition-colors">
+                                                <label htmlFor="file-upload" className="flex items-center gap-3 border-2 border-dashed border-gray-200 rounded-lg p-4 cursor-pointer hover:border-[#0057B8] transition-colors">
                                                     <Upload className="w-5 h-5 text-gray-400 flex-shrink-0" />
                                                     <div>
                                                         <p className="text-sm text-gray-600 font-medium">Subir layout, brief o referencia</p>
@@ -172,7 +172,7 @@ const QuoteView = () => {
                                                 </label>
                                             ) : (
                                                 <div className="flex items-center gap-3 border border-gray-200 rounded-lg p-3">
-                                                    <Paperclip className="w-4 h-4 text-[#c84126] flex-shrink-0" />
+                                                    <Paperclip className="w-4 h-4 text-[#0057B8] flex-shrink-0" />
                                                     <span className="text-sm text-gray-700 flex-1 truncate">{archivo.name}</span>
                                                     <button type="button" onClick={removeFile} className="text-gray-400 hover:text-red-500">
                                                         <X className="w-4 h-4" />
@@ -185,7 +185,7 @@ const QuoteView = () => {
                             </div>
 
                             <button type="submit" disabled={loading}
-                                className="w-full bg-[#c84126] text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#a8341e] transition-colors disabled:opacity-70 flex items-center justify-center gap-2 mt-2">
+                                className="w-full bg-[#0057B8] text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#004A9E] transition-colors disabled:opacity-70 flex items-center justify-center gap-2 mt-2">
                                 {loading ? (
                                     <><span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Procesando...</>
                                 ) : (

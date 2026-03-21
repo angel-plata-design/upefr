@@ -84,7 +84,7 @@ const ProductView = ({ product, navigate }) => {
                             )}
                             {product.popular && (
                                 <div className="absolute top-4 left-4">
-                                    <span className="flex items-center gap-1 bg-[#c84126] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                    <span className="flex items-center gap-1 bg-[#0057B8] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                                         <Star className="w-3 h-3 fill-white" /> Más Popular
                                     </span>
                                 </div>
@@ -109,7 +109,7 @@ const ProductView = ({ product, navigate }) => {
                     <div className="flex flex-col">
                         {/* Brand */}
                         <div className="flex items-center justify-between mb-1">
-                            <span className="text-xs font-bold text-[#c84126] uppercase tracking-widest">{product.brand}</span>
+                            <span className="text-xs font-bold text-[#0057B8] uppercase tracking-widest">{product.brand}</span>
                             {catInfo && (
                                 <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest border border-gray-200 px-2 py-0.5 rounded-full">
                                     {catInfo.nombre}
@@ -177,7 +177,7 @@ const ProductView = ({ product, navigate }) => {
                         <div className="flex flex-col gap-3 mt-auto">
                             <button
                                 onClick={() => navigate('quote')}
-                                className="w-full bg-[#c84126] text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#a8341e] transition-colors flex items-center justify-center gap-2"
+                                className="w-full bg-[#0057B8] text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#004A9E] transition-colors flex items-center justify-center gap-2"
                             >
                                 <MessageSquare className="w-4 h-4" />
                                 Solicitar Cotización

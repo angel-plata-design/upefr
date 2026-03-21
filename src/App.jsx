@@ -12,6 +12,8 @@ import ServicesView from './views/ServicesView';
 import View360 from './views/View360';
 import TermsView from './views/TermsView';
 import PrivacyView from './views/PrivacyView';
+import BrandsView from './views/BrandsView';
+import WelcomeModal from './views/WelcomeModal';
 import { INITIAL_PRODUCTS } from './data/productos';
 
 const App = () => {
@@ -40,7 +42,8 @@ const App = () => {
 
     const selectedProduct = products.find(p => p.id === selectedProductId);
 
-    const NavbarPaddingTop = 'pt-[90px]'; // topbar ~32px + header 64px
+    // topbar ~28px + header 60px = 88px
+    const NavbarPaddingTop = 'pt-[88px]';
 
     const renderView = () => {
         switch (view) {
@@ -58,6 +61,8 @@ const App = () => {
                 return <ServicesView navigate={navigate} />;
             case 'upe360':
                 return <View360 navigate={navigate} />;
+            case 'brands':
+                return <BrandsView navigate={navigate} />;
             case 'terms':
                 return <TermsView />;
             case 'privacy':
@@ -76,6 +81,7 @@ const App = () => {
             <Footer navigate={navigate} />
             <WhatsAppButton />
             <SubscriptionPopup />
+            <WelcomeModal />
         </div>
     );
 };
