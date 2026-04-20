@@ -133,7 +133,7 @@ const Navbar = ({ currentView, navigate }) => {
                                         <div className="grid grid-cols-3 gap-6">
                                             {/* Col 1: Tipo de Prenda */}
                                             <div>
-                                                <p className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 mb-3">Tipo de Prenda</p>
+                                                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-gray-400 mb-3">Tipo de Prenda</p>
                                                 <div className="flex flex-col gap-1">
                                                     {TIPOS_PRENDA_FR.map(tipo => (
                                                         <button
@@ -149,7 +149,7 @@ const Navbar = ({ currentView, navigate }) => {
 
                                             {/* Col 2: Categorías */}
                                             <div>
-                                                <p className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 mb-3">Categorías</p>
+                                                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-gray-400 mb-3">Categorías</p>
                                                 <div className="flex flex-col gap-1">
                                                     {CATEGORIAS_FR.map(cat => (
                                                         <button
@@ -165,7 +165,7 @@ const Navbar = ({ currentView, navigate }) => {
 
                                             {/* Col 3: Marcas FR */}
                                             <div>
-                                                <p className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 mb-3">Marcas FR</p>
+                                                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-gray-400 mb-3">Marcas FR</p>
                                                 <div className="flex flex-col gap-1">
                                                     {MARCAS_FR_MENU.map(marca => (
                                                         <button

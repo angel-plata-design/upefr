@@ -120,7 +120,7 @@ const HomeView = ({ products, navigate }) => {
                         <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-[0.25em] mb-4 border-b border-[#0057B8] pb-1">
                             Uniformes Resistentes a Flama · NFPA 2112 · NFPA 70E
                         </span>
-                        <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.05] tracking-tight mb-5">
+                        <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-5">
                             Protección que<br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">no falla nunca.</span>
                         </h1>
@@ -149,7 +149,7 @@ const HomeView = ({ products, navigate }) => {
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
                     {heroImages.map((_, i) => (
                         <button key={i} onClick={() => setCurrentHeroImg(i)}
-                            className={`h-1 rounded-full transition-all duration-300 ${i === currentHeroImg ? 'bg-white w-10' : 'bg-white/40 w-6 hover:bg-white/70'}`} />
+                            className={`h-2 rounded-full transition-all duration-300 ${i === currentHeroImg ? 'bg-white w-10' : 'bg-white/40 w-6 hover:bg-white/70'}`} />
                     ))}
                 </div>
             </div>
@@ -169,7 +169,7 @@ const HomeView = ({ products, navigate }) => {
             {/* CATEGORÍAS FR */}
             <section className="max-w-7xl mx-auto px-4 py-20">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-black text-black tracking-tight mb-3">Categorías</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight mb-3">Categorías</h2>
                     <p className="text-gray-500 max-w-xl mx-auto">Soluciones FR certificadas para cada tipo de riesgo industrial.</p>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -186,7 +186,7 @@ const HomeView = ({ products, navigate }) => {
                             <img src={cat.imagen} alt={cat.nombre} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                             <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
-                                <p className="text-white font-black text-lg leading-tight">{cat.nombre}</p>
+                                <p className="text-white font-bold text-lg leading-tight">{cat.nombre}</p>
                                 <p className="text-white/70 text-xs mt-0.5 flex items-center gap-1 group-hover:gap-2 transition-all">
                                     Ver más <ChevronRight className="w-3 h-3" />
                                 </p>
@@ -202,7 +202,7 @@ const HomeView = ({ products, navigate }) => {
                     <div className="max-w-7xl mx-auto px-4">
                         <div className="flex items-center justify-between mb-10">
                             <div>
-                                <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">Productos Populares</h2>
+                                <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight">Productos Populares</h2>
                                 <p className="text-gray-500 text-sm mt-1">Los favoritos de nuestros clientes</p>
                             </div>
                             <button onClick={() => navigate('store')} className="hidden sm:flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-black hover:text-[#0057B8] transition-colors">
@@ -220,17 +220,17 @@ const HomeView = ({ products, navigate }) => {
                                     <div className="h-44 overflow-hidden bg-gray-50 relative">
                                         <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                         {product.popular && (
-                                            <span className="absolute top-2 left-2 bg-[#0057B8] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                                            <span className="absolute top-2 left-2 bg-[#0057B8] text-white text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
                                                 Popular
                                             </span>
                                         )}
                                     </div>
                                     <div className="p-3">
-                                        <p className="text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">{product.brand}</p>
-                                        <h3 className="text-xs font-semibold text-black leading-snug line-clamp-2">{product.title}</h3>
+                                        <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">{product.brand}</p>
+                                        <h3 className="text-sm font-semibold text-black leading-snug line-clamp-2">{product.title}</h3>
                                         <button
                                             onClick={(e) => { e.stopPropagation(); navigate('quote'); }}
-                                            className="mt-2 w-full text-center text-[10px] font-bold text-[#0057B8] uppercase tracking-wider hover:underline"
+                                            className="mt-2 w-full text-center text-xs font-semibold text-[#0057B8] uppercase tracking-wider hover:underline"
                                         >
                                             Cotizar →
                                         </button>
@@ -245,7 +245,7 @@ const HomeView = ({ products, navigate }) => {
             {/* MARCAS POR CATEGORÍA */}
             <section className="max-w-7xl mx-auto px-4 py-20">
                 <div className="text-center mb-10">
-                    <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight mb-2">Marcas Premium por Categoría</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-2">Marcas Premium por Categoría</h2>
                     <p className="text-gray-500 text-sm">Trabajamos con las mejores marcas certificadas del mundo</p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -296,7 +296,7 @@ const HomeView = ({ products, navigate }) => {
             <section className="bg-[#0A1628] py-20">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-3">Servicios de Decorado</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-3">Servicios de Decorado</h2>
                         <p className="text-gray-400 max-w-xl mx-auto text-sm">Personalizamos cada prenda con tu logo y la identidad de tu empresa.</p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
@@ -340,7 +340,7 @@ const HomeView = ({ products, navigate }) => {
                             transition={{ duration: 0.7 }}
                         >
                             <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-[0.2em] mb-3">Sistema Integral</span>
-                            <h2 className="text-4xl md:text-5xl font-black text-black tracking-tight mb-4 leading-tight">
+                            <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight mb-4 leading-tight">
                                 UPE FR 360
                             </h2>
                             <p className="text-gray-500 text-lg leading-relaxed mb-8">
@@ -380,7 +380,7 @@ const HomeView = ({ products, navigate }) => {
             {/* CTA BANNER */}
             <section className="relative py-24 overflow-hidden bg-gray-50 border-y border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl md:text-5xl font-black text-black mb-4 tracking-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 tracking-tight">
                         ¿Listo para proteger a tu equipo?
                     </h2>
                     <p className="text-gray-500 text-lg max-w-xl mx-auto mb-8">

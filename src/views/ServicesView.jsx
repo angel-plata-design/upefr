@@ -54,10 +54,10 @@ const ServicesView = ({ navigate }) => (
             <div className="absolute inset-0 bg-[#0A1628]/80" />
             <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                    <span className="inline-block bg-[#0057B8] text-white text-[10px] font-bold uppercase tracking-[0.25em] px-4 py-1.5 rounded-full mb-6">
+                    <span className="inline-block bg-[#0057B8] text-white text-xs font-bold uppercase tracking-[0.25em] px-4 py-1.5 rounded-full mb-6">
                         Personalización
                     </span>
-                    <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tight">Servicios de Decorado</h1>
+                    <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight">Servicios de Decorado</h1>
                     <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
                         Transformamos cada prenda en una extensión de tu identidad corporativa. Desde una pieza hasta decenas de miles.
                     </p>
@@ -89,8 +89,8 @@ const ServicesView = ({ navigate }) => (
                         </div>
                         {/* Text */}
                         <div className="lg:w-1/2 w-full">
-                            <span className="text-[10px] font-bold uppercase tracking-widest mb-2 block" style={{ color: s.color }}>Servicio</span>
-                            <h2 className="text-3xl md:text-4xl font-black text-black mb-1 tracking-tight">{s.title}</h2>
+                            <span className="text-xs font-bold uppercase tracking-widest mb-2 block" style={{ color: s.color }}>Servicio</span>
+                            <h2 className="text-3xl md:text-4xl font-bold text-black mb-1 tracking-tight">{s.title}</h2>
                             <p className="text-gray-400 text-sm italic mb-4">{s.subtitle}</p>
                             <div className="w-12 h-1 mb-6" style={{ backgroundColor: s.color }} />
                             <p className="text-gray-600 text-sm leading-relaxed mb-6">{s.description}</p>
@@ -111,7 +111,7 @@ const ServicesView = ({ navigate }) => (
         {/* CTA */}
         <div className="bg-[#f8f8f8] border-t border-gray-100 py-20">
             <div className="max-w-3xl mx-auto px-4 text-center">
-                <h2 className="text-3xl md:text-4xl font-black text-black mb-4">¿Qué servicio necesitas?</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">¿Qué servicio necesitas?</h2>
                 <p className="text-gray-500 mb-8 text-sm leading-relaxed">
                     Nuestros asesores te guían para elegir el método de decorado que mejor se adapta a tu prenda, presupuesto y volumen.
                 </p>

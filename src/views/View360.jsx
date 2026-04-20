@@ -22,7 +22,7 @@ const View360 = () => (
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.1 }}
-                    className="inline-flex items-center justify-center space-x-2 bg-white text-black px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest mb-8 shadow-sm"
+                    className="inline-flex items-center justify-center space-x-2 bg-white text-black px-6 py-2.5 text-xs font-bold uppercase tracking-widest mb-8 shadow-sm"
                 >
                     <ShieldCheck className="w-4 h-4 text-black mr-1" />
                     <span>Respuesta Integral B2B</span>
@@ -62,7 +62,7 @@ const View360 = () => (
                     initial={{ y: 20, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-6xl font-extrabold text-black mb-8 tracking-tight uppercase"
+                    className="text-4xl md:text-6xl font-bold text-black mb-8 tracking-tight uppercase"
                 >
                     ¿Por qué elegir upeFR360?
                 </motion.h2>
@@ -77,24 +77,26 @@ const View360 = () => (
                 </motion.p>
 
                 <h3 className="text-lg font-bold text-black mb-12 text-left pl-4 border-l-4 border-black uppercase tracking-widest">Beneficios Clave</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                     {[
-                        { icon: <BarChart3 className="w-6 h-6" />, title: "Garantice su control", desc: "El presupuesto se mantiene al margen" },
-                        { icon: <Users className="w-6 h-6" />, title: "Asignación jerárquica", desc: "Por área, línea y perfil de operador" },
-                        { icon: <Truck className="w-6 h-6" />, title: "Agilización total", desc: "Procesos de solicitud y suministro acelerados" },
-                        { icon: <CheckCircle2 className="w-6 h-6" />, title: "Flujos automatizados", desc: "Validación y autorizaciones de compra inmediata" }
+                        { icon: <ShieldCheck className="w-6 h-6" />, title: "Cumplimiento normativo garantizado", desc: "Cumples con las principales normas internacionales: NFPA 70E, NFPA 2112, ASTM F1506 para cada nivel de riesgo." },
+                        { icon: <CheckCircle2 className="w-6 h-6" />, title: "Reduce accidentes y riesgos legales", desc: "Uniformes certificados FR reducen sanciones OSHA, accidentes laborales y exposición legal de la empresa." },
+                        { icon: <BarChart3 className="w-6 h-6" />, title: "Centraliza compras y presupuesto", desc: "Un solo sistema para compras, seguimiento de inventario y control total del presupuesto asignado." },
+                        { icon: <Users className="w-6 h-6" />, title: "Refuerza imagen y credibilidad", desc: "Uniformes consistentes y certificados proyectan profesionalismo ante clientes, auditores y reguladores." },
+                        { icon: <Truck className="w-6 h-6" />, title: "Agiliza procesos de RH y auditoría", desc: "Automatiza solicitudes, autorizaciones jerárquicas y reportes de entrega para RH, seguridad industrial y logística." },
+                        { icon: <CheckCircle2 className="w-6 h-6" />, title: "Controla recursos y elimina fugas", desc: "Trazabilidad completa por empleado elimina mermas, fraudes y entregas indebidas de uniformes y EPP." },
                     ].map((item, i) => (
                         <motion.div
                             initial={{ y: 30, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
+                            transition={{ delay: i * 0.08 }}
                             key={i}
                             className="bg-white p-8 border border-gray-200 hover:border-black transition-all duration-300 group hover:-translate-y-1 relative"
                         >
-                            <div className="w-16 h-16 bg-white border border-gray-200 text-black flex items-center justify-center mb-6 group-hover:bg-black group-hover:text-white transition-colors duration-300">{item.icon}</div>
+                            <div className="w-14 h-14 bg-white border border-gray-200 text-black flex items-center justify-center mb-5 group-hover:bg-black group-hover:text-white transition-colors duration-300">{item.icon}</div>
                             <h4 className="font-bold text-black uppercase tracking-widest text-sm mb-3">{item.title}</h4>
-                            <p className="text-gray-500 text-sm leading-relaxed font-medium">{item.desc}</p>
+                            <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -112,7 +114,7 @@ const View360 = () => (
                         <img src={`${import.meta.env.BASE_URL}img_pc.jpg`} alt="Tienda en línea B2B" className="relative w-full h-[450px] object-cover border border-gray-200 group-hover:scale-[1.02] transition-transform duration-500 grayscale" />
                     </motion.div>
                     <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full order-1 md:order-2">
-                        <div className="inline-flex items-center text-[10px] font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 1</div>
+                        <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 1</div>
                         <h3 className="text-3xl lg:text-4xl font-extrabold text-black mb-6 leading-tight tracking-tight uppercase">Tienda B2B exclusiva y personalizada</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Creamos un portal web con una experiencia de abastecimiento personalizada de acuerdo a los lineamientos y cuotas autorizadas de su empresa. Un portal privado sólo para sus empleados o supervisores autorizados.
@@ -123,7 +125,7 @@ const View360 = () => (
                 {/* Pilar 2 */}
                 <div className="flex flex-col md:flex-row items-center gap-16 group">
                     <motion.div initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full">
-                        <div className="inline-flex items-center text-[10px] font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 2</div>
+                        <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 2</div>
                         <h3 className="text-3xl lg:text-4xl font-extrabold text-black mb-6 leading-tight tracking-tight uppercase">Resumen y asignación de tallas</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Carga individual de medidas por cada empleado, lo que asegura una asignación de tallas correcta desde el primer pedido, reduciendo drásticamente las devoluciones, costos y tiempos de gestión.
@@ -142,7 +144,7 @@ const View360 = () => (
                         <img src={`${import.meta.env.BASE_URL}img_logistica.jpg`} alt="Logística optimizada" className="relative w-full h-[450px] object-cover border border-gray-200 group-hover:scale-[1.02] transition-transform duration-500 grayscale" />
                     </motion.div>
                     <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full order-1 md:order-2">
-                        <div className="inline-flex items-center text-[10px] font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 3</div>
+                        <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 3</div>
                         <h3 className="text-3xl lg:text-4xl font-extrabold text-black mb-6 leading-tight tracking-tight uppercase">Logística optimizada</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Entregas en esquema de paquetes individuales (kitting) o centralizados, directos a sitio o sucursal por empleado. Hacemos que la distribución interna deje de ser un dolor de cabeza para su equipo.
@@ -153,7 +155,7 @@ const View360 = () => (
                 {/* Pilar 4 */}
                 <div className="flex flex-col md:flex-row items-center gap-16 group">
                     <motion.div initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full">
-                        <div className="inline-flex items-center text-[10px] font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 4</div>
+                        <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 4</div>
                         <h3 className="text-3xl lg:text-4xl font-extrabold text-black mb-6 leading-tight tracking-tight uppercase">Control automatizado y seguimiento</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Visualice de inmediato sus gastos e inventarios. Monitoreo del estatus de solicitudes y autorizaciones jerárquicas online para total transparencia del presupuesto ejercido.
@@ -240,7 +242,7 @@ const View360 = () => (
             <div className="max-w-4xl mx-auto px-4">
                 <div className="bg-[#f5f5f5] p-10 md:p-14 border border-gray-200">
                     <div className="text-center mb-10">
-                        <h2 className="text-2xl md:text-3xl font-extrabold text-black mb-4 uppercase tracking-widest">Impulsa la seguridad de tu empresa hoy mismo</h2>
+                        <h2 className="text-2xl md:text-3xl font-bold text-black mb-4 uppercase tracking-widest">Impulsa la seguridad de tu empresa hoy mismo</h2>
                         <div className="w-16 h-1 bg-black mx-auto mb-6"></div>
                         <p className="text-gray-500 text-sm md:text-base">Déjanos tus datos y un especialista te mostrará cómo <strong>upeFR 360°</strong> puede transformar la gestión de uniformes en tu organización.</p>
                     </div>

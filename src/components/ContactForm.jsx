@@ -44,20 +44,20 @@ const ContactForm = ({ inProductView = false, hideHeader = false }) => {
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Nombre *</label>
+                                <label className="block text-xs uppercase tracking-widest font-medium text-gray-400 mb-2">Nombre *</label>
                                 <input type="text" required className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black" />
                             </div>
                             <div>
-                                <label className="block text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Correo electrónico *</label>
+                                <label className="block text-xs uppercase tracking-widest font-medium text-gray-400 mb-2">Correo electrónico *</label>
                                 <input type="email" required className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black" />
                             </div>
                         </div>
                         <div>
-                            <label className="block text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Número de teléfono</label>
+                            <label className="block text-xs uppercase tracking-widest font-medium text-gray-400 mb-2">Número de teléfono</label>
                             <input type="tel" className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black" />
                         </div>
                         <div>
-                            <label className="block text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Mensaje *</label>
+                            <label className="block text-xs uppercase tracking-widest font-medium text-gray-400 mb-2">Mensaje *</label>
                             <textarea required rows="3" className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black"></textarea>
                         </div>
                         <div className={inProductView ? 'pt-2' : 'text-center pt-2'}>

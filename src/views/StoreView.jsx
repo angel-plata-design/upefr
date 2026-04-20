@@ -102,7 +102,7 @@ const StoreView = ({ products, storeFilter, navigate }) => {
             {/* Banner */}
             <div className="bg-[#f5f5f5] border-b border-gray-200 py-14">
                 <div className="max-w-7xl mx-auto px-4">
-                    <h1 className="text-4xl md:text-5xl font-black text-black tracking-tight uppercase mb-2">Catálogo</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-black tracking-tight mb-2">Catálogo</h1>
                     <p className="text-gray-500 text-sm max-w-xl">Explora nuestro portafolio completo. Selecciona los productos de tu interés y solicita cotización empresarial.</p>
                 </div>
             </div>
@@ -128,23 +128,23 @@ const StoreView = ({ products, storeFilter, navigate }) => {
                 {hasFilters && (
                     <div className="flex flex-wrap gap-2 mb-5">
                         {activeCategoria !== 'todos' && (
-                            <span className="inline-flex items-center gap-1.5 bg-black text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">
+                            <span className="inline-flex items-center gap-1.5 bg-black text-white text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full">
                                 {CATEGORIAS.find(c => c.id === activeCategoria)?.nombre}
                                 <button onClick={() => setActiveCategoria('todos')}><X className="w-3 h-3" /></button>
                             </span>
                         )}
                         {activeSexo && (
-                            <span className="inline-flex items-center gap-1.5 bg-black text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">
+                            <span className="inline-flex items-center gap-1.5 bg-black text-white text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full">
                                 {activeSexo}<button onClick={() => setActiveSexo(null)}><X className="w-3 h-3" /></button>
                             </span>
                         )}
                         {activeBrand && (
-                            <span className="inline-flex items-center gap-1.5 bg-black text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">
+                            <span className="inline-flex items-center gap-1.5 bg-black text-white text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full">
                                 {activeBrand}<button onClick={() => setActiveBrand(null)}><X className="w-3 h-3" /></button>
                             </span>
                         )}
                         {activeTipo && (
-                            <span className="inline-flex items-center gap-1.5 bg-black text-white text-[10px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">
+                            <span className="inline-flex items-center gap-1.5 bg-black text-white text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full">
                                 {activeTipo}<button onClick={() => setActiveTipo(null)}><X className="w-3 h-3" /></button>
                             </span>
                         )}
@@ -193,7 +193,7 @@ const StoreView = ({ products, storeFilter, navigate }) => {
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             />
                                             {product.popular && (
-                                                <span className="absolute top-2 left-2 bg-[#0057B8] text-white text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full">
+                                                <span className="absolute top-2 left-2 bg-[#0057B8] text-white text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full">
                                                     Popular
                                                 </span>
                                             )}
@@ -207,9 +207,9 @@ const StoreView = ({ products, storeFilter, navigate }) => {
                                             )}
                                         </div>
                                         <div className="p-3">
-                                            <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">{product.brand}</p>
-                                            <h3 className="text-xs font-semibold text-black leading-snug line-clamp-2 mb-2">{product.title}</h3>
-                                            <span className="text-[10px] font-bold text-[#0057B8] uppercase tracking-wider">Cotizar →</span>
+                                            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-1">{product.brand}</p>
+                                            <h3 className="text-sm font-semibold text-black leading-snug line-clamp-2 mb-2">{product.title}</h3>
+                                            <span className="text-xs font-semibold text-[#0057B8] uppercase tracking-wider">Cotizar →</span>
                                         </div>
                                     </div>
                                 ))}

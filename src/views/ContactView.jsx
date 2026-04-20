@@ -13,9 +13,9 @@ const ContactView = ({ handleWhatsAppClick }) => (
         {/* Banner */}
         <div className="relative bg-black py-24 px-4 overflow-hidden border-b border-gray-200">
             <div className="relative z-10 max-w-[1600px] mx-auto text-center">
-                <div className="inline-block bg-white text-black font-bold px-4 py-1.5 text-[10px] mb-6 uppercase tracking-widest">Atención Personalizada</div>
-                <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight uppercase">
-                    ¿Buscas Una Solución Innovadora<br className="hidden md:block" /> Para Ropa AR / FR / EPP?
+                <div className="inline-block bg-white text-black font-bold px-4 py-1.5 text-xs mb-6 uppercase tracking-widest">Atención Personalizada</div>
+                <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight uppercase">
+                    ¿Necesitas Ropa FR, Calzado<br className="hidden md:block" /> de Seguridad o EPP Certificado?
                 </h1>
                 <p className="text-sm md:text-base text-gray-300 mb-8 max-w-3xl mx-auto font-medium">
                     Te ayudamos a crear un programa de uniformes efectivo y a la medida de tu operación.
@@ -41,8 +41,8 @@ const ContactView = ({ handleWhatsAppClick }) => (
                         <div className="w-16 h-16 bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
                             <User className="w-6 h-6 text-white" />
                         </div>
-                        <h3 className="text-sm font-bold mb-2 text-white uppercase tracking-widest">José C. Ruiz</h3>
-                        <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-6">Desarrollo de Negocios</p>
+                        <h3 className="text-sm font-bold mb-2 text-white uppercase tracking-widest">José Cendejas</h3>
+                        <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-6">Gerente de Desarrollo de Negocios</p>
                         <a href="mailto:josec@uniformesprofesionales.mx" className="text-gray-300 font-medium block hover:text-white transition mt-auto mb-4 truncate w-full text-xs">josec@uniformesprofesionales.mx</a>
                         <p className="text-white font-bold text-base tracking-wide mb-1">+52 646 295 2269</p>
                         <p className="text-white font-bold text-base tracking-wide">+52 646 454 8538</p>
@@ -68,7 +68,7 @@ const ContactView = ({ handleWhatsAppClick }) => (
         <div className="py-24 bg-[#f5f5f5] relative border-b border-gray-200">
             <div className="max-w-4xl mx-auto px-4 relative z-10">
                 <div className="bg-white p-10 md:p-14 border border-gray-200">
-                    <h2 className="text-2xl font-extrabold text-center text-black mb-4 uppercase tracking-widest">Envíanos un mensaje directo</h2>
+                    <h2 className="text-2xl font-bold text-center text-black mb-4 tracking-tight">Envíanos un mensaje directo</h2>
                     <div className="w-12 h-px bg-black mx-auto mb-6"></div>
                     <p className="text-center text-gray-500 mb-10 text-sm">Completa el formulario y un asesor experto se pondrá en contacto contigo a la brevedad.</p>
                     <ContactForm hideHeader={true} />

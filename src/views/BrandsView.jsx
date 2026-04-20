@@ -6,73 +6,73 @@ const BRANDS_FR = [
     {
         name: 'Bulwark',
         logo: 'bulwark.svg',
-        desc: 'Líder en ropa FR para industria eléctrica y petroquímica.',
+        desc: 'Marca líder mundial en vestimenta resistente al fuego con más de 50 años protegiendo trabajadores industriales. Certificada NFPA 2112, NFPA 70E, ASTM F1506, CSA Z462 y OSHA 1910.269. Cubre petróleo y gas, servicios públicos, construcción, transporte y manufactura.',
         categorias: ['industrial'],
     },
     {
         name: 'Ariat Work FR',
         logo: 'ariat work fr.svg',
-        desc: 'Ropa y calzado FR con tecnología avanzada de protección.',
+        desc: 'Redefine la vestimenta FR fusionando estilo, tecnología y rendimiento. Camisas, chamarras y jeans FR con tecnología Moisture Movement™ y Greater Arm Mobility™. Certificada NFPA 2112, NFPA 70E, ASTM F1506, CAT 2, UL.',
         categorias: ['industrial', 'calzado'],
     },
     {
         name: 'Carhartt FR',
         logo: 'frcarhart.svg',
-        desc: 'Durabilidad extrema con protección antiflama certificada.',
+        desc: 'Línea FR que equilibra resistencia, comodidad y cumplimiento normativo. Materiales como algodón tratado FR, Ripstop y mezclas inherentes. Ampliamente usada en refinerías, construcción, servicios públicos y manufactura pesada. Certificada NFPA 2112, NFPA 70E, ASTM F1506, CAT 2, UL.',
         categorias: ['industrial'],
     },
     {
         name: 'Lakeland',
         logo: 'lakeland.svg',
-        desc: 'Ropa de protección química, FR y alta visibilidad.',
+        desc: 'Marca reconocida mundialmente con línea robusta de ropa FR, prendas desechables y alta visibilidad. Su sublínea Eagle FR ofrece tejidos inherentes de última generación. Certificada NFPA 2112, NFPA 70E, ASTM F1506, ISO 11612, IEC 61482-2, UL.',
         categorias: ['industrial', 'epp'],
     },
     {
         name: 'Kishigo',
         logo: 'kishigo.svg',
-        desc: 'Especialistas en chalecos y accesorios de alta visibilidad.',
+        desc: 'Más de cuatro décadas especializándose en ropa de alta visibilidad y prendas FR. Chalecos, camisas, chamarras, pantalones y accesorios con certificación ANSI. Ideal para obras viales, servicios públicos y construcción. Certificada ANSI/ISEA 107, NFPA 70E, ASTM F1506.',
         categorias: ['accesorios'],
     },
     {
         name: 'Timberland PRO',
         logo: 'timberland pro.svg',
-        desc: 'Calzado de seguridad con máximo confort y protección.',
-        categorias: ['calzado'],
+        desc: 'Línea FR de alto rendimiento que combina durabilidad con tecnologías de absorción de humedad, control de olores, elasticidad estratégica y UPF 50+. Calzado diseñado ergonómicamente con amortiguación antifatiga. Certificada NFPA 2112, NFPA 70E, ASTM F1506, CAT 2, UL.',
+        categorias: ['calzado', 'industrial'],
     },
     {
         name: 'Workrite',
         logo: 'workrite.svg',
-        desc: 'Ropa FR de alta calidad para industrias de alto riesgo.',
+        desc: 'División especializada de Bulwark enfocada en ropa FR de alto rendimiento para emergencias, bomberos y rescatistas. Utiliza fibras Nomex®, Kevlar® y mezclas inherentes. Certificada NFPA 1975, NFPA 2112, NFPA 70E, ASTM F1506, UL.',
         categorias: ['industrial'],
     },
     {
         name: 'Honeywell',
         logo: 'honeywell.svg',
-        desc: 'EPP y soluciones de seguridad industrial de clase mundial.',
+        desc: 'EPP y soluciones de seguridad industrial de clase mundial. Protección craneal, visual, auditiva, respiratoria y anticaídas bajo estándares ANSI, OSHA y CE. Fabricante de prestigio global con presencia en los entornos industriales más exigentes.',
         categorias: ['epp'],
     },
     {
         name: '3M',
         logo: '3 M.svg',
-        desc: 'Protección personal líder global: respiradores, lentes, guantes.',
+        desc: 'Líder global en protección personal: respiradores, lentes, protección auditiva, guantes y equipos anticaídas. Cumple con las especificaciones técnicas más estrictas bajo estándares ANSI, OSHA y CE para cualquier entorno industrial de alto riesgo.',
         categorias: ['epp'],
     },
     {
         name: 'Ansell',
         logo: 'ansell.svg',
-        desc: 'Guantes y ropa protectora de precisión para industria.',
+        desc: 'Guantes y ropa protectora de precisión para industria química, farmacéutica y manufactura. Catálogo robusto de protección de manos y cuerpo bajo los más estrictos estándares internacionales ANSI, EN y ISO.',
         categorias: ['epp'],
     },
     {
         name: 'MSA',
         logo: 'MSA.svg',
-        desc: 'Cascos, detectores de gas y EPP de seguridad crítica.',
+        desc: 'Cascos, detectores de gas, protección respiratoria y sistemas anticaídas de seguridad crítica. EPP desarrollado bajo estándares ANSI, OSHA y CE para operaciones en los entornos industriales más exigentes y de mayor riesgo.',
         categorias: ['epp'],
     },
     {
         name: 'Portwest',
         logo: 'portwest.svg',
-        desc: 'Amplia gama de ropa FR y EPP certificados internacionalmente.',
+        desc: 'Fabricante con presencia en más de 130 países. Fundada en Irlanda en 1904, su línea FR usa tejidos propios Bizflame, Modaflame y Araflame. Más de 1,400 productos certificados. Certificada NFPA 2112, NFPA 70E, ASTM F1506, ISO 11612, IEC 61482-2, CE, UL.',
         categorias: ['industrial', 'epp'],
     },
 ];
@@ -85,7 +85,7 @@ const BrandsView = ({ navigate }) => {
             <div className="bg-[#0A1628] py-16 px-4">
                 <div className="max-w-7xl mx-auto text-center">
                     <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-[0.2em] mb-3">Catálogo de Marcas</span>
-                    <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+                    <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
                         Nuestras Marcas FR
                     </h1>
                     <p className="text-gray-400 max-w-xl mx-auto text-lg">
@@ -121,7 +121,7 @@ const BrandsView = ({ navigate }) => {
                             <p className="text-xs text-gray-400 leading-relaxed line-clamp-2 mb-3">{brand.desc}</p>
 
                             {/* Ver productos */}
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-[#0057B8] group-hover:underline flex items-center gap-1">
+                            <span className="text-xs font-medium uppercase tracking-widest text-[#0057B8] group-hover:underline flex items-center gap-1">
                                 Ver productos <ArrowRight className="w-3 h-3" />
                             </span>
                         </motion.button>
@@ -132,7 +132,7 @@ const BrandsView = ({ navigate }) => {
             {/* CTA */}
             <section className="bg-gray-50 border-t border-gray-100 py-16 px-4">
                 <div className="max-w-7xl mx-auto text-center">
-                    <h2 className="text-3xl font-black text-black mb-3">¿No encuentras tu marca?</h2>
+                    <h2 className="text-3xl font-bold text-black mb-3">¿No encuentras tu marca?</h2>
                     <p className="text-gray-500 mb-6">Contáctanos. Trabajamos con muchas más marcas según tu proyecto.</p>
                     <button
                         onClick={() => navigate('quote')}
