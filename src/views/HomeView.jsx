@@ -1,45 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronRight, ArrowRight, Scissors, Printer, Shirt, Package, ShieldCheck, BarChart3, GitBranch, CheckCircle } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronRight, ArrowRight, Scissors, Printer, Shirt, Package, ShieldCheck, BarChart3, GitBranch, CheckCircle, Users, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CATEGORIAS, MARCAS_DESTACADAS_POR_CATEGORIA } from '../data/categorias';
 import { COMPANY_INFO } from '../data/constants';
 
-// FR-specific categories for the home grid
-const CATEGORIAS_FR_HOME = [
+// Hero slides — cada uno con mensaje distinto
+const HERO_SLIDES = [
     {
-        id: 'industrial',
-        nombre: 'Ropa FR',
-        imagen: `${import.meta.env.BASE_URL}hero-slider-1.jpg`,
+        img: `${import.meta.env.BASE_URL}hero-slider-1.jpg`,
+        tag: 'Especialistas en Uniformes FR',
+        h1: 'Protección que\nno falla nunca.',
+        sub: 'Ropa resistente al fuego certificada bajo NFPA 2112, NFPA 70E y ASTM F1506 para industria energética y trabajos de alto riesgo.',
     },
     {
-        id: 'calzado',
-        nombre: 'Calzado de Seguridad',
-        imagen: `${import.meta.env.BASE_URL}hero-slider-2.jpg`,
+        img: `${import.meta.env.BASE_URL}hero-slider-2.jpg`,
+        tag: 'Portafolio de Marcas Certificadas',
+        h1: 'Las mejores marcas\nen un solo lugar.',
+        sub: 'Bulwark, Ariat, Timberland PRO, Portwest, Carhartt y más de 20 marcas líderes en seguridad industrial. Todo certificado.',
     },
     {
-        id: 'epp',
-        nombre: 'EPP Especializado',
-        imagen: `${import.meta.env.BASE_URL}hero-slider-3.jpg`,
+        img: `${import.meta.env.BASE_URL}hero-slider-3.jpg`,
+        tag: 'Logística Nacional',
+        h1: 'Entrega en 10 a 15\ndías hábiles.',
+        sub: 'Cobertura en toda la República Mexicana. Entregas puntuales, documentadas y sin fricciones desde nuestro CEDIS hasta tu operación.',
     },
     {
-        id: 'accesorios',
-        nombre: 'Accesorios FR',
-        imagen: `${import.meta.env.BASE_URL}img_work.jpg`,
+        img: `${import.meta.env.BASE_URL}hero-slider-4.jpg`,
+        tag: 'Solución Integral',
+        h1: 'Uniformes, calzado\ny EPP en un proveedor.',
+        sub: 'Gestionamos todo tu programa de protección: ropa FR, calzado de seguridad y equipo de protección personal con trazabilidad total.',
     },
 ];
 
-const HomeView = ({ products, navigate }) => {
-    const [currentHeroImg, setCurrentHeroImg] = useState(0);
-    const [activeBrandTab, setActiveBrandTab] = useState('industrial');
+// Categorías home
+const CATEGORIAS_FR_HOME = [
+    { id: 'industrial', nombre: 'Uniformes', imagen: `${import.meta.env.BASE_URL}hero-slider-1.jpg` },
+    { id: 'epp', nombre: 'EPP Especializado', imagen: `${import.meta.env.BASE_URL}hero-slider-3.jpg` },
+    { id: 'calzado', nombre: 'Calzado de Seguridad', imagen: `${import.meta.env.BASE_URL}hero-slider-2.jpg` },
+    { id: 'accesorios', nombre: 'Accesorios', imagen: `${import.meta.env.BASE_URL}img_work.jpg` },
+];
 
-    const heroImages = [
-        `${import.meta.env.BASE_URL}hero-slider-1.jpg`,
-        `${import.meta.env.BASE_URL}hero-slider-2.jpg`,
-        `${import.meta.env.BASE_URL}hero-slider-3.jpg`,
-    ];
+// Tipos de prenda
+const TIPOS_PRENDA_HOME = [
+    { tipo: 'Camisas FR', img: `${import.meta.env.BASE_URL}hero-slider-1.jpg` },
+    { tipo: 'Pantalones FR', img: `${import.meta.env.BASE_URL}hero-slider-2.jpg` },
+    { tipo: 'Playeras FR', img: `${import.meta.env.BASE_URL}hero-slider-3.jpg` },
+    { tipo: 'Chamarras FR', img: `${import.meta.env.BASE_URL}hero-slider-4.jpg` },
+    { tipo: 'Overoles', img: `${import.meta.env.BASE_URL}img_work.jpg` },
+    { tipo: 'Chalecos FR', img: `${import.meta.env.BASE_URL}conoce_upe.jpg` },
+];
+
+// Marca featured carousels
+const BRAND_CAROUSELS = [
+    { brand: 'Timberland PRO', logo: `${import.meta.env.BASE_URL}timberland pro.svg` },
+    { brand: 'Bulwark', logo: `${import.meta.env.BASE_URL}bulwark.svg` },
+    { brand: 'Ariat Work FR', logo: `${import.meta.env.BASE_URL}ariat work fr.svg` },
+];
+
+const HomeView = ({ products, navigate }) => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [activeBrandTab, setActiveBrandTab] = useState('industrial');
+    const carouselRefs = useRef({});
 
     useEffect(() => {
-        const t = setInterval(() => setCurrentHeroImg(p => (p + 1) % heroImages.length), 5000);
+        const t = setInterval(() => setCurrentSlide(p => (p + 1) % HERO_SLIDES.length), 6000);
         return () => clearInterval(t);
     }, []);
 
@@ -69,8 +93,6 @@ const HomeView = ({ products, navigate }) => {
     ];
     const doubleBrands = [...allBrands, ...allBrands];
 
-    const popularProducts = products.filter(p => p.popular).slice(0, 6);
-
     const services = [
         { icon: <Shirt className="w-7 h-7" />, title: 'Bordado', desc: 'Logos y textos bordados de alta definición. Hilo de primera calidad.' },
         { icon: <Printer className="w-7 h-7" />, title: 'DTF (Impresión Directa)', desc: 'Transferencia full color sin límite de colores. Acabado suave y duradero.' },
@@ -78,19 +100,20 @@ const HomeView = ({ products, navigate }) => {
         { icon: <Package className="w-7 h-7" />, title: 'Empaque Personalizado', desc: 'Etiquetado, doblado y presentación final según tus especificaciones.' },
     ];
 
-    const brandTabs = [
-        { id: 'industrial', label: 'Industrial FR' },
-        { id: 'corporativo', label: 'Corporativo' },
-        { id: 'calzado', label: 'Calzado' },
-        { id: 'epp', label: 'EPP' },
-    ];
-
     const upe360Features = [
         { icon: <BarChart3 className="w-5 h-5" />, title: 'Control de Pedidos', desc: 'Seguimiento en tiempo real de cada orden.' },
-        { icon: <GitBranch className="w-5 h-5" />, title: 'Trazabilidad Total', desc: 'Historial completo de cada prenda y cliente.' },
+        { icon: <Users className="w-5 h-5" />, title: 'Seguimiento por Cliente', desc: 'Visibilidad total por colaborador y área.' },
+        { icon: <GitBranch className="w-5 h-5" />, title: 'Trazabilidad Total', desc: 'Historial completo de cada prenda y entrega.' },
         { icon: <CheckCircle className="w-5 h-5" />, title: 'Cumplimiento', desc: 'Garantía de entrega en tiempo y forma.' },
         { icon: <ShieldCheck className="w-5 h-5" />, title: 'Organización', desc: 'Gestión estructurada de tu programa de uniformes.' },
     ];
+
+    const slide = HERO_SLIDES[currentSlide];
+
+    const scrollCarousel = (brand, dir) => {
+        const el = carouselRefs.current[brand];
+        if (el) el.scrollBy({ left: dir * 280, behavior: 'smooth' });
+    };
 
     return (
         <div className="flex-1 overflow-x-hidden bg-white">
@@ -98,14 +121,16 @@ const HomeView = ({ products, navigate }) => {
                 @keyframes scroll-x { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
                 .brands-scroll { animation: scroll-x 50s linear infinite; }
                 .brands-scroll:hover { animation-play-state: paused; }
+                .hide-scrollbar::-webkit-scrollbar { display: none; }
+                .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             `}</style>
 
             {/* HERO */}
             <div className="relative h-screen min-h-[600px] max-h-[900px] flex items-center justify-center overflow-hidden bg-black">
                 <AnimatePresence mode="wait">
                     <motion.img
-                        key={currentHeroImg}
-                        src={heroImages[currentHeroImg]}
+                        key={currentSlide}
+                        src={slide.img}
                         initial={{ opacity: 0, scale: 1.04 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
@@ -116,51 +141,58 @@ const HomeView = ({ products, navigate }) => {
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-transparent z-10" />
                 <div className="relative z-20 max-w-7xl mx-auto px-6 w-full">
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
-                        <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-[0.25em] mb-4 border-b border-[#0057B8] pb-1">
-                            Uniformes Resistentes a Flama · NFPA 2112 · NFPA 70E
-                        </span>
-                        <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-5">
-                            Protección que<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">no falla nunca.</span>
-                        </h1>
-                        <p className="text-gray-300 text-lg md:text-xl max-w-xl mb-8 leading-relaxed">
-                            Uniformes FR certificados, calzado de seguridad y EPP especializado para industria energética y trabajos de alto riesgo.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <motion.button
-                                whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                                onClick={() => navigate('store')}
-                                className="bg-white text-black px-8 py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors"
-                            >
-                                Ver Catálogo <ArrowRight className="w-4 h-4" />
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                                onClick={() => navigate('quote')}
-                                className="bg-[#0057B8] text-white px-8 py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-[#004A9E] transition-colors"
-                            >
-                                Cotiza tu Proyecto
-                            </motion.button>
-                        </div>
-                    </motion.div>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={currentSlide}
+                            initial={{ opacity: 0, y: 24 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.7 }}
+                        >
+                            <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-[0.25em] mb-4 border-b border-[#0057B8] pb-1">
+                                {slide.tag}
+                            </span>
+                            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-5 whitespace-pre-line">
+                                {slide.h1}
+                            </h1>
+                            <p className="text-gray-300 text-lg md:text-xl max-w-xl mb-8 leading-relaxed">
+                                {slide.sub}
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <motion.button
+                                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                                    onClick={() => navigate('store')}
+                                    className="bg-white text-black px-8 py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors"
+                                >
+                                    Ver Catálogo <ArrowRight className="w-4 h-4" />
+                                </motion.button>
+                                <motion.button
+                                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                                    onClick={() => navigate('quote')}
+                                    className="bg-[#0057B8] text-white px-8 py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-[#004A9E] transition-colors"
+                                >
+                                    Cotiza tu Proyecto
+                                </motion.button>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
                 {/* Dots */}
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-                    {heroImages.map((_, i) => (
-                        <button key={i} onClick={() => setCurrentHeroImg(i)}
-                            className={`h-2 rounded-full transition-all duration-300 ${i === currentHeroImg ? 'bg-white w-10' : 'bg-white/40 w-6 hover:bg-white/70'}`} />
+                    {HERO_SLIDES.map((_, i) => (
+                        <button key={i} onClick={() => setCurrentSlide(i)}
+                            className={`h-2 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-white w-10' : 'bg-white/40 w-6 hover:bg-white/70'}`} />
                     ))}
                 </div>
             </div>
 
-            {/* BRAND MARQUEE */}
+            {/* BRAND MARQUEE — a color, logos más grandes */}
             <div className="bg-white border-y border-gray-100 py-6 overflow-hidden">
                 <div className="brands-scroll flex items-center">
                     {doubleBrands.map((b, i) => (
                         <button key={i} onClick={() => navigate('store', { brand: b.name })}
-                            className="mx-8 flex-shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                            <img src={b.img} alt={b.name} className="h-10 w-auto max-w-[130px] object-contain" />
+                            className="mx-8 flex-shrink-0 opacity-70 hover:opacity-100 transition-all duration-300">
+                            <img src={b.img} alt={b.name} className="h-12 w-auto max-w-[140px] object-contain" />
                         </button>
                     ))}
                 </div>
@@ -196,51 +228,89 @@ const HomeView = ({ products, navigate }) => {
                 </div>
             </section>
 
-            {/* PRODUCTOS POPULARES */}
-            {popularProducts.length > 0 && (
-                <section className="bg-[#f8f8f8] border-y border-gray-100 py-20">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <div className="flex items-center justify-between mb-10">
-                            <div>
-                                <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight">Productos Populares</h2>
-                                <p className="text-gray-500 text-sm mt-1">Los favoritos de nuestros clientes</p>
-                            </div>
-                            <button onClick={() => navigate('store')} className="hidden sm:flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-black hover:text-[#0057B8] transition-colors">
-                                Ver todo <ChevronRight className="w-3 h-3" />
-                            </button>
-                        </div>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                            {popularProducts.map(product => (
-                                <motion.div
-                                    key={product.id}
-                                    whileHover={{ y: -4 }}
-                                    onClick={() => navigate('product', { id: product.id })}
-                                    className="group cursor-pointer bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
-                                >
-                                    <div className="h-44 overflow-hidden bg-gray-50 relative">
-                                        <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                                        {product.popular && (
-                                            <span className="absolute top-2 left-2 bg-[#0057B8] text-white text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
-                                                Popular
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className="p-3">
-                                        <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">{product.brand}</p>
-                                        <h3 className="text-sm font-semibold text-black leading-snug line-clamp-2">{product.title}</h3>
-                                        <button
-                                            onClick={(e) => { e.stopPropagation(); navigate('quote'); }}
-                                            className="mt-2 w-full text-center text-xs font-semibold text-[#0057B8] uppercase tracking-wider hover:underline"
-                                        >
-                                            Cotizar →
-                                        </button>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
+            {/* TIPOS DE PRENDA */}
+            <section className="bg-[#f8f8f8] border-y border-gray-100 py-20">
+                <div className="max-w-7xl mx-auto px-4">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-2">Tipos de Prenda</h2>
+                        <p className="text-gray-500 text-sm">Encuentra exactamente lo que necesitas por tipo de ropa industrial.</p>
                     </div>
-                </section>
-            )}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                        {TIPOS_PRENDA_HOME.map((item, i) => (
+                            <motion.button
+                                key={item.tipo}
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.07 }}
+                                onClick={() => navigate('store', { tipoBusqueda: item.tipo })}
+                                className="group relative h-36 overflow-hidden rounded-xl shadow-sm"
+                            >
+                                <img src={item.img} alt={item.tipo} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                <div className="absolute bottom-0 left-0 right-0 p-3 text-center">
+                                    <p className="text-white font-bold text-sm leading-tight">{item.tipo}</p>
+                                </div>
+                            </motion.button>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* PRODUCTOS DESTACADOS POR MARCA — 3 carruseles */}
+            {BRAND_CAROUSELS.map(({ brand, logo }) => {
+                const brandProducts = products.filter(p => p.brand === brand).slice(0, 8);
+                if (brandProducts.length === 0) return null;
+                return (
+                    <section key={brand} className="py-16 border-b border-gray-100">
+                        <div className="max-w-7xl mx-auto px-4">
+                            <div className="flex items-center justify-between mb-8">
+                                <div className="flex items-center gap-4">
+                                    <img src={logo} alt={brand} className="h-8 w-auto object-contain" />
+                                    <span className="text-gray-300 text-xl">|</span>
+                                    <p className="text-sm text-gray-500 font-medium">Productos Destacados</p>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <button onClick={() => scrollCarousel(brand, -1)} className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                                        <ChevronLeft className="w-4 h-4" />
+                                    </button>
+                                    <button onClick={() => scrollCarousel(brand, 1)} className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                                        <ChevronRight className="w-4 h-4" />
+                                    </button>
+                                    <button onClick={() => navigate('store', { brand })} className="ml-2 text-xs font-bold uppercase tracking-widest text-[#0057B8] hover:underline flex items-center gap-1">
+                                        Ver todos <ChevronRight className="w-3 h-3" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div
+                                ref={el => carouselRefs.current[brand] = el}
+                                className="flex gap-4 overflow-x-auto hide-scrollbar pb-2"
+                            >
+                                {brandProducts.map(product => (
+                                    <div
+                                        key={product.id}
+                                        onClick={() => navigate('product', { id: product.id })}
+                                        className="flex-shrink-0 w-52 group cursor-pointer bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
+                                    >
+                                        <div className="h-44 overflow-hidden bg-gray-50">
+                                            <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                        </div>
+                                        <div className="p-3">
+                                            <h3 className="text-xs font-semibold text-black leading-snug line-clamp-2 mb-2">{product.title}</h3>
+                                            <button
+                                                onClick={(e) => { e.stopPropagation(); navigate('quote', { product }); }}
+                                                className="w-full text-center text-xs font-semibold text-[#0057B8] uppercase tracking-wider hover:underline"
+                                            >
+                                                Cotizar →
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                );
+            })}
 
             {/* MARCAS POR CATEGORÍA */}
             <section className="max-w-7xl mx-auto px-4 py-20">
@@ -249,7 +319,12 @@ const HomeView = ({ products, navigate }) => {
                     <p className="text-gray-500 text-sm">Trabajamos con las mejores marcas certificadas del mundo</p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-2 mb-8">
-                    {brandTabs.map(tab => (
+                    {[
+                        { id: 'industrial', label: 'Industrial FR' },
+                        { id: 'corporativo', label: 'Corporativo' },
+                        { id: 'calzado', label: 'Calzado' },
+                        { id: 'epp', label: 'EPP' },
+                    ].map(tab => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveBrandTab(tab.id)}
@@ -271,7 +346,7 @@ const HomeView = ({ products, navigate }) => {
                             <button
                                 key={marca.nombre}
                                 onClick={() => navigate('store', { brand: marca.nombre })}
-                                className="p-4 bg-white rounded-xl border border-gray-100 hover:border-gray-300 hover:shadow-md transition-all duration-300 group grayscale hover:grayscale-0"
+                                className="p-4 bg-white rounded-xl border border-gray-100 hover:border-gray-300 hover:shadow-md transition-all duration-300 group"
                             >
                                 <img
                                     src={`${import.meta.env.BASE_URL}${marca.logo}`}
@@ -344,15 +419,26 @@ const HomeView = ({ products, navigate }) => {
                                 UPE FR 360
                             </h2>
                             <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                                Más que uniformes — un sistema completo de gestión. Control total de tus pedidos, trazabilidad por cliente y cumplimiento garantizado.
+                                Más que uniformes — un sistema completo de gestión. Control total de pedidos, trazabilidad por cliente, seguimiento activo y cumplimiento garantizado en toda tu operación.
                             </p>
-                            <button
-                                onClick={() => navigate('upe360')}
-                                className="inline-flex items-center gap-2 bg-[#0A1628] text-white px-7 py-3.5 rounded-md text-sm font-bold hover:bg-black transition-colors group"
-                            >
-                                Conoce más sobre UPE FR 360
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <button
+                                    onClick={() => navigate('upe360')}
+                                    className="inline-flex items-center gap-2 bg-[#0A1628] text-white px-7 py-3.5 rounded-md text-sm font-bold hover:bg-black transition-colors group"
+                                >
+                                    Conoce más
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </button>
+                                <a
+                                    href="https://uniformesprofesionales.mx/store/#/?role_id=22"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 bg-[#0057B8] text-white px-7 py-3.5 rounded-md text-sm font-bold hover:bg-[#004A9E] transition-colors"
+                                >
+                                    Tienda demo
+                                    <ArrowRight className="w-4 h-4" />
+                                </a>
+                            </div>
                         </motion.div>
 
                         {/* Right grid */}
@@ -364,7 +450,7 @@ const HomeView = ({ products, navigate }) => {
                             className="grid grid-cols-2 gap-4"
                         >
                             {upe360Features.map((f, i) => (
-                                <div key={i} className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-gray-200 transition-colors">
+                                <div key={i} className={`bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-gray-200 transition-colors ${i === 4 ? 'col-span-2 sm:col-span-1' : ''}`}>
                                     <div className="w-9 h-9 bg-[#0057B8]/10 rounded-lg flex items-center justify-center mb-3 text-[#0057B8]">
                                         {f.icon}
                                     </div>

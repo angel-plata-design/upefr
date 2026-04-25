@@ -52,6 +52,17 @@ const View360 = () => (
                 >
                     Solicitar Demostración <ArrowRight className="w-5 h-5 ml-2" />
                 </motion.button>
+                <motion.a
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    href="https://uniformesprofesionales.mx/store/#/?role_id=22"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 border border-white/40 text-white px-8 py-3 font-bold text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all mx-auto"
+                >
+                    Ver Tienda Demo <ArrowRight className="w-4 h-4" />
+                </motion.a>
             </div>
         </div>
 

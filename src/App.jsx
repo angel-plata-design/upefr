@@ -20,6 +20,7 @@ const App = () => {
     const [view, setView] = useState('home');
     const [storeFilter, setStoreFilter] = useState(null);
     const [selectedProductId, setSelectedProductId] = useState(null);
+    const [quoteProduct, setQuoteProduct] = useState(null);
     const [products] = useState(INITIAL_PRODUCTS);
 
     // Scroll to top on view change
@@ -35,6 +36,9 @@ const App = () => {
         } else if (viewName === 'product') {
             setSelectedProductId(extra?.id || null);
             setView('product');
+        } else if (viewName === 'quote') {
+            setQuoteProduct(extra?.product || null);
+            setView('quote');
         } else {
             setView(viewName);
         }
@@ -54,7 +58,7 @@ const App = () => {
             case 'product':
                 return <ProductView product={selectedProduct} navigate={navigate} />;
             case 'quote':
-                return <QuoteView />;
+                return <QuoteView product={quoteProduct} navigate={navigate} />;
             case 'about':
                 return <AboutView navigate={navigate} />;
             case 'services':

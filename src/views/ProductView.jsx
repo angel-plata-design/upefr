@@ -176,7 +176,7 @@ const ProductView = ({ product, navigate }) => {
                         {/* CTAs */}
                         <div className="flex flex-col gap-3 mt-auto">
                             <button
-                                onClick={() => navigate('quote')}
+                                onClick={() => navigate('quote', { product })}
                                 className="w-full bg-[#0057B8] text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#004A9E] transition-colors flex items-center justify-center gap-2"
                             >
                                 <MessageSquare className="w-4 h-4" />

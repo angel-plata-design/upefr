@@ -3,10 +3,15 @@ import { CheckCircle, Upload, User, Building2, Mail, Phone, MessageSquare, Layer
 import { CATEGORIAS } from '../data/categorias';
 import { COMPANY_INFO } from '../data/constants';
 
-const QuoteView = () => {
+const QuoteView = ({ product, navigate }) => {
+    const productNote = product
+        ? `Producto: ${product.title} (SKU: ${product.sku})\n`
+        : '';
     const [form, setForm] = useState({
         nombre: '', empresa: '', email: '', telefono: '',
-        tipo_proyecto: '', categoria: '', cantidades: '', observaciones: ''
+        tipo_proyecto: product ? 'Ropa de trabajo industrial' : '',
+        categoria: product?.mainCategory || '',
+        cantidades: '', observaciones: productNote
     });
     const [archivo, setArchivo] = useState(null);
     const [submitted, setSubmitted] = useState(false);
@@ -20,8 +25,8 @@ const QuoteView = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
-        // Simular envío
-        const msg = `Hola, me gustaría cotizar un proyecto:%0A%0A*Nombre:* ${form.nombre}%0A*Empresa:* ${form.empresa}%0A*Email:* ${form.email}%0A*Teléfono:* ${form.telefono}%0A*Tipo de proyecto:* ${form.tipo_proyecto}%0A*Categoría:* ${form.categoria}%0A*Cantidades:* ${form.cantidades}%0A*Observaciones:* ${form.observaciones}`;
+        const productLine = product ? `*Producto:* ${product.title} (SKU: ${product.sku})%0A` : '';
+        const msg = `Hola, me gustaría cotizar un proyecto:%0A%0A${productLine}*Nombre:* ${form.nombre}%0A*Empresa:* ${form.empresa}%0A*Email:* ${form.email}%0A*Teléfono:* ${form.telefono}%0A*Tipo de proyecto:* ${form.tipo_proyecto}%0A*Categoría:* ${form.categoria}%0A*Cantidades:* ${form.cantidades}%0A*Observaciones:* ${form.observaciones}`;
         setTimeout(() => {
             setLoading(false);
             setSubmitted(true);
@@ -80,6 +85,28 @@ const QuoteView = () => {
                     </p>
                 </div>
             </div>
+
+            {/* Product context banner */}
+            {product && (
+                <div className="bg-[#0057B8]/10 border-b border-[#0057B8]/20 px-4 py-4">
+                    <div className="max-w-5xl mx-auto flex items-center gap-4">
+                        {product.image && (
+                            <img src={product.image} alt={product.title} className="w-14 h-14 object-cover rounded-lg flex-shrink-0" />
+                        )}
+                        <div className="flex-1 min-w-0">
+                            <p className="text-xs font-bold text-[#0057B8] uppercase tracking-widest mb-0.5">Producto seleccionado</p>
+                            <p className="text-sm font-semibold text-black truncate">{product.title}</p>
+                            <p className="text-xs text-gray-500">SKU: {product.sku} · {product.brand}</p>
+                        </div>
+                        {navigate && (
+                            <button onClick={() => navigate('product', { id: product.id })}
+                                className="text-xs font-bold text-gray-500 hover:text-black underline flex-shrink-0">
+                                ← Regresar al producto
+                            </button>
+                        )}
+                    </div>
+                </div>
+            )}
 
             <div className="max-w-5xl mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

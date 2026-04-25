@@ -65,9 +65,9 @@ const Navbar = ({ currentView, navigate }) => {
                     {/* Marquee left */}
                     <div className="flex-1 overflow-hidden">
                         <div className="animate-marquee whitespace-nowrap text-gray-300">
-                            🔥 Descuentos por mayoreo arriba de 12 piezas&nbsp;&nbsp;•&nbsp;&nbsp;Entregas a todo México&nbsp;&nbsp;•&nbsp;&nbsp;Uniformes FR certificados NFPA 70E / NFPA 2112
+                            🔥 Descuentos por mayoreo arriba de 12 piezas&nbsp;&nbsp;•&nbsp;&nbsp;Envíos nacionales a todo México&nbsp;&nbsp;•&nbsp;&nbsp;Entrega en 10 a 15 días hábiles
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            🔥 Descuentos por mayoreo arriba de 12 piezas&nbsp;&nbsp;•&nbsp;&nbsp;Entregas a todo México&nbsp;&nbsp;•&nbsp;&nbsp;Uniformes FR certificados NFPA 70E / NFPA 2112
+                            🔥 Descuentos por mayoreo arriba de 12 piezas&nbsp;&nbsp;•&nbsp;&nbsp;Envíos nacionales a todo México&nbsp;&nbsp;•&nbsp;&nbsp;Entrega en 10 a 15 días hábiles
                         </div>
                     </div>
                     {/* Right links */}

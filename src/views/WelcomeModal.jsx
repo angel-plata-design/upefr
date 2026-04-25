@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Flame, Briefcase } from 'lucide-react';
+import { X } from 'lucide-react';
 
 const UPE_UNIFORMES_URL = 'https://flowmx.github.io/upeuniformes/';
 
@@ -60,8 +60,8 @@ const WelcomeModal = () => {
                                 onClick={() => setShowModal(false)}
                                 className="group flex flex-col items-center text-center p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer"
                             >
-                                <div className="w-14 h-14 rounded-full bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center mb-4 transition-colors">
-                                    <Briefcase className="w-7 h-7 text-gray-700" />
+                                <div className="h-14 flex items-center justify-center mb-4">
+                                    <img src={`${import.meta.env.BASE_URL}logo-uniformes.png`} alt="UPE Uniformes Profesionales" className="h-10 w-auto object-contain" />
                                 </div>
                                 <h3 className="text-lg font-black text-black uppercase tracking-wider mb-2">
                                     Uniformes Profesionales
@@ -79,8 +79,8 @@ const WelcomeModal = () => {
                                 onClick={() => setShowModal(false)}
                                 className="group flex flex-col items-center text-center p-8 hover:bg-[#0A1628] transition-all duration-300 cursor-pointer"
                             >
-                                <div className="w-14 h-14 rounded-full bg-[#0057B8]/10 group-hover:bg-[#0057B8] flex items-center justify-center mb-4 transition-colors">
-                                    <Flame className="w-7 h-7 text-[#0057B8] group-hover:text-white transition-colors" />
+                                <div className="h-14 flex items-center justify-center mb-4">
+                                    <img src={`${import.meta.env.BASE_URL}logo-oscuro.png`} alt="UPE FR" className="h-10 w-auto object-contain group-hover:brightness-0 group-hover:invert transition-all" />
                                 </div>
                                 <h3 className="text-lg font-black text-black group-hover:text-white uppercase tracking-wider mb-2 transition-colors">
                                     Uniformes FR

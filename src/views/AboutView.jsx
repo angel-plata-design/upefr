@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Eye, Award, Users, Truck, Globe, Phone, Mail, MapPin } from 'lucide-react';
+import { Target, Eye, Award, Users, Truck, Globe, Phone, Mail, MapPin, ShieldCheck, Zap, Flame, Wrench, Factory, HardHat } from 'lucide-react';
 import { COMPANY_INFO } from '../data/constants';
 
 const AboutView = ({ navigate }) => (
@@ -80,34 +80,6 @@ const AboutView = ({ navigate }) => (
             </div>
         </div>
 
-        {/* Industrias */}
-        <div className="max-w-7xl mx-auto px-4 py-20">
-            <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-black mb-3 tracking-tight">Industrias que protegemos</h2>
-                <div className="w-12 h-1 bg-[#0057B8] mx-auto mb-4" />
-                <p className="text-gray-500 max-w-xl mx-auto text-sm">Cada industria tiene necesidades específicas. Seleccionamos prendas certificadas y configuramos programas que aseguran cumplimiento, eficiencia y uniformidad en toda la operación.</p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                {[
-                    { name: 'Electricidad', norm: 'NFPA 70E · OSHA 1910.269' },
-                    { name: 'Petróleo y Gas', norm: 'NFPA 2112 · ASTM F1930' },
-                    { name: 'Refinación y Petroquímica', norm: 'NFPA 2112 · ASTM F1506' },
-                    { name: 'Gas y Servicios Públicos', norm: 'NFPA 2112 · OSHA 1910.132' },
-                    { name: 'Metales y Fundición', norm: 'ASTM F1002 · ASTM F955' },
-                    { name: 'Transporte', norm: 'OSHA 1910.269 · NFPA 70E' },
-                    { name: 'Manufactura Química', norm: 'NFPA 2112 · NFPA 2113' },
-                    { name: 'Eléctrica Industrial', norm: 'ASTM F1506 · NFPA 70E' },
-                ].map((ind, i) => (
-                    <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-                        className="bg-[#f5f5f5] rounded-xl p-5 border border-gray-100 hover:border-[#0057B8] hover:bg-white transition-all duration-300">
-                        <div className="w-2 h-2 rounded-full bg-[#0057B8] mb-3" />
-                        <h4 className="font-semibold text-sm text-black mb-1">{ind.name}</h4>
-                        <p className="text-xs text-gray-400">{ind.norm}</p>
-                    </motion.div>
-                ))}
-            </div>
-        </div>
-
         {/* Benefits */}
         <div className="max-w-7xl mx-auto px-4 py-20">
             <div className="text-center mb-12">
@@ -130,6 +102,139 @@ const AboutView = ({ navigate }) => (
                         <p className="text-gray-500 text-xs leading-relaxed">{b.d}</p>
                     </motion.div>
                 ))}
+            </div>
+        </div>
+
+        {/* IMPORTANCIA DEL UNIFORME FR */}
+        <div className="max-w-7xl mx-auto px-4 py-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+                    <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-[0.2em] mb-3">Decisión estratégica</span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight tracking-tight">
+                        Importancia del<br /><span className="text-[#0057B8]">Uniforme FR</span>
+                    </h2>
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                        <strong className="text-black">El uniforme FR no es un gasto operativo más.</strong> Es una decisión estratégica con impacto directo en la seguridad, productividad y cumplimiento normativo de tu organización.
+                    </p>
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                        Un programa bien administrado evita riesgos, protege al colaborador y fortalece la imagen de la empresa ante auditorías internas y externas. Además, garantiza que cada área cumpla con los estándares <strong className="text-black">NFPA, ASTM y OSHA</strong>, reduciendo significativamente accidentes, sanciones y tiempos muertos operativos.
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                        <strong className="text-black">El resultado es simple:</strong> tu equipo está protegido, tu operación está documentada y tú tienes tranquilidad legal, operativa y financiera.
+                    </p>
+                </motion.div>
+                <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                    className="relative h-[400px] rounded-2xl overflow-hidden">
+                    <img src={`${import.meta.env.BASE_URL}hero-slider-3.jpg`} alt="Uniformes FR en uso" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                    <div className="absolute bottom-6 left-6 right-6">
+                        <p className="text-white font-bold text-lg">Seguridad, cumplimiento y control.</p>
+                        <p className="text-gray-300 text-sm mt-1">NFPA 70E · NFPA 2112 · ASTM F1506</p>
+                    </div>
+                </motion.div>
+            </div>
+        </div>
+
+        {/* INDUSTRIAS */}
+        <div className="bg-[#f5f5f5] border-y border-gray-100 py-20">
+            <div className="max-w-7xl mx-auto px-4">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold text-black mb-3 tracking-tight">Industrias que <span className="text-[#0057B8]">protegemos</span></h2>
+                    <div className="w-12 h-1 bg-[#0057B8] mx-auto mb-4" />
+                    <p className="text-gray-500 max-w-xl mx-auto text-sm">Cada industria tiene necesidades específicas. Seleccionamos prendas certificadas y configuramos programas que aseguran cumplimiento, eficiencia y uniformidad en toda la operación.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {[
+                        { icon: <Zap className="w-5 h-5" />, name: 'Electricidad', norm: 'ASTM 1506 · OSHA 1910.269 · NFPA 70E', desc: 'Ropa FR para cuadrillas de distribución, transmisión, mantenimiento en campo, subestaciones y trabajos en proximidad de líneas energizadas.' },
+                        { icon: <Factory className="w-5 h-5" />, name: 'Perforación, refinación y petroquímica', norm: 'NFPA 2112 · ASTM F1930', desc: 'Ropa FR diseñada para soportar temperaturas extremas, llamas repentinas y ambientes industriales severos durante toda la jornada.' },
+                        { icon: <Wrench className="w-5 h-5" />, name: 'Eléctrica Industrial', norm: 'ASTM 1506 · OSHA 1910.269 · NFPA 70E', desc: 'Protección confiable ante riesgos de arco eléctrico en plantas industriales, cuartos eléctricos, mantenimiento y operaciones energéticas.' },
+                        { icon: <Flame className="w-5 h-5" />, name: 'Gas y Servicios Públicos', norm: 'ASTM F1930 · NFPA 2112', desc: 'Ropa FR que protege contra los efectos potencialmente fatales del fuego repentino para empresas de gas, agua, energía e infraestructura.' },
+                        { icon: <HardHat className="w-5 h-5" />, name: 'Metales y Fundición', norm: 'ASTM F1002 · ASTM F955', desc: 'Prendas resistentes para proteger contra dispersión de metal fundido en operaciones de fundición, metalurgia, hornos y soldadura.' },
+                        { icon: <Truck className="w-5 h-5" />, name: 'Transporte', norm: 'OSHA 1910.269 · NFPA 70E', desc: 'Uniformes FR certificados para operadores, técnicos de mantenimiento y conductores en ambientes con riesgos eléctricos o térmicos.' },
+                        { icon: <Factory className="w-5 h-5" />, name: 'Manufactura Química', norm: 'NFPA 2112 · NFPA 2113', desc: 'Uniformes FR para operación segura en ambientes con exposición a químicos, calor y riesgos combinados. Líneas de producción y plantas de procesamiento.' },
+                        { icon: <Zap className="w-5 h-5" />, name: 'Eléctrica y Servicios', norm: 'ASTM F1506 · NFPA 70E', desc: 'Protección completa para plantas industriales, cuartos eléctricos y operaciones energéticas que requieren cumplimiento OSHA.' },
+                    ].map((ind, i) => (
+                        <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                            className="bg-white rounded-xl p-6 border border-gray-100 hover:border-[#0057B8] hover:shadow-md transition-all duration-300 flex gap-4">
+                            <div className="w-10 h-10 bg-[#0057B8]/10 rounded-lg flex items-center justify-center text-[#0057B8] flex-shrink-0 mt-0.5">
+                                {ind.icon}
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-black mb-1">{ind.name}</h4>
+                                <p className="text-xs font-semibold text-[#0057B8] mb-2">{ind.norm}</p>
+                                <p className="text-sm text-gray-500 leading-relaxed">{ind.desc}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        {/* TIPOS DE PROTECCIÓN */}
+        <div className="max-w-7xl mx-auto px-4 py-20">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-black mb-3 tracking-tight">Tipos de protección <span className="text-[#0057B8]">contra riesgos</span></h2>
+                <div className="w-12 h-1 bg-[#0057B8] mx-auto mb-4" />
+                <p className="text-gray-500 max-w-xl mx-auto text-sm">Nuestras prendas cumplen con normas internacionales reconocidas, garantizando seguridad, confiabilidad y desempeño en cada puesto de trabajo.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {[
+                    { norm: 'NFPA 70E', title: 'Protección contra arco eléctrico', desc: 'La ropa FR certificada bajo NFPA 70E protege al colaborador de lesiones graves causadas por eventos de arco eléctrico. Esencial para cuadrillas eléctricas, mantenimiento y distribución.' },
+                    { norm: 'OSHA 1910.269 / 1910.132', title: 'Arco eléctrico en servicios públicos', desc: 'Protección certificada para líneas energizadas, subestaciones, transformadores, reparaciones de emergencia y operaciones de infraestructura.' },
+                    { norm: 'NFPA 2112 / NFPA 2113', title: 'Protección contra fuego repentino', desc: 'Protege a los trabajadores en casos de ignición repentina, fugas de gas, vapores inflamables o fallas de proceso en petroquímica, gas y manufactura.' },
+                    { norm: 'ASTM F955 / ASTM F1002', title: 'Dispersión de metal fundido', desc: 'Prendas diseñadas para resistir salpicaduras de metal derretido en procesos de fundición, hornos, metalurgia y manufactura pesada.' },
+                    { norm: 'ASTM F2412 / F2413 / F2892', title: 'Calzado protector', desc: 'Calzado dieléctrico e industrial certificado para absorber impacto, resistir perforaciones y proteger contra descargas eléctricas.' },
+                    { norm: 'ANSI / OSHA / CE', title: 'EPP Especializado', desc: 'Protección craneal, visual, auditiva, respiratoria y anticaídas bajo los estándares internacionales más estrictos. Fabricantes de prestigio global.' },
+                ].map((item, i) => (
+                    <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                        className="bg-[#f5f5f5] rounded-xl p-6 border border-gray-100 hover:border-[#0057B8] hover:bg-white transition-all duration-300">
+                        <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-widest mb-3 border-b border-[#0057B8] pb-1">{item.norm}</span>
+                        <h4 className="font-bold text-black mb-2">{item.title}</h4>
+                        <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+
+        {/* EPP — Equipo de Protección Personal */}
+        <div className="bg-[#0A1628] py-20">
+            <div className="max-w-7xl mx-auto px-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
+                    <div>
+                        <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-[0.2em] mb-3">EPP</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4 leading-tight">
+                            Equipo de <span className="text-[#0057B8]">protección personal</span>
+                        </h2>
+                        <p className="text-gray-300 mb-4 leading-relaxed">
+                            La correcta selección del EPP es crítica para la integridad operativa. Contamos con un catálogo robusto que abarca protección craneal, visual, auditiva, respiratoria y anticaídas, desarrollado bajo los más estrictos estándares internacionales (ANSI, OSHA, CE).
+                        </p>
+                        <p className="text-gray-300 leading-relaxed">
+                            Al colaborar con <strong className="text-white">fabricantes de prestigio global</strong>, garantizamos que cada producto implementado en su planta o proyecto cumpla con las especificaciones técnicas requeridas. Asesoramos en la elección del equipo adecuado para asegurar un cumplimiento normativo del 100% ante cualquier entidad regulatoria.
+                        </p>
+                    </div>
+                    <div className="relative h-[350px] rounded-2xl overflow-hidden">
+                        <img src={`${import.meta.env.BASE_URL}hero-slider-4.jpg`} alt="EPP industrial" className="absolute inset-0 w-full h-full object-cover opacity-80" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/90 to-transparent" />
+                    </div>
+                </div>
+                {/* EPP Brands */}
+                <div>
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 text-center">Marcas EPP que distribuimos</p>
+                    <div className="flex flex-wrap justify-center items-center gap-6">
+                        {[
+                            { name: '3M', img: `${import.meta.env.BASE_URL}3 M.svg` },
+                            { name: 'Honeywell', img: `${import.meta.env.BASE_URL}honeywell.svg` },
+                            { name: 'MSA', img: `${import.meta.env.BASE_URL}MSA.svg` },
+                            { name: 'DuPont', img: `${import.meta.env.BASE_URL}dunpont.svg` },
+                            { name: 'Ansell', img: `${import.meta.env.BASE_URL}ansell.svg` },
+                            { name: 'Bullard', img: `${import.meta.env.BASE_URL}bullard.svg` },
+                        ].map(b => (
+                            <div key={b.name} className="bg-white/10 rounded-xl p-5 hover:bg-white/20 transition-colors">
+                                <img src={b.img} alt={b.name} className="h-10 w-28 object-contain brightness-0 invert" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
 
