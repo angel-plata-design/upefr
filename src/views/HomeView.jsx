@@ -121,6 +121,7 @@ const HomeView = ({ products, navigate }) => {
                 @keyframes scroll-x { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
                 .brands-scroll { animation: scroll-x 50s linear infinite; }
                 .brands-scroll:hover { animation-play-state: paused; }
+                @media (prefers-reduced-motion: reduce) { .brands-scroll { animation: none; } }
                 .hide-scrollbar::-webkit-scrollbar { display: none; }
                 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             `}</style>
@@ -139,8 +140,11 @@ const HomeView = ({ products, navigate }) => {
                         alt="Hero"
                     />
                 </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-transparent z-10" />
-                <div className="relative z-20 max-w-7xl mx-auto px-6 w-full">
+                {/* Base dark layer for contrast on all screen sizes */}
+                <div className="absolute inset-0 bg-black/50 z-10" />
+                {/* Directional gradient on top — enhances text readability on desktop */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent z-10 hidden md:block" />
+                <div className="relative z-20 max-w-7xl mx-auto px-5 sm:px-6 w-full">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentSlide}
@@ -149,27 +153,27 @@ const HomeView = ({ products, navigate }) => {
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.7 }}
                         >
-                            <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-[0.25em] mb-4 border-b border-[#0057B8] pb-1">
+                            <span className="inline-block text-[#4D9EFF] font-bold text-xs uppercase tracking-[0.25em] mb-3 border-b border-[#4D9EFF] pb-1">
                                 {slide.tag}
                             </span>
-                            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-5 whitespace-pre-line">
-                                {slide.h1}
+                            <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-4 sm:mb-5">
+                                {slide.h1.replace('\n', ' ')}
                             </h1>
-                            <p className="text-gray-300 text-lg md:text-xl max-w-xl mb-8 leading-relaxed">
+                            <p className="text-gray-200 text-sm sm:text-base md:text-xl max-w-xl mb-6 sm:mb-8 leading-relaxed">
                                 {slide.sub}
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-4">
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                                 <motion.button
                                     whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                                     onClick={() => navigate('store')}
-                                    className="bg-white text-black px-8 py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors"
+                                    className="bg-white text-black px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors"
                                 >
                                     Ver Catálogo <ArrowRight className="w-4 h-4" />
                                 </motion.button>
                                 <motion.button
                                     whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                                     onClick={() => navigate('quote')}
-                                    className="bg-[#0057B8] text-white px-8 py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-[#004A9E] transition-colors"
+                                    className="bg-[#F97316] text-white px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-[#EA6C0A] transition-colors"
                                 >
                                     Cotiza tu Proyecto
                                 </motion.button>
@@ -199,10 +203,10 @@ const HomeView = ({ products, navigate }) => {
             </div>
 
             {/* CATEGORÍAS FR */}
-            <section className="max-w-7xl mx-auto px-4 py-20">
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight mb-3">Categorías</h2>
-                    <p className="text-gray-500 max-w-xl mx-auto">Soluciones FR certificadas para cada tipo de riesgo industrial.</p>
+            <section className="max-w-7xl mx-auto px-4 py-12 md:py-20">
+                <div className="text-center mb-8 md:mb-12">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight mb-3">Categorías</h2>
+                    <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base">Soluciones FR certificadas para cada tipo de riesgo industrial.</p>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {CATEGORIAS_FR_HOME.map((cat, i) => (
@@ -229,10 +233,10 @@ const HomeView = ({ products, navigate }) => {
             </section>
 
             {/* TIPOS DE PRENDA */}
-            <section className="bg-[#f8f8f8] border-y border-gray-100 py-20">
+            <section className="bg-[#f8f8f8] border-y border-gray-100 py-12 md:py-20">
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-2">Tipos de Prenda</h2>
+                    <div className="text-center mb-8 md:mb-12">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black tracking-tight mb-2">Tipos de Prenda</h2>
                         <p className="text-gray-500 text-sm">Encuentra exactamente lo que necesitas por tipo de ropa industrial.</p>
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -262,7 +266,7 @@ const HomeView = ({ products, navigate }) => {
                 const brandProducts = products.filter(p => p.brand === brand).slice(0, 8);
                 if (brandProducts.length === 0) return null;
                 return (
-                    <section key={brand} className="py-16 border-b border-gray-100">
+                    <section key={brand} className="py-10 md:py-16 border-b border-gray-100">
                         <div className="max-w-7xl mx-auto px-4">
                             <div className="flex items-center justify-between mb-8">
                                 <div className="flex items-center gap-4">
@@ -271,10 +275,10 @@ const HomeView = ({ products, navigate }) => {
                                     <p className="text-sm text-gray-500 font-medium">Productos Destacados</p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <button onClick={() => scrollCarousel(brand, -1)} className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                                    <button onClick={() => scrollCarousel(brand, -1)} className="w-11 h-11 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer" aria-label="Anterior">
                                         <ChevronLeft className="w-4 h-4" />
                                     </button>
-                                    <button onClick={() => scrollCarousel(brand, 1)} className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                                    <button onClick={() => scrollCarousel(brand, 1)} className="w-11 h-11 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer" aria-label="Siguiente">
                                         <ChevronRight className="w-4 h-4" />
                                     </button>
                                     <button onClick={() => navigate('store', { brand })} className="ml-2 text-xs font-bold uppercase tracking-widest text-[#0057B8] hover:underline flex items-center gap-1">
@@ -290,7 +294,10 @@ const HomeView = ({ products, navigate }) => {
                                     <div
                                         key={product.id}
                                         onClick={() => navigate('product', { id: product.id })}
-                                        className="flex-shrink-0 w-52 group cursor-pointer bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
+                                        role="button"
+                                        tabIndex={0}
+                                        onKeyDown={e => e.key === 'Enter' && navigate('product', { id: product.id })}
+                                        className="flex-shrink-0 w-52 group cursor-pointer bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 focus-visible:outline-2 focus-visible:outline-[#0057B8]"
                                     >
                                         <div className="h-44 overflow-hidden bg-gray-50">
                                             <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -313,9 +320,9 @@ const HomeView = ({ products, navigate }) => {
             })}
 
             {/* MARCAS POR CATEGORÍA */}
-            <section className="max-w-7xl mx-auto px-4 py-20">
-                <div className="text-center mb-10">
-                    <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-2">Marcas Premium por Categoría</h2>
+            <section className="max-w-7xl mx-auto px-4 py-12 md:py-20">
+                <div className="text-center mb-8 md:mb-10">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black tracking-tight mb-2">Marcas Premium por Categoría</h2>
                     <p className="text-gray-500 text-sm">Trabajamos con las mejores marcas certificadas del mundo</p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -368,10 +375,10 @@ const HomeView = ({ products, navigate }) => {
             </section>
 
             {/* SERVICIOS DE DECORADO */}
-            <section className="bg-[#0A1628] py-20">
+            <section className="bg-[#0A1628] py-12 md:py-20">
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-3">Servicios de Decorado</h2>
+                    <div className="text-center mb-8 md:mb-12">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mb-3">Servicios de Decorado</h2>
                         <p className="text-gray-400 max-w-xl mx-auto text-sm">Personalizamos cada prenda con tu logo y la identidad de tu empresa.</p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
@@ -404,9 +411,9 @@ const HomeView = ({ products, navigate }) => {
             </section>
 
             {/* UPE FR 360 — TEASER */}
-            <section className="py-20 bg-white border-y border-gray-100">
+            <section className="py-12 md:py-20 bg-white border-y border-gray-100">
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
                         {/* Left text */}
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
@@ -415,10 +422,10 @@ const HomeView = ({ products, navigate }) => {
                             transition={{ duration: 0.7 }}
                         >
                             <span className="inline-block text-[#0057B8] font-bold text-xs uppercase tracking-[0.2em] mb-3">Sistema Integral</span>
-                            <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight mb-4 leading-tight">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight mb-4 leading-tight">
                                 UPE FR 360
                             </h2>
-                            <p className="text-gray-500 text-lg leading-relaxed mb-8">
+                            <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
                                 Más que uniformes — un sistema completo de gestión. Control total de pedidos, trazabilidad por cliente, seguimiento activo y cumplimiento garantizado en toda tu operación.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3">
@@ -464,18 +471,18 @@ const HomeView = ({ products, navigate }) => {
             </section>
 
             {/* CTA BANNER */}
-            <section className="relative py-24 overflow-hidden bg-gray-50 border-y border-gray-100">
+            <section className="relative py-16 md:py-24 overflow-hidden bg-gray-50 border-y border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 tracking-tight">
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-black mb-3 md:mb-4 tracking-tight">
                         ¿Listo para proteger a tu equipo?
                     </h2>
-                    <p className="text-gray-500 text-lg max-w-xl mx-auto mb-8">
+                    <p className="text-gray-500 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-6 md:mb-8">
                         Cuéntanos tu proyecto y te asignamos un asesor especializado en uniformes FR sin costo.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button
                             onClick={() => navigate('quote')}
-                            className="bg-[#0057B8] text-white px-10 py-4 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-[#004A9E] transition-colors"
+                            className="bg-[#F97316] text-white px-10 py-4 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-[#EA6C0A] transition-colors cursor-pointer"
                         >
                             Cotiza tu Proyecto
                         </button>

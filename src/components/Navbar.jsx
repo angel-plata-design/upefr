@@ -64,10 +64,12 @@ const Navbar = ({ currentView, navigate }) => {
                 <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
                     {/* Marquee left */}
                     <div className="flex-1 overflow-hidden">
-                        <div className="animate-marquee whitespace-nowrap text-gray-300">
-                            🔥 Descuentos por mayoreo arriba de 12 piezas&nbsp;&nbsp;•&nbsp;&nbsp;Envíos nacionales a todo México&nbsp;&nbsp;•&nbsp;&nbsp;Entrega en 10 a 15 días hábiles
+                        <div className="animate-marquee whitespace-nowrap text-gray-300 flex items-center gap-0">
+                            <Flame className="inline w-3 h-3 text-orange-400 mr-1 flex-shrink-0" aria-hidden="true" />
+                            Descuentos por mayoreo arriba de 12 piezas&nbsp;&nbsp;•&nbsp;&nbsp;Envíos nacionales a todo México&nbsp;&nbsp;•&nbsp;&nbsp;Entrega en 10 a 15 días hábiles
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            🔥 Descuentos por mayoreo arriba de 12 piezas&nbsp;&nbsp;•&nbsp;&nbsp;Envíos nacionales a todo México&nbsp;&nbsp;•&nbsp;&nbsp;Entrega en 10 a 15 días hábiles
+                            <Flame className="inline w-3 h-3 text-orange-400 mr-1 flex-shrink-0" aria-hidden="true" />
+                            Descuentos por mayoreo arriba de 12 piezas&nbsp;&nbsp;•&nbsp;&nbsp;Envíos nacionales a todo México&nbsp;&nbsp;•&nbsp;&nbsp;Entrega en 10 a 15 días hábiles
                         </div>
                     </div>
                     {/* Right links */}
