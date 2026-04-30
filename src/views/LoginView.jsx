@@ -38,12 +38,12 @@ const LoginView = ({ goHome, setIsAuthenticated }) => {
                         </div>
                     </div>
                     <h2 className="text-2xl font-bold text-center text-black mb-2 uppercase tracking-widest">Acceso Restringido</h2>
-                    <p className="text-gray-500 text-center text-[10px] uppercase font-bold tracking-widest mt-2">Panel Administrativo</p>
+                    <p className="text-gray-500 text-center text-xs uppercase font-bold tracking-widest mt-2">Panel Administrativo</p>
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-6">
                     <div>
-                        <label className="block text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-2" htmlFor="password">Contraseña</label>
+                        <label className="block text-gray-400 text-xs font-bold uppercase tracking-widest mb-2" htmlFor="password">Contraseña</label>
                         <input
                             type="password"
                             id="password"
@@ -53,7 +53,7 @@ const LoginView = ({ goHome, setIsAuthenticated }) => {
                             placeholder="••••••••"
                             required
                         />
-                        {error && <p className="text-red-500 text-[10px] mt-2 font-bold uppercase tracking-widest flex items-center"><AlertTriangle className="w-3 h-3 mr-1" />{error}</p>}
+                        {error && <p className="text-red-500 text-xs mt-2 font-bold uppercase tracking-widest flex items-center"><AlertTriangle className="w-3 h-3 mr-1" />{error}</p>}
                     </div>
 
                     <button
@@ -65,7 +65,7 @@ const LoginView = ({ goHome, setIsAuthenticated }) => {
                 </form>
 
                 <div className="mt-8 text-center pt-6 border-t border-gray-100">
-                    <button onClick={goHome} className="text-[10px] text-gray-500 hover:text-black uppercase tracking-widest transition-colors border-b border-transparent hover:border-black pb-1">
+                    <button onClick={goHome} className="text-xs text-gray-500 hover:text-black uppercase tracking-widest transition-colors border-b border-transparent hover:border-black pb-1">
                         Volver al sitio público
                     </button>
                 </div>

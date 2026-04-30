@@ -84,7 +84,7 @@ const ProductView = ({ product, navigate }) => {
                             )}
                             {product.popular && (
                                 <div className="absolute top-4 left-4">
-                                    <span className="flex items-center gap-1 bg-[#0057B8] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                                    <span className="flex items-center gap-1 bg-[#0057B8] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                                         <Star className="w-3 h-3 fill-white" /> Más Popular
                                     </span>
                                 </div>
@@ -111,13 +111,13 @@ const ProductView = ({ product, navigate }) => {
                         <div className="flex items-center justify-between mb-1">
                             <span className="text-xs font-bold text-[#0057B8] uppercase tracking-widest">{product.brand}</span>
                             {catInfo && (
-                                <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest border border-gray-200 px-2 py-0.5 rounded-full">
+                                <span className="text-xs font-semibold text-gray-400 uppercase tracking-widest border border-gray-200 px-2 py-0.5 rounded-full">
                                     {catInfo.nombre}
                                 </span>
                             )}
                         </div>
 
-                        <h1 className="text-2xl md:text-3xl font-black text-black leading-tight mb-1">{product.title}</h1>
+                        <h1 className="text-2xl md:text-3xl font-bold text-black leading-tight mb-1">{product.title}</h1>
                         <p className="text-xs text-gray-400 mb-4">Estilo: <span className="font-semibold text-gray-600">{product.style}</span> · SKU: <span className="font-semibold text-gray-600">{product.sku}</span></p>
 
                         <p className="text-gray-600 text-sm leading-relaxed mb-6 border-t border-gray-100 pt-4">{product.description}</p>
@@ -201,7 +201,7 @@ const ProductView = ({ product, navigate }) => {
                             ].map((g, i) => (
                                 <div key={i} className="flex flex-col items-center gap-1.5 text-center">
                                     <div className="text-gray-400">{g.icon}</div>
-                                    <span className="text-[10px] text-gray-500 font-medium leading-tight">{g.text}</span>
+                                    <span className="text-xs text-gray-500 font-medium leading-tight">{g.text}</span>
                                 </div>
                             ))}
                         </div>

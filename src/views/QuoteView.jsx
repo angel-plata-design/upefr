@@ -56,7 +56,7 @@ const QuoteView = ({ product, navigate }) => {
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle className="w-10 h-10 text-green-500" />
                 </div>
-                <h2 className="text-3xl font-black text-black mb-3">¡Solicitud enviada!</h2>
+                <h2 className="text-3xl font-bold text-black mb-3">¡Solicitud enviada!</h2>
                 <p className="text-gray-500 mb-6">
                     Te hemos redirigido a WhatsApp con todos los detalles de tu proyecto. Un asesor te contactará en breve.
                 </p>
@@ -79,7 +79,7 @@ const QuoteView = ({ product, navigate }) => {
             <div className="bg-[#0A1628] text-white py-16 px-4">
                 <div className="max-w-7xl mx-auto text-center">
                     <span className="text-[#0057B8] text-xs font-bold uppercase tracking-[0.25em] mb-3 block">Paso 1 de 1</span>
-                    <h1 className="text-4xl md:text-5xl font-black mb-3 tracking-tight">Cotiza tu Proyecto</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight">Cotiza tu Proyecto</h1>
                     <p className="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">
                         Cuéntanos los detalles. Te asignamos un asesor especializado sin costo y te respondemos en menos de 24 horas.
                     </p>
@@ -114,7 +114,7 @@ const QuoteView = ({ product, navigate }) => {
                     {/* Sidebar info */}
                     <div className="lg:col-span-1">
                         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 sticky top-24">
-                            <h3 className="font-black text-black text-lg mb-4">¿Por qué cotizar con nosotros?</h3>
+                            <h3 className="font-bold text-black text-lg mb-4">¿Por qué cotizar con nosotros?</h3>
                             {[
                                 { t: 'Respuesta en 24h', d: 'Te contactamos el mismo día hábil.' },
                                 { t: 'Sin mínimos fijos', d: 'Atendemos desde 12 hasta 500,000 piezas.' },
@@ -139,7 +139,7 @@ const QuoteView = ({ product, navigate }) => {
                     {/* Form */}
                     <div className="lg:col-span-2">
                         <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col gap-5">
-                            <h2 className="text-xl font-black text-black mb-1">Datos de Contacto</h2>
+                            <h2 className="text-xl font-bold text-black mb-1">Datos de Contacto</h2>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <Field icon={<User className="w-3 h-3" />} label="Nombre">
@@ -157,7 +157,7 @@ const QuoteView = ({ product, navigate }) => {
                             </div>
 
                             <div className="border-t border-gray-100 pt-5">
-                                <h2 className="text-xl font-black text-black mb-4">Detalles del Proyecto</h2>
+                                <h2 className="text-xl font-bold text-black mb-4">Detalles del Proyecto</h2>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <Field icon={<Layers className="w-3 h-3" />} label="Tipo de proyecto">
                                         <select required name="tipo_proyecto" value={form.tipo_proyecto} onChange={handleChange} className={inputCls}>

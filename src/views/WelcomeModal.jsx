@@ -43,8 +43,8 @@ const WelcomeModal = () => {
 
                         {/* Header */}
                         <div className="bg-[#0A1628] px-8 py-6 text-center">
-                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0057B8] mb-1">Bienvenido a UPE</p>
-                            <h2 className="text-xl md:text-2xl font-black text-white tracking-tight">
+                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#0057B8] mb-1">Bienvenido a UPE</p>
+                            <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">
                                 ¿Qué tipo de uniformes estás buscando?
                             </h2>
                         </div>
@@ -63,7 +63,7 @@ const WelcomeModal = () => {
                                 <div className="h-14 flex items-center justify-center mb-4">
                                     <img src={`${import.meta.env.BASE_URL}logo-uniformes.png`} alt="UPE Uniformes Profesionales" className="h-10 w-auto object-contain" />
                                 </div>
-                                <h3 className="text-lg font-black text-black uppercase tracking-wider mb-2">
+                                <h3 className="text-lg font-bold text-black uppercase tracking-wider mb-2">
                                     Uniformes Profesionales
                                 </h3>
                                 <p className="text-sm text-gray-500 leading-relaxed">
@@ -82,7 +82,7 @@ const WelcomeModal = () => {
                                 <div className="h-14 flex items-center justify-center mb-4">
                                     <img src={`${import.meta.env.BASE_URL}logo-oscuro.png`} alt="UPE FR" className="h-10 w-auto object-contain group-hover:brightness-0 group-hover:invert transition-all" />
                                 </div>
-                                <h3 className="text-lg font-black text-black group-hover:text-white uppercase tracking-wider mb-2 transition-colors">
+                                <h3 className="text-lg font-bold text-black group-hover:text-white uppercase tracking-wider mb-2 transition-colors">
                                     Uniformes FR
                                 </h3>
                                 <p className="text-sm text-gray-500 group-hover:text-gray-300 leading-relaxed transition-colors">

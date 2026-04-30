@@ -56,7 +56,7 @@ const StoreView = ({ products, storeFilter, navigate }) => {
             <div className="flex items-center justify-between mb-5">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{displayed.length} resultado{displayed.length !== 1 ? 's' : ''}</span>
                 {hasFilters && (
-                    <button onClick={clearAll} className="text-[10px] text-[#0057B8] font-bold uppercase tracking-wider hover:underline">Limpiar todo</button>
+                    <button onClick={clearAll} className="text-xs text-[#0057B8] font-bold uppercase tracking-wider hover:underline">Limpiar todo</button>
                 )}
             </div>
 

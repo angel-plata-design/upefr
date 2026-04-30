@@ -31,7 +31,7 @@ const View360 = () => (
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="text-6xl md:text-8xl font-extrabold mb-8 tracking-tight drop-shadow-md uppercase"
+                    className="text-6xl md:text-8xl font-bold mb-8 tracking-tight drop-shadow-md uppercase"
                 >
                     upe<span className="text-gray-400">FR</span> 360°
                 </motion.h1>
@@ -126,7 +126,7 @@ const View360 = () => (
                     </motion.div>
                     <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full order-1 md:order-2">
                         <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 1</div>
-                        <h3 className="text-3xl lg:text-4xl font-extrabold text-black mb-6 leading-tight tracking-tight uppercase">Tienda B2B exclusiva y personalizada</h3>
+                        <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight tracking-tight uppercase">Tienda B2B exclusiva y personalizada</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Creamos un portal web con una experiencia de abastecimiento personalizada de acuerdo a los lineamientos y cuotas autorizadas de su empresa. Un portal privado sólo para sus empleados o supervisores autorizados.
                         </p>
@@ -137,7 +137,7 @@ const View360 = () => (
                 <div className="flex flex-col md:flex-row items-center gap-16 group">
                     <motion.div initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full">
                         <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 2</div>
-                        <h3 className="text-3xl lg:text-4xl font-extrabold text-black mb-6 leading-tight tracking-tight uppercase">Resumen y asignación de tallas</h3>
+                        <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight tracking-tight uppercase">Resumen y asignación de tallas</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Carga individual de medidas por cada empleado, lo que asegura una asignación de tallas correcta desde el primer pedido, reduciendo drásticamente las devoluciones, costos y tiempos de gestión.
                         </p>
@@ -156,7 +156,7 @@ const View360 = () => (
                     </motion.div>
                     <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full order-1 md:order-2">
                         <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 3</div>
-                        <h3 className="text-3xl lg:text-4xl font-extrabold text-black mb-6 leading-tight tracking-tight uppercase">Logística optimizada</h3>
+                        <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight tracking-tight uppercase">Logística optimizada</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Entregas en esquema de paquetes individuales (kitting) o centralizados, directos a sitio o sucursal por empleado. Hacemos que la distribución interna deje de ser un dolor de cabeza para su equipo.
                         </p>
@@ -167,7 +167,7 @@ const View360 = () => (
                 <div className="flex flex-col md:flex-row items-center gap-16 group">
                     <motion.div initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full">
                         <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 4</div>
-                        <h3 className="text-3xl lg:text-4xl font-extrabold text-black mb-6 leading-tight tracking-tight uppercase">Control automatizado y seguimiento</h3>
+                        <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight tracking-tight uppercase">Control automatizado y seguimiento</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Visualice de inmediato sus gastos e inventarios. Monitoreo del estatus de solicitudes y autorizaciones jerárquicas online para total transparencia del presupuesto ejercido.
                         </p>
@@ -190,7 +190,7 @@ const View360 = () => (
                     className="bg-white/5 backdrop-blur-xl p-12 lg:p-16 border border-white/10 relative overflow-hidden group hover:bg-white/10 transition-colors duration-500 rounded-xl"
                 >
                     <div className="absolute -top-10 -right-10 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all duration-700"><Factory className="w-80 h-80" /></div>
-                    <h3 className="text-3xl md:text-4xl font-extrabold mb-8 relative z-10 text-white tracking-tight leading-tight uppercase">
+                    <h3 className="text-3xl md:text-4xl font-bold mb-8 relative z-10 text-white tracking-tight leading-tight uppercase">
                         Producción 100% Interna y control total.
                     </h3>
                     <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-8 relative z-10 font-medium">
@@ -222,7 +222,7 @@ const View360 = () => (
                     className="bg-[#111] p-12 lg:p-16 border border-gray-800 relative overflow-hidden flex flex-col justify-center group rounded-xl"
                 >
                     <div className="absolute -bottom-10 -right-10 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all duration-700"><Headset className="w-80 h-80" /></div>
-                    <h3 className="text-3xl md:text-4xl font-extrabold mb-8 relative z-10 text-white tracking-tight leading-tight uppercase">
+                    <h3 className="text-3xl md:text-4xl font-bold mb-8 relative z-10 text-white tracking-tight leading-tight uppercase">
                         Soporte Interactivo<br />y Personalizado
                     </h3>
                     <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-12 relative z-10 font-medium">

@@ -156,7 +156,7 @@ const HomeView = ({ products, navigate }) => {
                             <span className="inline-block text-[#4D9EFF] font-bold text-xs uppercase tracking-[0.25em] mb-3 border-b border-[#4D9EFF] pb-1">
                                 {slide.tag}
                             </span>
-                            <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-4 sm:mb-5">
+                            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-4 sm:mb-5">
                                 {slide.h1.replace('\n', ' ')}
                             </h1>
                             <p className="text-gray-200 text-sm sm:text-base md:text-xl max-w-xl mb-6 sm:mb-8 leading-relaxed">

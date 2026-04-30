@@ -13,8 +13,11 @@ import View360 from './views/View360';
 import TermsView from './views/TermsView';
 import PrivacyView from './views/PrivacyView';
 import BrandsView from './views/BrandsView';
+import ContactView from './views/ContactView';
+import LoginView from './views/LoginView';
 import WelcomeModal from './views/WelcomeModal';
 import { INITIAL_PRODUCTS } from './data/productos';
+import { COMPANY_INFO } from './data/constants';
 
 const App = () => {
     const [view, setView] = useState('home');
@@ -46,6 +49,10 @@ const App = () => {
 
     const selectedProduct = products.find(p => p.id === selectedProductId);
 
+    const handleWhatsAppClick = () => {
+        window.open(`https://wa.me/${COMPANY_INFO.whatsapp.replace(/\D/g, '')}`, '_blank');
+    };
+
     // topbar ~28px + header 60px = 88px
     const NavbarPaddingTop = 'pt-[88px]';
 
@@ -67,6 +74,10 @@ const App = () => {
                 return <View360 navigate={navigate} />;
             case 'brands':
                 return <BrandsView navigate={navigate} />;
+            case 'contact':
+                return <ContactView handleWhatsAppClick={handleWhatsAppClick} navigate={navigate} />;
+            case 'login':
+                return <LoginView goHome={() => navigate('home')} setIsAuthenticated={() => navigate('home')} />;
             case 'terms':
                 return <TermsView />;
             case 'privacy':
