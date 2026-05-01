@@ -11,7 +11,7 @@ const ContactView = ({ handleWhatsAppClick }) => (
         className="flex-1 bg-white"
     >
         {/* Banner */}
-        <div className="relative bg-black py-24 px-4 overflow-hidden border-b border-gray-200">
+        <div className="relative bg-black py-12 md:py-24 px-4 overflow-hidden border-b border-gray-200">
             <div className="relative z-10 max-w-[1600px] mx-auto text-center">
                 <div className="inline-block bg-white text-black font-bold px-4 py-1.5 text-xs mb-6 uppercase tracking-widest">Atención Personalizada</div>
                 <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight uppercase">
@@ -20,12 +20,12 @@ const ContactView = ({ handleWhatsAppClick }) => (
                 <p className="text-sm md:text-base text-gray-300 mb-8 max-w-3xl mx-auto font-medium">
                     Te ayudamos a crear un programa de uniformes efectivo y a la medida de tu operación.
                 </p>
-                <div className="w-16 h-1 bg-white mx-auto mb-16"></div>
+                <div className="w-16 h-1 bg-white mx-auto mb-8 md:mb-16"></div>
 
                 {/* Tarjetas de contacto */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mt-8">
                     {/* Oficina */}
-                    <div className="bg-[#111] border border-gray-800 p-10 hover:border-gray-500 transition-all flex flex-col justify-center items-center group">
+                    <div className="bg-[#111] border border-gray-800 p-6 md:p-10 hover:border-gray-500 transition-all flex flex-col justify-center items-center group">
                         <div className="w-16 h-16 bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
                             <MapPin className="w-6 h-6 text-white" />
                         </div>
@@ -37,7 +37,7 @@ const ContactView = ({ handleWhatsAppClick }) => (
                     </div>
 
                     {/* Contacto */}
-                    <div className="bg-[#111] border border-gray-800 p-10 hover:border-gray-500 transition-all flex flex-col justify-center items-center group">
+                    <div className="bg-[#111] border border-gray-800 p-6 md:p-10 hover:border-gray-500 transition-all flex flex-col justify-center items-center group">
                         <div className="w-16 h-16 bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
                             <User className="w-6 h-6 text-white" />
                         </div>
@@ -49,7 +49,7 @@ const ContactView = ({ handleWhatsAppClick }) => (
                     </div>
 
                     {/* WhatsApp */}
-                    <div className="bg-white border border-gray-200 p-10 hover:border-black transition-all flex flex-col justify-center items-center group">
+                    <div className="bg-white border border-gray-200 p-6 md:p-10 hover:border-black transition-all flex flex-col justify-center items-center group">
                         <div className="w-16 h-16 bg-black/5 flex items-center justify-center mb-6 group-hover:bg-black/10 transition-colors">
                             <MessageCircle className="w-6 h-6 text-black" />
                         </div>
@@ -65,7 +65,7 @@ const ContactView = ({ handleWhatsAppClick }) => (
         </div>
 
         {/* Formulario */}
-        <div className="py-24 bg-[#f5f5f5] relative border-b border-gray-200">
+        <div className="py-12 md:py-24 bg-[#f5f5f5] relative border-b border-gray-200">
             <div className="max-w-4xl mx-auto px-4 relative z-10">
                 <div className="bg-white p-10 md:p-14 border border-gray-200">
                     <h2 className="text-2xl font-bold text-center text-black mb-4 tracking-tight">Envíanos un mensaje directo</h2>

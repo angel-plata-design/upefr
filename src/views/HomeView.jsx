@@ -173,7 +173,7 @@ const HomeView = ({ products, navigate }) => {
                                 <motion.button
                                     whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                                     onClick={() => navigate('quote')}
-                                    className="bg-[#F97316] text-white px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-[#EA6C0A] transition-colors"
+                                    className="bg-[#0EA5E9] text-white px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-[#0284C7] transition-colors"
                                 >
                                     Cotiza tu Proyecto
                                 </motion.button>
@@ -195,8 +195,8 @@ const HomeView = ({ products, navigate }) => {
                 <div className="brands-scroll flex items-center">
                     {doubleBrands.map((b, i) => (
                         <button key={i} onClick={() => navigate('store', { brand: b.name })}
-                            className="mx-8 flex-shrink-0 opacity-70 hover:opacity-100 transition-all duration-300">
-                            <img src={b.img} alt={b.name} className="h-12 w-auto max-w-[140px] object-contain" />
+                            className="mx-8 flex-shrink-0 opacity-70 hover:opacity-100 transition-all duration-300 min-h-[44px] flex items-center">
+                            <img src={b.img} alt={b.name} className="h-10 w-auto max-w-[120px] object-contain" />
                         </button>
                     ))}
                 </div>
@@ -268,20 +268,20 @@ const HomeView = ({ products, navigate }) => {
                 return (
                     <section key={brand} className="py-10 md:py-16 border-b border-gray-100">
                         <div className="max-w-7xl mx-auto px-4">
-                            <div className="flex items-center justify-between mb-8">
-                                <div className="flex items-center gap-4">
-                                    <img src={logo} alt={brand} className="h-8 w-auto object-contain" />
-                                    <span className="text-gray-300 text-xl">|</span>
-                                    <p className="text-sm text-gray-500 font-medium">Productos Destacados</p>
+                            <div className="flex items-center justify-between mb-6 gap-3">
+                                <div className="flex items-center gap-3 min-w-0">
+                                    <img src={logo} alt={brand} className="h-7 w-auto object-contain flex-shrink-0 max-w-[100px]" />
+                                    <span className="text-gray-200 hidden sm:block">|</span>
+                                    <p className="text-sm text-gray-500 font-medium hidden sm:block">Productos Destacados</p>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <button onClick={() => scrollCarousel(brand, -1)} className="w-11 h-11 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer" aria-label="Anterior">
+                                <div className="flex items-center gap-2 flex-shrink-0">
+                                    <button onClick={() => scrollCarousel(brand, -1)} className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer" aria-label="Anterior">
                                         <ChevronLeft className="w-4 h-4" />
                                     </button>
-                                    <button onClick={() => scrollCarousel(brand, 1)} className="w-11 h-11 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer" aria-label="Siguiente">
+                                    <button onClick={() => scrollCarousel(brand, 1)} className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer" aria-label="Siguiente">
                                         <ChevronRight className="w-4 h-4" />
                                     </button>
-                                    <button onClick={() => navigate('store', { brand })} className="ml-2 text-xs font-bold uppercase tracking-widest text-[#0057B8] hover:underline flex items-center gap-1">
+                                    <button onClick={() => navigate('store', { brand })} className="ml-1 min-h-[44px] px-2 text-xs font-bold uppercase tracking-widest text-[#0057B8] hover:underline flex items-center gap-1">
                                         Ver todos <ChevronRight className="w-3 h-3" />
                                     </button>
                                 </div>
@@ -335,7 +335,7 @@ const HomeView = ({ products, navigate }) => {
                         <button
                             key={tab.id}
                             onClick={() => setActiveBrandTab(tab.id)}
-                            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${activeBrandTab === tab.id ? 'bg-black text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                            className={`px-5 py-2.5 min-h-[44px] rounded-full text-sm font-semibold transition-all duration-200 ${activeBrandTab === tab.id ? 'bg-black text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                         >
                             {tab.label}
                         </button>
@@ -482,7 +482,7 @@ const HomeView = ({ products, navigate }) => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button
                             onClick={() => navigate('quote')}
-                            className="bg-[#F97316] text-white px-10 py-4 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-[#EA6C0A] transition-colors cursor-pointer"
+                            className="bg-[#0EA5E9] text-white px-10 py-4 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-[#0284C7] transition-colors cursor-pointer"
                         >
                             Cotiza tu Proyecto
                         </button>

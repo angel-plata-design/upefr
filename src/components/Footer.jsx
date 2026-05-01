@@ -45,7 +45,7 @@ const Footer = ({ navigate }) => {
                                 { href: COMPANY_INFO.redes.linkedin, icon: <Linkedin className="w-4 h-4" />, label: 'LinkedIn' },
                             ].map(s => (
                                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-                                    className="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center hover:bg-[#0057B8] hover:border-[#0057B8] transition-all duration-300">
+                                    className="w-11 h-11 rounded-full border border-gray-600 flex items-center justify-center hover:bg-[#0057B8] hover:border-[#0057B8] transition-all duration-300">
                                     {s.icon}
                                 </a>
                             ))}

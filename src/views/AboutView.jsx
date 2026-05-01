@@ -6,7 +6,7 @@ import { COMPANY_INFO } from '../data/constants';
 const AboutView = ({ navigate }) => (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex-1 bg-white">
         {/* Hero */}
-        <div className="relative bg-black text-white py-28 overflow-hidden">
+        <div className="relative bg-black text-white py-16 md:py-28 overflow-hidden">
             <img src={`${import.meta.env.BASE_URL}conoce_upe.jpg`} alt="Sobre Nosotros" className="absolute inset-0 w-full h-full object-cover opacity-40 z-0" />
             <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
                 <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }}
@@ -14,7 +14,7 @@ const AboutView = ({ navigate }) => (
                     Nuestra Historia
                 </motion.span>
                 <motion.h1 initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}
-                    className="text-5xl md:text-6xl font-bold mb-5 tracking-tight">
+                    className="text-3xl sm:text-5xl md:text-6xl font-bold mb-5 tracking-tight">
                     UPE FR — Seguridad,<br />Cumplimiento y Control.
                 </motion.h1>
                 <motion.p initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }}
@@ -25,7 +25,7 @@ const AboutView = ({ navigate }) => (
         </div>
 
         {/* About content */}
-        <div className="max-w-7xl mx-auto px-4 py-24 flex flex-col md:flex-row items-center gap-16">
+        <div className="max-w-7xl mx-auto px-4 py-12 md:py-24 flex flex-col md:flex-row items-center gap-8 md:gap-16">
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="md:w-1/2">
                 <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-[1.1] tracking-tight">
                     Especialistas en ropa resistente al fuego y protección industrial.

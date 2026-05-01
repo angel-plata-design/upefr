@@ -212,7 +212,7 @@ const QuoteView = ({ product, navigate }) => {
                             </div>
 
                             <button type="submit" disabled={loading}
-                                className="w-full bg-[#F97316] text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#EA6C0A] transition-colors disabled:opacity-70 flex items-center justify-center gap-2 mt-2 cursor-pointer">
+                                className="w-full bg-[#0EA5E9] text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#0284C7] transition-colors disabled:opacity-70 flex items-center justify-center gap-2 mt-2 cursor-pointer">
                                 {loading ? (
                                     <><span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Procesando...</>
                                 ) : (

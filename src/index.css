@@ -14,6 +14,11 @@
     }
 }
 
+/* Touch optimization — removes 300ms tap delay on mobile */
+button, a, [role="button"] {
+    touch-action: manipulation;
+}
+
 @layer utilities {
     .perspective-1000 {
         perspective: 1000px;

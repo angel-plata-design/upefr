@@ -12,7 +12,7 @@ const View360 = () => (
         className="flex-1 bg-white"
     >
         {/* Hero Banner */}
-        <div className="relative bg-black text-white py-32 overflow-hidden border-b border-gray-200">
+        <div className="relative bg-black text-white py-20 md:py-32 overflow-hidden border-b border-gray-200">
             <div className="absolute inset-0 bg-black/60 mix-blend-multiply z-10"></div>
             {/* Bug #2 corregido */}
             <img src={`${import.meta.env.BASE_URL}banner_upefr360.jpg`} alt="Ingeniero con equipo de seguridad" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 grayscale" />
@@ -31,7 +31,7 @@ const View360 = () => (
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="text-6xl md:text-8xl font-bold mb-8 tracking-tight drop-shadow-md uppercase"
+                    className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 tracking-tight drop-shadow-md uppercase"
                 >
                     upe<span className="text-gray-400">FR</span> 360°
                 </motion.h1>
@@ -67,7 +67,7 @@ const View360 = () => (
         </div>
 
         {/* ¿Por qué elegir upeFR360? */}
-        <div className="py-32 bg-white relative overflow-hidden">
+        <div className="py-16 md:py-32 bg-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
                 <motion.h2
                     initial={{ y: 20, opacity: 0 }}
@@ -115,8 +115,8 @@ const View360 = () => (
         </div>
 
         {/* Los 4 Pilares */}
-        <div className="bg-[#f5f5f5] py-32 border-y border-gray-200 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 space-y-32 relative z-10">
+        <div className="bg-[#f5f5f5] py-16 md:py-32 border-y border-gray-200 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 space-y-16 md:space-y-32 relative z-10">
 
                 {/* Pilar 1 */}
                 <div className="flex flex-col md:flex-row items-center gap-16 group">
@@ -181,7 +181,7 @@ const View360 = () => (
         </div>
 
         {/* Diferenciadores */}
-        <div className="bg-black py-32 text-white relative overflow-hidden">
+        <div className="bg-black py-16 md:py-32 text-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
                 <motion.div
                     initial={{ y: 30, opacity: 0 }}
