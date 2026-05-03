@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://angel-plata-design.github.io/upefr/sitemap.xml
