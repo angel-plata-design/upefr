@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Trash2, CheckCircle2, User } from 'lucide-react';
-import { CATALOG_MENU } from '../data/constants';
+import { CATEGORIAS } from '../data/categorias';
 
-const AdminView = ({ products, setProducts }) => {
+const ALL_BRANDS = [
+    'Ariat Work FR', 'Benchmark', 'Best Welds', 'Bullard', 'Bulwark',
+    'Carhartt', 'CAT', 'Dickies', 'DuPont', 'Honeywell', 'Keen',
+    'Kishigo', 'Lakeland', 'MSA', 'Portwest', 'Red Kap', 'Terra',
+    'Timberland PRO', 'Wolverine', 'Workrite', '3M', '5.11', 'Ansell',
+];
+
+const AdminView = ({ products, setProducts, navigate }) => {
     const [formData, setFormData] = useState({
         title: '', sku: '', style: '',
-        mainCategory: 'Uniformes FR',
-        brand: CATALOG_MENU['Uniformes FR'][0],
+        mainCategory: 'industrial',
+        brand: ALL_BRANDS[0],
         description: '', image: ''
     });
     const [notification, setNotification] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        if (name === 'mainCategory') {
-            setFormData({ ...formData, mainCategory: value, brand: CATALOG_MENU[value][0] });
-        } else {
-            setFormData({ ...formData, [name]: value });
-        }
+        setFormData(prev => ({ ...prev, [name]: value }));
     };
 
     const handleAddProduct = (e) => {
@@ -26,11 +29,14 @@ const AdminView = ({ products, setProducts }) => {
         const newProduct = {
             ...formData,
             id: Date.now(),
-            image: formData.image || "https://images.unsplash.com/photo-1584305574647-0cc9f9e10260?auto=format&fit=crop&q=80&w=800"
+            popular: false,
+            tallas: ['S', 'M', 'L', 'XL', '2XL'],
+            colores: [],
+            image: formData.image || `${import.meta.env.BASE_URL}hero-slider-1.jpg`
         };
         setProducts(prev => [newProduct, ...prev]);
         setNotification('PRODUCTO AGREGADO AL CATÁLOGO');
-        setFormData({ title: '', sku: '', style: '', mainCategory: 'Uniformes FR', brand: CATALOG_MENU['Uniformes FR'][0], description: '', image: '' });
+        setFormData({ title: '', sku: '', style: '', mainCategory: 'industrial', brand: ALL_BRANDS[0], description: '', image: '' });
         setTimeout(() => setNotification(''), 3000);
     };
 
@@ -56,6 +62,20 @@ const AdminView = ({ products, setProducts }) => {
                     >
                         <User className="w-8 h-8 mr-4 text-black" /> Panel de Administración
                     </motion.h1>
+                    <div className="flex gap-3">
+                        <button
+                            onClick={() => { if (window.confirm('¿Restaurar catálogo original? Se eliminarán los productos agregados desde el admin.')) { localStorage.removeItem('upefr_extra_products'); window.location.reload(); } }}
+                            className="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black border border-gray-200 hover:border-black px-4 py-2 transition-colors"
+                        >
+                            Restaurar original
+                        </button>
+                        <button
+                            onClick={() => navigate('home')}
+                            className="text-xs font-bold uppercase tracking-widest text-white bg-black hover:bg-gray-800 px-4 py-2 transition-colors"
+                        >
+                            ← Salir al sitio
+                        </button>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -104,13 +124,13 @@ const AdminView = ({ products, setProducts }) => {
                                     <div>
                                         <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Categoría *</label>
                                         <select name="mainCategory" value={formData.mainCategory} onChange={handleInputChange} className="w-full p-3 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-colors text-sm text-black appearance-none">
-                                            {Object.keys(CATALOG_MENU).map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                                            {CATEGORIAS.map(cat => <option key={cat.id} value={cat.id}>{cat.nombre}</option>)}
                                         </select>
                                     </div>
                                     <div>
                                         <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Marca *</label>
                                         <select name="brand" value={formData.brand} onChange={handleInputChange} className="w-full p-3 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-colors text-sm text-black appearance-none">
-                                            {CATALOG_MENU[formData.mainCategory].map(b => <option key={b} value={b}>{b}</option>)}
+                                            {ALL_BRANDS.map(b => <option key={b} value={b}>{b}</option>)}
                                         </select>
                                     </div>
                                 </div>

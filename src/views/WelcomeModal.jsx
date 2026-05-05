@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
-const UPE_UNIFORMES_URL = 'https://flowmx.github.io/upeuniformes/';
+const UPE_UNIFORMES_URL = 'https://angel-plata-design.github.io/upeuniformes/';
 
 const WelcomeModal = () => {
     const [showModal, setShowModal] = useState(false);

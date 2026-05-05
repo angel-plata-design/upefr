@@ -4,12 +4,12 @@ import { COMPANY_INFO, MENSAJE_MAYOREO } from '../data/constants';
 
 // FR categories for the mega menu
 const TIPOS_PRENDA_FR = [
-    'Camisas FR',
-    'Playeras FR',
-    'Chamarras FR',
-    'Pantalones FR',
-    'Overoles',
-    'Chalecos FR',
+    { label: 'Camisas FR', value: 'Camisa industrial' },
+    { label: 'Playeras FR', value: 'Playera FR' },
+    { label: 'Chamarras FR', value: 'Chamarra FR' },
+    { label: 'Pantalones FR', value: 'Pantalón FR' },
+    { label: 'Overoles', value: 'Overol' },
+    { label: 'Chalecos FR', value: 'Chaleco FR' },
 ];
 
 const CATEGORIAS_FR = [
@@ -28,7 +28,7 @@ const MARCAS_FR_MENU = [
     'Timberland PRO',
 ];
 
-const UPE_UNIFORMES_URL = 'https://flowmx.github.io/upeuniformes/';
+const UPE_UNIFORMES_URL = 'https://angel-plata-design.github.io/upeuniformes/';
 
 const Navbar = ({ currentView, navigate }) => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -139,11 +139,11 @@ const Navbar = ({ currentView, navigate }) => {
                                                 <div className="flex flex-col gap-1">
                                                     {TIPOS_PRENDA_FR.map(tipo => (
                                                         <button
-                                                            key={tipo}
-                                                            onClick={() => handleNavClick('store', { tipoBusqueda: tipo })}
+                                                            key={tipo.value}
+                                                            onClick={() => handleNavClick('store', { tipoBusqueda: tipo.value })}
                                                             className="text-sm text-gray-600 hover:text-black text-left py-0.5 transition-colors hover:translate-x-0.5 transform duration-150"
                                                         >
-                                                            {tipo}
+                                                            {tipo.label}
                                                         </button>
                                                     ))}
                                                 </div>

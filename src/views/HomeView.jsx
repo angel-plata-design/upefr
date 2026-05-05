@@ -7,16 +7,16 @@ import { COMPANY_INFO } from '../data/constants';
 // Hero slides — cada uno con mensaje distinto
 const HERO_SLIDES = [
     {
-        img: `${import.meta.env.BASE_URL}hero-slider-1.jpg`,
+        img: `${import.meta.env.BASE_URL}hero 1.jpg`,
         tag: 'Especialistas en Uniformes FR',
         h1: 'Protección que\nno falla nunca.',
         sub: 'Ropa resistente al fuego certificada bajo NFPA 2112, NFPA 70E y ASTM F1506 para industria energética y trabajos de alto riesgo.',
     },
     {
-        img: `${import.meta.env.BASE_URL}hero-slider-2.jpg`,
-        tag: 'Portafolio de Marcas Certificadas',
-        h1: 'Las mejores marcas\nen un solo lugar.',
-        sub: 'Bulwark, Ariat, Timberland PRO, Portwest, Carhartt y más de 20 marcas líderes en seguridad industrial. Todo certificado.',
+        img: `${import.meta.env.BASE_URL}hero 2.jpg`,
+        tag: 'Calzado de Seguridad Certificado',
+        h1: 'Calzado que\nresiste todo.',
+        sub: 'Botas y zapatos de seguridad con punta compuesta, protección eléctrica y resistencia a impactos. Marcas líderes: Ariat, Timberland PRO, Terra y más.',
     },
     {
         img: `${import.meta.env.BASE_URL}hero-slider-3.jpg`,
@@ -34,20 +34,20 @@ const HERO_SLIDES = [
 
 // Categorías home
 const CATEGORIAS_FR_HOME = [
-    { id: 'industrial', nombre: 'Uniformes', imagen: `${import.meta.env.BASE_URL}hero-slider-1.jpg` },
-    { id: 'epp', nombre: 'EPP Especializado', imagen: `${import.meta.env.BASE_URL}hero-slider-3.jpg` },
-    { id: 'calzado', nombre: 'Calzado de Seguridad', imagen: `${import.meta.env.BASE_URL}hero-slider-2.jpg` },
-    { id: 'accesorios', nombre: 'Accesorios', imagen: `${import.meta.env.BASE_URL}img_work.jpg` },
+    { id: 'industrial', nombre: 'Uniformes', imagen: `${import.meta.env.BASE_URL}uniformes.jpg` },
+    { id: 'epp', nombre: 'EPP Especializado', imagen: `${import.meta.env.BASE_URL}epp especializado.jpg` },
+    { id: 'calzado', nombre: 'Calzado de Seguridad', imagen: `${import.meta.env.BASE_URL}calzado de seguridad.jpg` },
+    { id: 'accesorios', nombre: 'Accesorios', imagen: `${import.meta.env.BASE_URL}accesorios.jpg` },
 ];
 
 // Tipos de prenda
 const TIPOS_PRENDA_HOME = [
-    { tipo: 'Camisas FR', img: `${import.meta.env.BASE_URL}hero-slider-1.jpg` },
-    { tipo: 'Pantalones FR', img: `${import.meta.env.BASE_URL}hero-slider-2.jpg` },
-    { tipo: 'Playeras FR', img: `${import.meta.env.BASE_URL}hero-slider-3.jpg` },
-    { tipo: 'Chamarras FR', img: `${import.meta.env.BASE_URL}hero-slider-4.jpg` },
-    { tipo: 'Overoles', img: `${import.meta.env.BASE_URL}img_work.jpg` },
-    { tipo: 'Chalecos FR', img: `${import.meta.env.BASE_URL}conoce_upe.jpg` },
+    { tipo: 'Camisas FR', filterValue: 'Camisa industrial', img: `${import.meta.env.BASE_URL}CAMISA FR.jpg` },
+    { tipo: 'Pantalones FR', filterValue: 'Pantalón FR', img: `${import.meta.env.BASE_URL}PANTALONES FR.jpg` },
+    { tipo: 'Playeras FR', filterValue: 'Playera FR', img: `${import.meta.env.BASE_URL}PANTALONES FR-1.jpg` },
+    { tipo: 'Chamarras FR', filterValue: 'Chamarra FR', img: `${import.meta.env.BASE_URL}CHAMARRA FR.jpg` },
+    { tipo: 'Overoles', filterValue: 'Overol', img: `${import.meta.env.BASE_URL}OVEROL.jpg` },
+    { tipo: 'Chalecos FR', filterValue: 'Chaleco FR', img: `${import.meta.env.BASE_URL}CHALECO.jpg` },
 ];
 
 // Marca featured carousels
@@ -119,67 +119,74 @@ const HomeView = ({ products, navigate }) => {
         <div className="flex-1 overflow-x-hidden bg-white">
             <style>{`
                 @keyframes scroll-x { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-                .brands-scroll { animation: scroll-x 50s linear infinite; }
+                .brands-scroll {
+                    animation: scroll-x 30s linear infinite;
+                    width: max-content;
+                    white-space: nowrap;
+                }
                 .brands-scroll:hover { animation-play-state: paused; }
+                @media (min-width: 768px) { .brands-scroll { animation-duration: 45s; } }
                 @media (prefers-reduced-motion: reduce) { .brands-scroll { animation: none; } }
                 .hide-scrollbar::-webkit-scrollbar { display: none; }
                 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             `}</style>
 
             {/* HERO */}
-            <div className="relative h-screen min-h-[600px] max-h-[900px] flex items-center justify-center overflow-hidden bg-black">
-                <AnimatePresence mode="wait">
+            <div className="relative h-screen min-h-[600px] max-h-[856px] flex items-center justify-center overflow-hidden bg-black">
+                <AnimatePresence>
                     <motion.img
                         key={currentSlide}
                         src={slide.img}
-                        initial={{ opacity: 0, scale: 1.04 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 1.2, ease: "easeInOut" }}
+                        transition={{ duration: 1.0, ease: "easeInOut" }}
                         className="absolute inset-0 w-full h-full object-cover"
                         alt="Hero"
                     />
                 </AnimatePresence>
-                {/* Base dark layer for contrast on all screen sizes */}
-                <div className="absolute inset-0 bg-black/50 z-10" />
-                {/* Directional gradient on top — enhances text readability on desktop */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent z-10 hidden md:block" />
+                {/* Cinematic overlay: strong bottom-up gradient + left fade on desktop */}
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#050D1A]/90 via-black/35 to-transparent" />
+                <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/60 via-black/15 to-transparent hidden md:block" />
+
                 <div className="relative z-20 max-w-7xl mx-auto px-5 sm:px-6 w-full">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentSlide}
-                            initial={{ opacity: 0, y: 24 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.7 }}
+                            exit={{ opacity: 0, y: -8 }}
+                            transition={{ duration: 0.6 }}
                         >
-                            <span className="inline-block text-[#4D9EFF] font-bold text-xs uppercase tracking-[0.25em] mb-3 border-b border-[#4D9EFF] pb-1">
+                            <span className="inline-block text-[#60B4FF] font-bold text-xs uppercase tracking-[0.25em] mb-3 border-b border-[#60B4FF]/60 pb-1">
                                 {slide.tag}
                             </span>
                             <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-4 sm:mb-5">
                                 {slide.h1.replace('\n', ' ')}
                             </h1>
-                            <p className="text-gray-200 text-sm sm:text-base md:text-xl max-w-xl mb-6 sm:mb-8 leading-relaxed">
+                            <p className="text-gray-300 text-sm sm:text-base md:text-xl max-w-xl mb-8 leading-relaxed">
                                 {slide.sub}
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                                <motion.button
-                                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                                    onClick={() => navigate('store')}
-                                    className="bg-white text-black px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors"
-                                >
-                                    Ver Catálogo <ArrowRight className="w-4 h-4" />
-                                </motion.button>
-                                <motion.button
-                                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                                    onClick={() => navigate('quote')}
-                                    className="bg-[#0EA5E9] text-white px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-[#0284C7] transition-colors"
-                                >
-                                    Cotiza tu Proyecto
-                                </motion.button>
-                            </div>
                         </motion.div>
                     </AnimatePresence>
+
+                    {/* Buttons — estáticos, no se reaniman con cada slide */}
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                        <motion.button
+                            whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                            onClick={() => navigate('store')}
+                            className="bg-white text-black px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors"
+                        >
+                            Ver Catálogo <ArrowRight className="w-4 h-4" />
+                        </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                            onClick={() => navigate('quote')}
+                            className="bg-[#0EA5E9] text-white px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-sm uppercase tracking-wider rounded-md flex items-center justify-center gap-2 hover:bg-[#0284C7] transition-colors"
+                        >
+                            Cotiza tu Proyecto
+                        </motion.button>
+                    </div>
                 </div>
                 {/* Dots */}
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
@@ -247,7 +254,7 @@ const HomeView = ({ products, navigate }) => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.07 }}
-                                onClick={() => navigate('store', { tipoBusqueda: item.tipo })}
+                                onClick={() => navigate('store', { tipoBusqueda: item.filterValue })}
                                 className="group relative h-36 overflow-hidden rounded-xl shadow-sm"
                             >
                                 <img src={item.img} alt={item.tipo} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />

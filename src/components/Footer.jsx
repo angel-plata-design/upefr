@@ -52,7 +52,7 @@ const Footer = ({ navigate }) => {
                         </div>
                         {/* UPE Uniformes cross-link */}
                         <a
-                            href="https://flowmx.github.io/upeuniformes/"
+                            href="https://angel-plata-design.github.io/upeuniformes/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors border-b border-gray-600 hover:border-white pb-0.5"
@@ -100,19 +100,28 @@ const Footer = ({ navigate }) => {
                     {/* Col 4 — Contacto + Suscripción */}
                     <div>
                         <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-5">Contacto</h4>
-                        <div className="flex flex-col gap-3 mb-6 text-sm text-gray-400">
+                        <div className="flex flex-col gap-4 mb-6 text-sm text-gray-400">
                             <a href={`mailto:${COMPANY_INFO.email}`} className="flex items-start gap-2 hover:text-white transition-colors">
                                 <Mail className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#0057B8]" />
                                 {COMPANY_INFO.email}
                             </a>
-                            <a href={`tel:${COMPANY_INFO.telefonos[0].replace(/\s/g, '')}`} className="flex items-start gap-2 hover:text-white transition-colors">
-                                <Phone className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#0057B8]" />
-                                {COMPANY_INFO.whatsappDisplay}
-                            </a>
-                            <div className="flex items-start gap-2">
-                                <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#0057B8]" />
-                                <span>{COMPANY_INFO.direccion}</span>
-                            </div>
+                            {COMPANY_INFO.sucursales.map(suc => (
+                                <div key={suc.ciudad} className="flex flex-col gap-1">
+                                    <span className="text-white font-semibold text-xs uppercase tracking-wider">{suc.nombre} — {suc.ciudad}</span>
+                                    <div className="flex items-start gap-2">
+                                        <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#0057B8]" />
+                                        <span>{suc.direccion}</span>
+                                    </div>
+                                    <a href={`tel:${suc.tel1.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-white transition-colors">
+                                        <Phone className="w-4 h-4 flex-shrink-0 text-[#0057B8]" />
+                                        {suc.tel1}
+                                    </a>
+                                    <a href={`https://wa.me/${suc.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+                                        <Phone className="w-4 h-4 flex-shrink-0 text-[#25D366]" />
+                                        {suc.tel2} <span className="text-[#25D366] text-xs">WhatsApp</span>
+                                    </a>
+                                </div>
+                            ))}
                         </div>
 
                         <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-3">Newsletter</h4>

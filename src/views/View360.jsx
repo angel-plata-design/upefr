@@ -13,9 +13,9 @@ const View360 = () => (
     >
         {/* Hero Banner */}
         <div className="relative bg-black text-white py-20 md:py-32 overflow-hidden border-b border-gray-200">
-            <div className="absolute inset-0 bg-black/60 mix-blend-multiply z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020B18]/90 via-[#0A1628]/60 to-black/40 z-10"></div>
             {/* Bug #2 corregido */}
-            <img src={`${import.meta.env.BASE_URL}banner_upefr360.jpg`} alt="Ingeniero con equipo de seguridad" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 grayscale" />
+            <img src={`${import.meta.env.BASE_URL}banner_upefr360.jpg`} alt="Ingeniero con equipo de seguridad" className="absolute inset-0 w-full h-full object-cover z-0 scale-105" />
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 z-10"></div>
             <div className="relative z-20 max-w-7xl mx-auto px-4 text-center">
                 <motion.div
@@ -33,7 +33,7 @@ const View360 = () => (
                     transition={{ delay: 0.2 }}
                     className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 tracking-tight drop-shadow-md uppercase"
                 >
-                    upe<span className="text-gray-400">FR</span> 360°
+                    upe<span className="text-[#0EA5E9]">FR</span> 360°
                 </motion.h1>
                 <motion.p
                     initial={{ y: 20, opacity: 0 }}
@@ -67,27 +67,28 @@ const View360 = () => (
         </div>
 
         {/* ¿Por qué elegir upeFR360? */}
-        <div className="py-16 md:py-32 bg-white relative overflow-hidden">
+        <div className="py-16 md:py-32 bg-[#0A1628] relative overflow-hidden">
+            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, #0EA5E9 0%, transparent 50%), radial-gradient(circle at 80% 20%, #0057B8 0%, transparent 50%)' }} />
             <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
                 <motion.h2
                     initial={{ y: 20, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-6xl font-bold text-black mb-8 tracking-tight uppercase"
+                    className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight uppercase"
                 >
                     ¿Por qué elegir upeFR360?
                 </motion.h2>
-                <div className="w-24 h-1 bg-black mx-auto mb-10"></div>
+                <div className="w-24 h-1 bg-[#0EA5E9] mx-auto mb-10"></div>
                 <motion.p
                     initial={{ y: 20, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true }}
-                    className="text-gray-600 max-w-4xl mx-auto text-xl md:text-2xl leading-relaxed mb-20 font-light"
+                    className="text-gray-300 max-w-4xl mx-auto text-xl md:text-2xl leading-relaxed mb-20 font-light"
                 >
-                    Diseñamos <strong className="font-bold text-black">upeFR 360°</strong> como una plataforma iterativa e innovadora que le permita administrar, monitorear y eficientar su gestión de EPP en tiempo real y a la medida de su operación.
+                    Diseñamos <strong className="font-bold text-white">upeFR 360°</strong> como una plataforma iterativa e innovadora que le permita administrar, monitorear y eficientar su gestión de EPP en tiempo real y a la medida de su operación.
                 </motion.p>
 
-                <h3 className="text-lg font-bold text-black mb-12 text-left pl-4 border-l-4 border-black uppercase tracking-widest">Beneficios Clave</h3>
+                <h3 className="text-lg font-bold text-[#0EA5E9] mb-12 text-left pl-4 border-l-4 border-[#0EA5E9] uppercase tracking-widest">Beneficios Clave</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                     {[
                         { icon: <ShieldCheck className="w-6 h-6" />, title: "Cumplimiento normativo garantizado", desc: "Cumples con las principales normas internacionales: NFPA 70E, NFPA 2112, ASTM F1506 para cada nivel de riesgo." },
@@ -103,11 +104,11 @@ const View360 = () => (
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.08 }}
                             key={i}
-                            className="bg-white p-8 border border-gray-200 hover:border-black transition-all duration-300 group hover:-translate-y-1 relative"
+                            className="bg-white/5 border border-white/10 hover:border-[#0EA5E9]/50 hover:bg-white/10 transition-all duration-300 group hover:-translate-y-1 relative p-8"
                         >
-                            <div className="w-14 h-14 bg-white border border-gray-200 text-black flex items-center justify-center mb-5 group-hover:bg-black group-hover:text-white transition-colors duration-300">{item.icon}</div>
-                            <h4 className="font-bold text-black uppercase tracking-widest text-sm mb-3">{item.title}</h4>
-                            <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                            <div className="w-14 h-14 bg-[#0057B8]/20 border border-[#0057B8]/30 text-[#0EA5E9] flex items-center justify-center mb-5 group-hover:bg-[#0057B8] group-hover:text-white transition-colors duration-300">{item.icon}</div>
+                            <h4 className="font-bold text-white uppercase tracking-widest text-sm mb-3">{item.title}</h4>
+                            <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -115,17 +116,17 @@ const View360 = () => (
         </div>
 
         {/* Los 4 Pilares */}
-        <div className="bg-[#f5f5f5] py-16 md:py-32 border-y border-gray-200 relative overflow-hidden">
+        <div className="bg-white py-16 md:py-32 border-y border-gray-100 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 space-y-16 md:space-y-32 relative z-10">
 
                 {/* Pilar 1 */}
                 <div className="flex flex-col md:flex-row items-center gap-16 group">
                     <motion.div initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full order-2 md:order-1 relative">
                         {/* Bug #2 corregido */}
-                        <img src={`${import.meta.env.BASE_URL}img_pc.jpg`} alt="Tienda en línea B2B" className="relative w-full h-[450px] object-cover border border-gray-200 group-hover:scale-[1.02] transition-transform duration-500 grayscale" />
+                        <img src={`${import.meta.env.BASE_URL}Tienda B2B exclusiva y personalizada.jpg`} alt="Tienda en línea B2B" className="relative w-full h-[450px] object-cover rounded-xl group-hover:scale-[1.02] transition-transform duration-500" />
                     </motion.div>
                     <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full order-1 md:order-2">
-                        <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 1</div>
+                        <div className="inline-flex items-center text-xs font-bold text-white bg-[#0057B8] px-4 py-1.5 tracking-widest uppercase mb-4">Paso 1</div>
                         <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight tracking-tight uppercase">Tienda B2B exclusiva y personalizada</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Creamos un portal web con una experiencia de abastecimiento personalizada de acuerdo a los lineamientos y cuotas autorizadas de su empresa. Un portal privado sólo para sus empleados o supervisores autorizados.
@@ -136,7 +137,7 @@ const View360 = () => (
                 {/* Pilar 2 */}
                 <div className="flex flex-col md:flex-row items-center gap-16 group">
                     <motion.div initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full">
-                        <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 2</div>
+                        <div className="inline-flex items-center text-xs font-bold text-white bg-[#0057B8] px-4 py-1.5 tracking-widest uppercase mb-4">Paso 2</div>
                         <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight tracking-tight uppercase">Resumen y asignación de tallas</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Carga individual de medidas por cada empleado, lo que asegura una asignación de tallas correcta desde el primer pedido, reduciendo drásticamente las devoluciones, costos y tiempos de gestión.
@@ -144,7 +145,7 @@ const View360 = () => (
                     </motion.div>
                     <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full relative">
                         {/* Bug #2 corregido */}
-                        <img src={`${import.meta.env.BASE_URL}img_asigtallas.jpg`} alt="Gestión de tallas" className="relative w-full h-[450px] object-cover border border-gray-200 group-hover:scale-[1.02] transition-transform duration-500 grayscale" />
+                        <img src={`${import.meta.env.BASE_URL}Resumen y asignación de tallas.jpg`} alt="Gestión de tallas" className="relative w-full h-[450px] object-cover rounded-xl group-hover:scale-[1.02] transition-transform duration-500" />
                     </motion.div>
                 </div>
 
@@ -152,10 +153,10 @@ const View360 = () => (
                 <div className="flex flex-col md:flex-row items-center gap-16 group">
                     <motion.div initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full order-2 md:order-1 relative">
                         {/* Bug #2 corregido */}
-                        <img src={`${import.meta.env.BASE_URL}img_logistica.jpg`} alt="Logística optimizada" className="relative w-full h-[450px] object-cover border border-gray-200 group-hover:scale-[1.02] transition-transform duration-500 grayscale" />
+                        <img src={`${import.meta.env.BASE_URL}Logística optimizada.jpg`} alt="Logística optimizada" className="relative w-full h-[450px] object-cover rounded-xl group-hover:scale-[1.02] transition-transform duration-500" />
                     </motion.div>
                     <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full order-1 md:order-2">
-                        <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 3</div>
+                        <div className="inline-flex items-center text-xs font-bold text-white bg-[#0057B8] px-4 py-1.5 tracking-widest uppercase mb-4">Paso 3</div>
                         <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight tracking-tight uppercase">Logística optimizada</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Entregas en esquema de paquetes individuales (kitting) o centralizados, directos a sitio o sucursal por empleado. Hacemos que la distribución interna deje de ser un dolor de cabeza para su equipo.
@@ -166,7 +167,7 @@ const View360 = () => (
                 {/* Pilar 4 */}
                 <div className="flex flex-col md:flex-row items-center gap-16 group">
                     <motion.div initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full">
-                        <div className="inline-flex items-center text-xs font-bold text-black border border-black bg-white px-4 py-1.5 tracking-widest uppercase mb-4">Paso 4</div>
+                        <div className="inline-flex items-center text-xs font-bold text-white bg-[#0057B8] px-4 py-1.5 tracking-widest uppercase mb-4">Paso 4</div>
                         <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight tracking-tight uppercase">Control automatizado y seguimiento</h3>
                         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                             Visualice de inmediato sus gastos e inventarios. Monitoreo del estatus de solicitudes y autorizaciones jerárquicas online para total transparencia del presupuesto ejercido.
@@ -174,7 +175,7 @@ const View360 = () => (
                     </motion.div>
                     <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="md:w-1/2 w-full relative">
                         {/* Bug #2 corregido */}
-                        <img src={`${import.meta.env.BASE_URL}img_Softlog.jpg`} alt="Reportes y control" className="relative w-full h-[450px] object-cover border border-gray-200 group-hover:scale-[1.02] transition-transform duration-500 grayscale" />
+                        <img src={`${import.meta.env.BASE_URL}Control automatizado y seguimiento.jpg`} alt="Reportes y control" className="relative w-full h-[450px] object-cover rounded-xl group-hover:scale-[1.02] transition-transform duration-500" />
                     </motion.div>
                 </div>
             </div>

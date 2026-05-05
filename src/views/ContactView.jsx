@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, User, MessageCircle } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
+import { COMPANY_INFO } from '../data/constants';
 
 const ContactView = ({ handleWhatsAppClick }) => (
     <motion.div
@@ -23,41 +24,49 @@ const ContactView = ({ handleWhatsAppClick }) => (
                 <div className="w-16 h-1 bg-white mx-auto mb-8 md:mb-16"></div>
 
                 {/* Tarjetas de contacto */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mt-8">
-                    {/* Oficina */}
-                    <div className="bg-[#111] border border-gray-800 p-6 md:p-10 hover:border-gray-500 transition-all flex flex-col justify-center items-center group">
-                        <div className="w-16 h-16 bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
-                            <MapPin className="w-6 h-6 text-white" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center mt-8">
+                    {/* Oficinas */}
+                    {COMPANY_INFO.sucursales.map((suc) => (
+                        <div key={suc.ciudad} className="bg-[#111] border border-gray-800 p-6 md:p-8 hover:border-gray-500 transition-all flex flex-col justify-start items-center group">
+                            <div className="w-16 h-16 bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
+                                <MapPin className="w-6 h-6 text-white" />
+                            </div>
+                            <h3 className="text-sm font-bold mb-1 text-white uppercase tracking-widest">{suc.nombre}</h3>
+                            <p className="text-[#0EA5E9] text-xs font-semibold uppercase tracking-widest mb-4">{suc.ciudad}, B.C.</p>
+                            <p className="text-gray-400 text-sm leading-relaxed mb-4">{suc.direccion}</p>
+                            <div className="mt-auto w-full space-y-2">
+                                <a href={`tel:${suc.tel1.replace(/\s/g, '')}`} className="text-white font-semibold text-sm block hover:text-gray-300 transition">{suc.tel1}</a>
+                                <a href={`https://wa.me/${suc.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-semibold text-sm block hover:text-green-400 transition flex items-center justify-center gap-1">
+                                    <MessageCircle className="w-3.5 h-3.5" />{suc.tel2}
+                                </a>
+                            </div>
                         </div>
-                        <h3 className="text-sm font-bold mb-4 text-white uppercase tracking-widest">Oficina Corporativa</h3>
-                        <p className="text-gray-400 text-sm leading-relaxed">Av. Libertad 1723, Maestros, 22840</p>
-                        <p className="text-gray-400 text-sm mb-4 leading-relaxed">Ensenada, B.C., Mexico</p>
-                        <a href="mailto:info@uniformesprofesionales.mx" className="text-gray-300 font-medium block hover:text-white transition mt-auto mb-4 truncate w-full text-xs">info@uniformesprofesionales.mx</a>
-                        <p className="text-white font-bold text-lg tracking-wide">+52 646 596 1975</p>
-                    </div>
+                    ))}
 
                     {/* Contacto */}
-                    <div className="bg-[#111] border border-gray-800 p-6 md:p-10 hover:border-gray-500 transition-all flex flex-col justify-center items-center group">
+                    <div className="bg-[#111] border border-gray-800 p-6 md:p-8 hover:border-gray-500 transition-all flex flex-col justify-start items-center group">
                         <div className="w-16 h-16 bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
                             <User className="w-6 h-6 text-white" />
                         </div>
-                        <h3 className="text-sm font-bold mb-2 text-white uppercase tracking-widest">José Cendejas</h3>
-                        <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-6">Gerente de Desarrollo de Negocios</p>
-                        <a href="mailto:josec@uniformesprofesionales.mx" className="text-gray-300 font-medium block hover:text-white transition mt-auto mb-4 truncate w-full text-xs">josec@uniformesprofesionales.mx</a>
-                        <p className="text-white font-bold text-base tracking-wide mb-1">+52 646 295 2269</p>
-                        <p className="text-white font-bold text-base tracking-wide">+52 646 454 8538</p>
+                        <h3 className="text-sm font-bold mb-1 text-white uppercase tracking-widest">José Cendejas</h3>
+                        <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-4">Gerente de Desarrollo de Negocios</p>
+                        <a href="mailto:josec@uniformesprofesionales.mx" className="text-gray-300 text-xs font-medium block hover:text-white transition mb-4 truncate w-full">josec@uniformesprofesionales.mx</a>
+                        <div className="mt-auto w-full space-y-2">
+                            <p className="text-white font-semibold text-sm">+52 646 295 2269</p>
+                            <p className="text-white font-semibold text-sm">+52 646 454 8538</p>
+                        </div>
                     </div>
 
                     {/* WhatsApp */}
-                    <div className="bg-white border border-gray-200 p-6 md:p-10 hover:border-black transition-all flex flex-col justify-center items-center group">
+                    <div className="bg-white border border-gray-200 p-6 md:p-8 hover:border-black transition-all flex flex-col justify-start items-center group">
                         <div className="w-16 h-16 bg-black/5 flex items-center justify-center mb-6 group-hover:bg-black/10 transition-colors">
                             <MessageCircle className="w-6 h-6 text-black" />
                         </div>
                         <h3 className="text-sm font-bold mb-4 text-black uppercase tracking-widest">WhatsApp Directo</h3>
                         <p className="text-gray-600 mb-8 leading-relaxed text-sm">Cotizaciones, dudas y respuestas rápidas a un clic de distancia.</p>
-                        <button onClick={() => handleWhatsAppClick()} className="mt-auto w-full bg-black hover:bg-gray-800 text-white px-6 py-4 font-bold text-xs uppercase tracking-widest transition flex items-center justify-center">
+                        <button onClick={() => handleWhatsAppClick()} className="mt-auto w-full bg-black hover:bg-gray-800 text-white px-6 py-4 font-bold text-xs uppercase tracking-widest transition flex items-center justify-center cursor-pointer">
                             <MessageCircle className="w-4 h-4 mr-3" />
-                            +52 646 295 2269
+                            {COMPANY_INFO.whatsappDisplay}
                         </button>
                     </div>
                 </div>

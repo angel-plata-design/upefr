@@ -1,14 +1,77 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { FilterX, ChevronDown, Search, SlidersHorizontal, X } from 'lucide-react';
 import { CATEGORIAS } from '../data/categorias';
+
+// Helper: find the real brand name in products using case-insensitive + prefix match
+const findRealBrand = (products, brandQuery) => {
+    if (!brandQuery) return null;
+    const lower = brandQuery.toLowerCase();
+    // 1. Exact case-insensitive match
+    const exact = products.find(p => p.brand && p.brand.toLowerCase() === lower);
+    if (exact) return exact.brand;
+    // 2. Prefix match — e.g. "Carhartt FR" matches product brand "Carhartt"
+    //    or product brand "Carhartt FR" matches query "Carhartt"
+    const prefix = products.find(p => {
+        if (!p.brand) return false;
+        const pLower = p.brand.toLowerCase();
+        return pLower.startsWith(lower) || lower.startsWith(pLower);
+    });
+    return prefix ? prefix.brand : brandQuery;
+};
+
+// Helper: find the real tipoprenda matching a query (handles plural/singular, partial match)
+const findRealTipo = (products, tipoQuery) => {
+    if (!tipoQuery) return null;
+    const lower = tipoQuery.toLowerCase();
+    // Try exact match first
+    const exact = products.find(p => p.tipoprenda && p.tipoprenda.toLowerCase() === lower);
+    if (exact) return exact.tipoprenda;
+    // Try partial match (e.g. "Camisas FR" matches "Camisa FR" or "Camisa industrial")
+    const queryBase = lower.replace(/s\b/g, '').replace(/es\b/g, ''); // strip plurals
+    const found = products.find(p => {
+        if (!p.tipoprenda) return false;
+        const pBase = p.tipoprenda.toLowerCase().replace(/s\b/g, '').replace(/es\b/g, '');
+        return pBase.includes(queryBase) || queryBase.includes(pBase);
+    });
+    return found ? found.tipoprenda : tipoQuery;
+};
+
+// Interleave products from different categories for visual variety
+const diversifyShuffle = (prods) => {
+    const byCategory = {};
+    prods.forEach(p => {
+        const cat = p.mainCategory || 'other';
+        if (!byCategory[cat]) byCategory[cat] = [];
+        byCategory[cat].push(p);
+    });
+    const cats = Object.keys(byCategory);
+    if (cats.length <= 1) return prods;
+    const result = [];
+    const maxLen = Math.max(...cats.map(c => byCategory[c].length));
+    for (let i = 0; i < maxLen; i++) {
+        for (const cat of cats) {
+            if (i < byCategory[cat].length) result.push(byCategory[cat][i]);
+        }
+    }
+    return result;
+};
 
 const StoreView = ({ products, storeFilter, navigate }) => {
     const [search, setSearch] = useState('');
     const [activeCategoria, setActiveCategoria] = useState(storeFilter?.categoria || 'todos');
     const [activeSexo, setActiveSexo] = useState(null);
-    const [activeBrand, setActiveBrand] = useState(storeFilter?.brand || null);
-    const [activeTipo, setActiveTipo] = useState(storeFilter?.tipoBusqueda || null);
+    const [activeBrand, setActiveBrand] = useState(() => findRealBrand(products, storeFilter?.brand));
+    const [activeTipo, setActiveTipo] = useState(() => findRealTipo(products, storeFilter?.tipoBusqueda));
     const [showFilters, setShowFilters] = useState(false);
+
+    // Sync filters when storeFilter prop changes (navigation from other views)
+    useEffect(() => {
+        setActiveCategoria(storeFilter?.categoria || 'todos');
+        setActiveBrand(findRealBrand(products, storeFilter?.brand));
+        setActiveTipo(findRealTipo(products, storeFilter?.tipoBusqueda));
+        setActiveSexo(null);
+        setSearch('');
+    }, [storeFilter]);
 
     const clearAll = () => {
         setActiveCategoria('todos'); setActiveSexo(null);
@@ -19,10 +82,19 @@ const StoreView = ({ products, storeFilter, navigate }) => {
         let r = products;
         if (activeCategoria !== 'todos') r = r.filter(p => p.mainCategory === activeCategoria);
         if (activeSexo) r = r.filter(p => p.sexo === activeSexo || p.sexo === 'Unisex');
-        if (activeBrand) r = r.filter(p => p.brand === activeBrand);
-        if (activeTipo) r = r.filter(p => p.tipoprenda === activeTipo);
-        if (search) r = r.filter(p => p.title.toLowerCase().includes(search.toLowerCase()) || p.brand.toLowerCase().includes(search.toLowerCase()));
-        return r;
+        if (activeBrand) {
+            const brandLower = activeBrand.toLowerCase();
+            r = r.filter(p => {
+                if (!p.brand) return false;
+                const pLower = p.brand.toLowerCase();
+                return pLower === brandLower || pLower.startsWith(brandLower) || brandLower.startsWith(pLower);
+            });
+        }
+        if (activeTipo) r = r.filter(p => p.tipoprenda && p.tipoprenda.toLowerCase() === activeTipo.toLowerCase());
+        if (search) r = r.filter(p => p.title.toLowerCase().includes(search.toLowerCase()) || (p.brand && p.brand.toLowerCase().includes(search.toLowerCase())));
+        // If no filters, diversify display so it's not all boots
+        const noFilters = activeCategoria === 'todos' && !activeSexo && !activeBrand && !activeTipo && !search;
+        return noFilters ? diversifyShuffle(r) : r;
     }, [products, activeCategoria, activeSexo, activeBrand, activeTipo, search]);
 
     const availableBrands = useMemo(() => [...new Set(

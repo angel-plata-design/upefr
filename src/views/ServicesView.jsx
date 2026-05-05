@@ -11,7 +11,7 @@ const services = [
         subtitle: 'Identidad institucional en cada prenda',
         description: 'El bordado aporta una presencia duradera y de alta gama a tus uniformes corporativos. Utilizamos maquinaria computarizada de última generación que garantiza una fidelidad perfecta a tu logotipo y colores institucionales.',
         features: ['Alta resolución y definición de colores', 'Resistente a lavados industriales', 'Compatible con cualquier tela', 'Ideal para logos, nombres y áreas de bordado grandes'],
-        image: `${import.meta.env.BASE_URL}img_work.jpg`,
+        image: `${import.meta.env.BASE_URL}Bordado.jpg`,
         color: '#0057B8',
     },
     {
@@ -21,7 +21,7 @@ const services = [
         subtitle: 'Full color sin límite de detalles',
         description: 'La tecnología DTF permite imprimir diseños de alta complejidad con degradados, sombras y fotografías directamente sobre la prenda. Es la opción ideal cuando los detalles del diseño son fundamentales.',
         features: ['Impresión full color sin límite de colores', 'Acabado suave y flexible al tacto', 'Sin cargos adicionales por número de colores', 'Perfecto para logos multitono y arte detallado'],
-        image: `${import.meta.env.BASE_URL}hero-slider-2.jpg`,
+        image: `${import.meta.env.BASE_URL}DTF (Direct to Film).jpg`,
         color: '#0A1628',
     },
     {
@@ -31,7 +31,7 @@ const services = [
         subtitle: 'El estándar de la industria para grandes tirajes',
         description: 'La serigrafía es el método más tradicional y rentable para impresiones de alto volumen. Ofrece una cobertura sólida y excelente durabilidad, siendo la elección preferida para tirajes de 50 piezas o más.',
         features: ['Excelente rentabilidad en grandes volúmenes', 'Tintas de alta pigmentación y durabilidad', 'Acabados especiales: plastisol, agua, brillo', 'Hasta 6 colores por diseño'],
-        image: `${import.meta.env.BASE_URL}hero-slider-3.jpg`,
+        image: `${import.meta.env.BASE_URL}Serigrafía.jpg`,
         color: '#064e3b',
     },
     {
@@ -41,7 +41,7 @@ const services = [
         subtitle: 'La última milla que hace la diferencia',
         description: 'Nos ocupamos de los detalles finales: etiquetado con nombre del empleado, doblado profesional, empaque individual o grupal y presentación en cajas o bolsas con tu identidad. Entregamos listo para distribuir.',
         features: ['Etiquetado individualizado por empleado', 'Doblado y troquelado profesional', 'Empaque en caja o bolsa con branding', 'Distribución directa a sucursales o empleados'],
-        image: `${import.meta.env.BASE_URL}img_logistica.jpg`,
+        image: `${import.meta.env.BASE_URL}Empaque y Presentación Final.jpg`,
         color: '#374151',
     },
 ];
@@ -50,8 +50,8 @@ const ServicesView = ({ navigate }) => (
     <div className="flex-1 bg-white">
         {/* Hero */}
         <div className="relative bg-[#0A1628] text-white py-28 overflow-hidden">
-            <div className="absolute inset-0 opacity-10 bg-cover bg-center" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}conoce_upe.jpg)` }} />
-            <div className="absolute inset-0 bg-[#0A1628]/80" />
+            <img src={`${import.meta.env.BASE_URL}Servicio de Decorado.jpg`} alt="Servicios de decorado" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+            <div className="absolute inset-0 bg-[#0A1628]/70" />
             <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
                     <span className="inline-block bg-[#0057B8] text-white text-xs font-bold uppercase tracking-[0.25em] px-4 py-1.5 rounded-full mb-6">
