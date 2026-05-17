@@ -36,7 +36,7 @@ const Footer = ({ navigate }) => {
                             className="h-10 w-auto mb-4 opacity-90"
                         />
                         <p className="text-sm text-gray-400 leading-relaxed mb-5">
-                            Tu socio estratégico en soluciones de uniformes industriales, corporativos y médicos. Calidad, personalización y entrega garantizada.
+                            Especialistas en uniformes resistentes a flama (FR) para industrias de alto riesgo. Certificación NFPA, personalización y entrega garantizada.
                         </p>
                         <div className="flex gap-3">
                             {[
