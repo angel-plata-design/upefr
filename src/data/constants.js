@@ -2,7 +2,7 @@ export const COMPANY_INFO = {
     nombre: 'Uniformes Profesionales',
     slogan: 'Tu socio estratégico en soluciones de uniformes industriales, corporativos y médicos.',
     direccion: 'Av. Libertad 1723, Maestros, 22840 Ensenada, B.C., México',
-    email: 'info@uniformesprofesionales.mx',
+    email: 'info@upefr.mx',
     whatsapp: '+526462952269',
     whatsappDisplay: '+52 646 295 2269',
     telefonos: ['+52 646 596 1975', '+52 646 295 2269'],
@@ -25,8 +25,8 @@ export const COMPANY_INFO = {
         },
     ],
     contactos: [
-        { nombre: 'Gerente de Desarrollo de Negocios', email: 'josec@uniformesprofesionales.mx', tel: '+52 646 454 8538' },
-        { nombre: 'Gerente de Ventas', email: 'ricardom@uniformesprofesionales.mx', tel: '+52 646 452 1789' },
+        { nombre: 'José Cendejas', email: 'josec@upefr.mx', tel: '+52 646 454 8538' },
+        { nombre: 'Fran', email: 'franm@upefr.mx' },
     ],
     redes: {
         facebook: 'https://facebook.com/uniformesprofesionales',
