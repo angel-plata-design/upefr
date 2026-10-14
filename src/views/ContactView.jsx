@@ -48,12 +48,16 @@ const ContactView = ({ handleWhatsAppClick }) => (
                         <div className="w-16 h-16 bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
                             <User className="w-6 h-6 text-white" />
                         </div>
-                        <h3 className="text-sm font-bold mb-1 text-white uppercase tracking-widest">José Cendejas</h3>
-                        <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-4">Gerente de Desarrollo de Negocios</p>
-                        <a href="mailto:josec@uniformesprofesionales.mx" className="text-gray-300 text-xs font-medium block hover:text-white transition mb-4 truncate w-full">josec@uniformesprofesionales.mx</a>
+                        <h3 className="text-sm font-bold mb-1 text-white uppercase tracking-widest">Contactos</h3>
+                        <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-4">José Cendejas · Desarrollo de Negocios</p>
+                        <a href={`mailto:${COMPANY_INFO.contactos[0].email}`} className="text-gray-300 text-xs font-medium block hover:text-white transition mb-4 break-all w-full">{COMPANY_INFO.contactos[0].email}</a>
                         <div className="mt-auto w-full space-y-2">
                             <p className="text-white font-semibold text-sm">+52 646 295 2269</p>
                             <p className="text-white font-semibold text-sm">+52 646 454 8538</p>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-gray-800 w-full">
+                            <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">{COMPANY_INFO.contactos[1].nombre}</p>
+                            <a href={`mailto:${COMPANY_INFO.contactos[1].email}`} className="text-gray-300 text-xs font-medium block hover:text-white transition break-all">{COMPANY_INFO.contactos[1].email}</a>
                         </div>
                     </div>
 

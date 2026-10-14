@@ -43,7 +43,7 @@ const PrivacyView = () => (
                     <li>Estadísticas internas sobre preferencias de productos.</li>
                     <li>Campañas de marketing por correo electrónico.</li>
                 </ul>
-                <p>Si usted no desea que sus datos sean tratados para las finalidades secundarias, puede manifestarlo enviando un correo a <a href="mailto:info@uniformesprofesionales.mx" className="text-[#0057B8] hover:underline">info@uniformesprofesionales.mx</a>.</p>
+                <p>Si usted no desea que sus datos sean tratados para las finalidades secundarias, puede manifestarlo enviando un correo a <a href="mailto:info@upefr.mx" className="text-[#0057B8] hover:underline">info@upefr.mx</a>.</p>
             </Section>
             <Section title="Transferencias de Datos">
                 <p>El Responsable no transfiere datos personales a terceros sin consentimiento previo, salvo en los casos expresamente previstos por el artículo 37 de la LFPDPPP (requerimiento de autoridad competente, obligación legal, etc.).</p>
@@ -51,7 +51,7 @@ const PrivacyView = () => (
             <Section title="Derechos ARCO">
                 <p>Usted tiene derecho a <strong className="text-black">Acceder, Rectificar, Cancelar u Oponerse (ARCO)</strong> al tratamiento de sus datos personales. Para ejercerlos, envíe solicitud a:</p>
                 <ul className="list-none space-y-1 mt-2">
-                    <li>📧 <a href="mailto:info@uniformesprofesionales.mx" className="text-[#0057B8] hover:underline">info@uniformesprofesionales.mx</a></li>
+                    <li>📧 <a href="mailto:info@upefr.mx" className="text-[#0057B8] hover:underline">info@upefr.mx</a></li>
                     <li>📍 Av. Libertad 1723, Maestros, 22840 Ensenada, B.C., México</li>
                 </ul>
                 <p>La solicitud deberá incluir: nombre completo, correo de contacto, descripción clara del derecho que desea ejercer y copia de identificación oficial. El Responsable responderá en un plazo de 20 días hábiles.</p>
