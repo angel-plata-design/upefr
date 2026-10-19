@@ -45,6 +45,9 @@ const PrivacyView = () => (
                 </ul>
                 <p>Si usted no desea que sus datos sean tratados para las finalidades secundarias, puede manifestarlo enviando un correo a <a href="mailto:info@uniformesprofesionales.mx" className="text-[#0057B8] hover:underline">info@uniformesprofesionales.mx</a>.</p>
             </Section>
+            <Section title="Procesamiento de formularios">
+                <p>Los datos y archivos enviados mediante los formularios de contacto, cotización y catálogo se procesan mediante la infraestructura de AWS para remitirlos por correo al equipo de UPE FR y atender su solicitud.</p>
+            </Section>
             <Section title="Transferencias de Datos">
                 <p>El Responsable no transfiere datos personales a terceros sin consentimiento previo, salvo en los casos expresamente previstos por el artículo 37 de la LFPDPPP (requerimiento de autoridad competente, obligación legal, etc.).</p>
             </Section>

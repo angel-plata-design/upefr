@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import { useInquiry } from '../hooks/useInquiry';
+import FormNotice from './FormNotice';
 
-// Fix bug #6: reemplaza alert() con mensaje de éxito inline
 const ContactForm = ({ inProductView = false, hideHeader = false }) => {
     const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = (e) => {
+    const { submit, pending, error } = useInquiry('contacto');
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 5000);
-        e.target.reset();
+        if (await submit(Object.fromEntries(new FormData(e.currentTarget)))) setSubmitted(true);
     };
 
     return (
@@ -34,8 +34,9 @@ const ContactForm = ({ inProductView = false, hideHeader = false }) => {
                         </div>
                         <h4 className="text-lg font-bold text-black uppercase tracking-widest">¡Mensaje Enviado!</h4>
                         <p className="text-gray-500 text-sm max-w-xs">
-                            Gracias por contactarnos. Un asesor se comunicará contigo a la brevedad.
+                            Tu solicitud fue aceptada para envío al equipo de UPE FR. Te contactaremos con los datos que compartiste.
                         </p>
+                        <button type="button" onClick={() => setSubmitted(false)} className="underline text-sm">Enviar otra solicitud</button>
                     </div>
                 ) : (
                     <form
@@ -45,24 +46,27 @@ const ContactForm = ({ inProductView = false, hideHeader = false }) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label className="block text-xs uppercase tracking-widest font-medium text-gray-400 mb-2">Nombre *</label>
-                                <input type="text" required className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black" />
+                                <input aria-label="Nombre" name="nombre" type="text" required className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black" />
                             </div>
                             <div>
                                 <label className="block text-xs uppercase tracking-widest font-medium text-gray-400 mb-2">Correo electrónico *</label>
-                                <input type="email" required className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black" />
+                                <input aria-label="Correo electrónico" name="email" type="email" required className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black" />
                             </div>
                         </div>
                         <div>
                             <label className="block text-xs uppercase tracking-widest font-medium text-gray-400 mb-2">Número de teléfono</label>
-                            <input type="tel" className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black" />
+                            <input aria-label="Número de teléfono" name="telefono" type="tel" className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black" />
                         </div>
                         <div>
                             <label className="block text-xs uppercase tracking-widest font-medium text-gray-400 mb-2">Mensaje *</label>
-                            <textarea required rows="3" className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black"></textarea>
+                            <textarea aria-label="Mensaje" name="mensaje" required rows="3" className="w-full p-3 border border-gray-300 rounded-none focus:ring-1 focus:ring-black focus:border-black outline-none transition-colors text-sm text-black"></textarea>
                         </div>
+                        <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+                        {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
+                        <FormNotice />
                         <div className={inProductView ? 'pt-2' : 'text-center pt-2'}>
-                            <button type="submit" className={`bg-black text-white px-8 py-4 border border-black hover:bg-white hover:text-black font-bold uppercase tracking-widest transition-colors text-xs ${inProductView ? 'w-full' : 'w-full md:w-auto'}`}>
-                                Solicitar Información
+                            <button type="submit" disabled={pending} className={`bg-black text-white px-8 py-4 border border-black hover:bg-white hover:text-black font-bold uppercase tracking-widest transition-colors text-xs ${inProductView ? 'w-full' : 'w-full md:w-auto'}`}>
+                                {pending ? "Enviando..." : "Solicitar Información"}
                             </button>
                         </div>
                     </form>
