@@ -1,7 +1,18 @@
 import React, { useState, useRef } from 'react';
 import { CheckCircle, Upload, User, Building2, Mail, Phone, MessageSquare, Layers, Hash, Paperclip, X } from 'lucide-react';
 import { CATEGORIAS } from '../data/categorias';
-import { COMPANY_INFO } from '../data/constants';
+import { SALES_EMAIL, validateAttachment } from '../lib/submitInquiry.mjs';
+import { useInquiry } from '../hooks/useInquiry';
+import FormNotice from '../components/FormNotice';
+
+const Field = ({ icon, label, children }) => (
+    <div className="flex flex-col gap-1.5">
+        <label className="flex items-center gap-1.5 text-xs font-bold text-gray-700 uppercase tracking-widest">
+            {icon} {label}
+        </label>
+        {children}
+    </div>
+);
 
 const QuoteView = ({ product, navigate }) => {
     const productNote = product
@@ -9,29 +20,31 @@ const QuoteView = ({ product, navigate }) => {
         : '';
     const [form, setForm] = useState({
         nombre: '', empresa: '', email: '', telefono: '',
-        tipo_proyecto: product ? 'Ropa de trabajo industrial' : '',
+        tipo_proyecto: '',
         categoria: product?.mainCategory || '',
         cantidades: '', observaciones: productNote
     });
     const [archivo, setArchivo] = useState(null);
     const [submitted, setSubmitted] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const { submit, pending: loading, error } = useInquiry('cotizacion');
+    const [fileError, setFileError] = useState('');
     const fileRef = useRef();
 
     const handleChange = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-    const handleFile = (e) => setArchivo(e.target.files[0]);
-    const removeFile = () => { setArchivo(null); fileRef.current.value = ''; };
+    const handleFile = (e) => {
+        const file = e.target.files[0];
+        setArchivo(null);
+        setFileError('');
+        try { validateAttachment(file); setArchivo(file || null); }
+        catch (reason) { setFileError(reason.message); e.target.value = ''; }
+    };
+    const removeFile = () => { setArchivo(null); setFileError(''); fileRef.current.value = ''; };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
-        const productLine = product ? `*Producto:* ${product.title} (SKU: ${product.sku})%0A` : '';
-        const msg = `Hola, me gustaría cotizar un proyecto:%0A%0A${productLine}*Nombre:* ${form.nombre}%0A*Empresa:* ${form.empresa}%0A*Email:* ${form.email}%0A*Teléfono:* ${form.telefono}%0A*Tipo de proyecto:* ${form.tipo_proyecto}%0A*Categoría:* ${form.categoria}%0A*Cantidades:* ${form.cantidades}%0A*Observaciones:* ${form.observaciones}`;
-        setTimeout(() => {
-            setLoading(false);
-            setSubmitted(true);
-            window.open(`https://wa.me/${COMPANY_INFO.whatsapp.replace(/\D/g, '')}?text=${msg}`, '_blank');
-        }, 800);
+        if (fileError) return;
+        const values = { ...form, website: new FormData(e.currentTarget).get('website'), producto: product?.title || '', sku: product?.sku || '' };
+        if (await submit(values, { attachment: archivo })) setSubmitted(true);
     };
 
     const tiposProyecto = [
@@ -46,15 +59,6 @@ const QuoteView = ({ product, navigate }) => {
         'Otro',
     ];
 
-    const Field = ({ icon, label, children }) => (
-        <div className="flex flex-col gap-1.5">
-            <label className="flex items-center gap-1.5 text-xs font-bold text-gray-700 uppercase tracking-widest">
-                {icon} {label}
-            </label>
-            {children}
-        </div>
-    );
-
     const inputCls = "w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:border-transparent transition-all";
 
     if (submitted) return (
@@ -65,15 +69,14 @@ const QuoteView = ({ product, navigate }) => {
                 </div>
                 <h2 className="text-3xl font-bold text-black mb-3">¡Solicitud enviada!</h2>
                 <p className="text-gray-500 mb-6">
-                    Te hemos redirigido a WhatsApp con todos los detalles de tu proyecto. Un asesor te contactará en breve.
+                    Tu solicitud fue aceptada para envío al equipo de UPE FR. Te contactaremos con los datos que compartiste.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <button onClick={() => setSubmitted(false)} className="px-6 py-3 border border-gray-200 rounded-lg text-sm font-semibold hover:bg-gray-50">
                         Enviar otra cotización
                     </button>
-                    <a href={`https://wa.me/${COMPANY_INFO.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer"
-                        className="px-6 py-3 bg-[#25D366] text-white rounded-lg text-sm font-bold hover:bg-[#1fad52] transition-colors">
-                        Abrir WhatsApp
+                    <a href={`mailto:${SALES_EMAIL}`} className="px-6 py-3 bg-[#0057B8] text-white rounded-lg text-sm font-bold">
+                        Escribir por correo
                     </a>
                 </div>
             </div>
@@ -135,10 +138,7 @@ const QuoteView = ({ product, navigate }) => {
                             ))}
                             <div className="mt-5 pt-4 border-t border-gray-100">
                                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Contacto directo</p>
-                                <a href={`tel:${COMPANY_INFO.telefonos[0].replace(/\s/g,'')}`}
-                                    className="text-sm font-semibold text-[#0057B8] hover:underline block">{COMPANY_INFO.whatsappDisplay}</a>
-                                <a href={`mailto:${COMPANY_INFO.email}`}
-                                    className="text-xs text-gray-400 hover:text-black transition-colors break-all">{COMPANY_INFO.email}</a>
+                                <a href={`mailto:${SALES_EMAIL}`} className="text-sm text-[#0057B8] hover:underline break-all">{SALES_EMAIL}</a>
                             </div>
                         </div>
                     </div>
@@ -150,16 +150,16 @@ const QuoteView = ({ product, navigate }) => {
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <Field icon={<User className="w-3 h-3" />} label="Nombre">
-                                    <input required name="nombre" value={form.nombre} onChange={handleChange} placeholder="Tu nombre completo" className={inputCls} />
+                                    <input required aria-label="Nombre" name="nombre" value={form.nombre} onChange={handleChange} placeholder="Tu nombre completo" className={inputCls} />
                                 </Field>
                                 <Field icon={<Building2 className="w-3 h-3" />} label="Empresa">
-                                    <input required name="empresa" value={form.empresa} onChange={handleChange} placeholder="Nombre de tu empresa" className={inputCls} />
+                                    <input required aria-label="Empresa" name="empresa" value={form.empresa} onChange={handleChange} placeholder="Nombre de tu empresa" className={inputCls} />
                                 </Field>
                                 <Field icon={<Mail className="w-3 h-3" />} label="Correo electrónico">
-                                    <input required type="email" name="email" value={form.email} onChange={handleChange} placeholder="correo@empresa.com" className={inputCls} />
+                                    <input required aria-label="Correo electrónico" type="email" name="email" value={form.email} onChange={handleChange} placeholder="correo@empresa.com" className={inputCls} />
                                 </Field>
                                 <Field icon={<Phone className="w-3 h-3" />} label="Teléfono">
-                                    <input required name="telefono" value={form.telefono} onChange={handleChange} placeholder="+52 646 000 0000" className={inputCls} />
+                                    <input required type="tel" aria-label="Teléfono" name="telefono" value={form.telefono} onChange={handleChange} placeholder="+52 646 000 0000" className={inputCls} />
                                 </Field>
                             </div>
 
@@ -167,26 +167,26 @@ const QuoteView = ({ product, navigate }) => {
                                 <h2 className="text-xl font-bold text-black mb-4">Detalles del Proyecto</h2>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <Field icon={<Layers className="w-3 h-3" />} label="Tipo de proyecto">
-                                        <select required name="tipo_proyecto" value={form.tipo_proyecto} onChange={handleChange} className={inputCls}>
+                                        <select required aria-label="Tipo de proyecto" name="tipo_proyecto" value={form.tipo_proyecto} onChange={handleChange} className={inputCls}>
                                             <option value="">Selecciona...</option>
                                             {tiposProyecto.map(t => <option key={t} value={t}>{t}</option>)}
                                         </select>
                                     </Field>
                                     <Field icon={<Layers className="w-3 h-3" />} label="Categoría o tipo de prenda">
-                                        <select name="categoria" value={form.categoria} onChange={handleChange} className={inputCls}>
+                                        <select aria-label="Categoría" name="categoria" value={form.categoria} onChange={handleChange} className={inputCls}>
                                             <option value="">Selecciona...</option>
                                             {CATEGORIAS.map(c => <option key={c.id} value={c.nombre}>{c.nombre}</option>)}
                                             <option value="Varias">Varias categorías</option>
                                         </select>
                                     </Field>
                                     <Field icon={<Hash className="w-3 h-3" />} label="Cantidades aproximadas">
-                                        <input required name="cantidades" value={form.cantidades} onChange={handleChange} placeholder="Ej: 50 camisas, 30 pantalones..." className={inputCls} />
+                                        <input required aria-label="Cantidades" name="cantidades" value={form.cantidades} onChange={handleChange} placeholder="Ej: 50 camisas, 30 pantalones..." className={inputCls} />
                                     </Field>
                                 </div>
 
                                 <div className="mt-4">
                                     <Field icon={<MessageSquare className="w-3 h-3" />} label="Observaciones">
-                                        <textarea name="observaciones" value={form.observaciones} onChange={handleChange} rows={4} placeholder="Colores, medidas, logotipo, fecha de entrega requerida, etc."
+                                        <textarea aria-label="Observaciones" name="observaciones" value={form.observaciones} onChange={handleChange} rows={4} placeholder="Colores, medidas, logotipo, fecha de entrega requerida, etc."
                                             className={`${inputCls} resize-none`} />
                                     </Field>
                                 </div>
@@ -218,7 +218,10 @@ const QuoteView = ({ product, navigate }) => {
                                 </div>
                             </div>
 
-                            <button type="submit" disabled={loading}
+                            <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+                            {(error || fileError) && <p role="alert" className="text-sm text-red-600">{fileError || error}</p>}
+                            {fileError && <button type="button" onClick={removeFile} className="text-sm text-[#0057B8] underline text-left">Continuar sin archivo</button>}
+                            <button type="submit" disabled={loading || Boolean(fileError)}
                                 className="w-full bg-[#0EA5E9] text-white py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-[#0284C7] transition-colors disabled:opacity-70 flex items-center justify-center gap-2 mt-2 cursor-pointer">
                                 {loading ? (
                                     <><span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Procesando...</>
@@ -226,9 +229,7 @@ const QuoteView = ({ product, navigate }) => {
                                     <><MessageSquare className="w-4 h-4" /> Enviar solicitud de cotización</>
                                 )}
                             </button>
-                            <p className="text-xs text-gray-400 text-center">
-                                Al enviar, se abrirá WhatsApp con los detalles de tu solicitud. Tiempo de respuesta: menos de 24h.
-                            </p>
+                            <FormNotice />
                         </form>
                     </div>
                 </div>

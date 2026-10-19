@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send, ChevronRight, Download } from 'lucide-react';
 import { COMPANY_INFO } from '../data/constants';
 import { CATEGORIAS } from '../data/categorias';
+import { useInquiry } from '../hooks/useInquiry';
+import FormNotice from './FormNotice';
 
 const Footer = ({ navigate }) => {
     const [subEmail, setSubEmail] = useState('');
     const [subOk, setSubOk] = useState(false);
 
-    const handleSub = (e) => {
+    const { submit, pending, error } = useInquiry('catalogo');
+    const handleSub = async (e) => {
         e.preventDefault();
-        if (subEmail) { setSubOk(true); setSubEmail(''); }
+        if (await submit({ email: subEmail, website: new FormData(e.currentTarget).get('website') })) { setSubOk(true); setSubEmail(''); }
     };
 
     const sections = [
@@ -151,17 +154,20 @@ const Footer = ({ navigate }) => {
                         {!subOk ? (
                             <form onSubmit={handleSub} className="flex gap-2">
                                 <input
-                                    type="email" required placeholder="tu@correo.com"
+                                    aria-label="Correo para novedades" name="email" type="email" required placeholder="tu@correo.com"
                                     value={subEmail} onChange={e => setSubEmail(e.target.value)}
                                     className="flex-1 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-sm placeholder-gray-500 text-white focus:outline-none focus:border-[#0057B8]"
                                 />
-                                <button type="submit" className="bg-[#0057B8] hover:bg-[#004A9E] transition-colors px-3 py-2 rounded-lg">
+                                <button type="submit" disabled={pending} aria-label={pending ? "Enviando..." : "Solicitar novedades"} className="bg-[#0057B8] hover:bg-[#004A9E] transition-colors px-3 py-2 rounded-lg">
                                     <Send className="w-4 h-4 text-white" />
                                 </button>
+                                <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
                             </form>
                         ) : (
-                            <p className="text-green-400 text-sm font-semibold">✓ ¡Suscrito exitosamente!</p>
+                            <p className="text-green-400 text-sm font-semibold">✓ Solicitud aceptada para envío al equipo de UPE FR.</p>
                         )}
+                        {error && <p role="alert" className="text-sm text-red-400 mt-2">{error}</p>}
+                        <div className="mt-2"><FormNotice /></div>
                     </div>
 
                 </div>

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { X, Mail, CheckCircle } from 'lucide-react';
+import { useInquiry } from '../hooks/useInquiry';
+import FormNotice from './FormNotice';
 
 const SubscriptionPopup = () => {
     const [visible, setVisible] = useState(false);
     const [email, setEmail] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const { submit, pending, error } = useInquiry('catalogo');
 
     useEffect(() => {
         const dismissed = localStorage.getItem('up_popup_dismissed');
@@ -19,15 +22,9 @@ const SubscriptionPopup = () => {
         localStorage.setItem('up_popup_dismissed', '1');
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (email) {
-            setSubmitted(true);
-            setTimeout(() => {
-                setVisible(false);
-                localStorage.setItem('up_popup_dismissed', '1');
-            }, 2500);
-        }
+        if (await submit({ email, website: new FormData(e.currentTarget).get('website') })) setSubmitted(true);
     };
 
     if (!visible) return null;
@@ -50,7 +47,7 @@ const SubscriptionPopup = () => {
                     </div>
                 </div>
 
-                <button onClick={handleClose} className="absolute top-3 right-3 text-white/70 hover:text-white transition-colors">
+                <button aria-label="Cerrar suscripción" onClick={handleClose} className="absolute top-3 right-3 text-white/70 hover:text-white transition-colors">
                     <X className="w-5 h-5" />
                 </button>
 
@@ -63,7 +60,7 @@ const SubscriptionPopup = () => {
                             </p>
                             <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                                 <input
-                                    type="email"
+                                    aria-label="Correo para catálogo" name="email" type="email"
                                     required
                                     placeholder="tu@empresa.com"
                                     value={email}
@@ -71,11 +68,14 @@ const SubscriptionPopup = () => {
                                     className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:border-transparent"
                                 />
                                 <button
-                                    type="submit"
+                                    disabled={pending} type="submit"
                                     className="bg-[#0057B8] text-white py-3 rounded-lg text-sm font-bold hover:bg-[#004A9E] transition-colors"
                                 >
-                                    Suscribirme y obtener mi descuento
+                                    {pending ? "Enviando..." : "Solicitar catálogo y promoción"}
                                 </button>
+                                <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+                                {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
+                                <FormNotice />
                             </form>
                             <button onClick={handleClose} className="w-full text-center text-xs text-gray-400 mt-3 hover:text-gray-600 transition-colors">
                                 No, gracias
@@ -85,7 +85,7 @@ const SubscriptionPopup = () => {
                         <div className="text-center py-4">
                             <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-3" />
                             <h3 className="text-lg font-black text-black mb-1">¡Listo!</h3>
-                            <p className="text-gray-500 text-sm">Revisa tu correo para obtener tu código de descuento.</p>
+                            <p className="text-gray-500 text-sm">Tu solicitud fue aceptada para envío al equipo de UPE FR. Te contactaremos con el catálogo y las condiciones de la promoción.</p>
                         </div>
                     )}
                 </div>
