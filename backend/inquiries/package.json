@@ -1,0 +1,9 @@
+{
+  "name": "upefr-inquiries",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "node --test handler.test.mjs" },
+  "dependencies": { "@aws-sdk/client-sesv2": "^3.0.0" }
+}

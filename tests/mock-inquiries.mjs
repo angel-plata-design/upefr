@@ -13,5 +13,5 @@ createServer(async (req, res) => {
     count += 1;
     const failed = existsSync('tests/mock-failure.local');
     res.writeHead(failed ? 503 : 200);
-    res.end(JSON.stringify({ success: failed ? 'false' : 'true' }));
+    res.end(JSON.stringify({ success: !failed }));
 }).listen(8787, '127.0.0.1', () => console.log('Local mail mock: 127.0.0.1:8787 (no real emails)'));

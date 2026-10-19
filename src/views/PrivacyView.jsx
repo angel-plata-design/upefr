@@ -46,7 +46,7 @@ const PrivacyView = () => (
                 <p>Si usted no desea que sus datos sean tratados para las finalidades secundarias, puede manifestarlo enviando un correo a <a href="mailto:info@uniformesprofesionales.mx" className="text-[#0057B8] hover:underline">info@uniformesprofesionales.mx</a>.</p>
             </Section>
             <Section title="Procesamiento de formularios">
-                <p>Los formularios de contacto, cotización y solicitud de catálogo utilizan FormSubmit para procesar los datos y enviarlos por correo al equipo de UPE FR. FormSubmit indica que conserva las solicitudes durante 30 días y no conserva los archivos adjuntos. Consulte su <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer" className="underline">política de privacidad</a>.</p>
+                <p>Los datos y archivos enviados mediante los formularios de contacto, cotización y catálogo se procesan mediante la infraestructura de AWS para remitirlos por correo al equipo de UPE FR y atender su solicitud.</p>
             </Section>
             <Section title="Transferencias de Datos">
                 <p>El Responsable no transfiere datos personales a terceros sin consentimiento previo, salvo en los casos expresamente previstos por el artículo 37 de la LFPDPPP (requerimiento de autoridad competente, obligación legal, etc.).</p>

@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: UPE FR - isolated inquiry email API (does not modify website hosting or DNS)
+Parameters:
+  SenderEmail:
+    Type: String
+    Description: Email verified in Amazon SES in this deployment region
+    AllowedPattern: '^[^\s@<>]+@upefr\.mx$'
+  AllowedOrigins:
+    Type: CommaDelimitedList
+    Default: 'https://upefr.mx,https://www.upefr.mx'
+Resources:
+  InquiryApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: '$default'
+      CorsConfiguration:
+        AllowOrigins: !Ref AllowedOrigins
+        AllowMethods: [POST, OPTIONS]
+        AllowHeaders: [Content-Type, Accept]
+        MaxAge: 300
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 3
+        ThrottlingRateLimit: 1
+  InquiryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: inquiries/
+      Handler: handler.handler
+      Runtime: nodejs22.x
+      Timeout: 20
+      MemorySize: 256
+      ReservedConcurrentExecutions: 2
+      Environment:
+        Variables:
+          SENDER_EMAIL: !Ref SenderEmail
+          ALLOWED_ORIGINS: !Join [',', !Ref AllowedOrigins]
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action: ses:SendEmail
+              Resource: !Sub 'arn:${AWS::Partition}:ses:${AWS::Region}:${AWS::AccountId}:identity/*'
+              Condition:
+                StringEquals:
+                  ses:FromAddress: !Ref SenderEmail
+                'ForAllValues:StringEquals':
+                  ses:Recipients:
+                    - josec@upefr.mx
+                    - franm@upefr.mx
+                    - ventas@upefr.mx
+      Events:
+        Submit:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref InquiryApi
+            Path: /api/inquiries
+            Method: POST
+            PayloadFormatVersion: '2.0'
+  InquiryLogs:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${InquiryFunction}'
+      RetentionInDays: 14
+Outputs:
+  InquiryEndpoint:
+    Value: !Sub 'https://${InquiryApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/api/inquiries'

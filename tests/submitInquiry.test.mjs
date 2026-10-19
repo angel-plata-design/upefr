@@ -3,16 +3,17 @@ import assert from 'node:assert/strict';
 import { submitInquiry, validateAttachment, MAX_ATTACHMENT_BYTES } from '../src/lib/submitInquiry.mjs';
 
 const contact = { nombre: 'Prueba local', email: ' prueba@example.com ', mensaje: 'Prueba sin envío real', telefono: '000' };
-const ok = async () => ({ ok: true, json: async () => ({ success: 'true' }) });
+const ok = async () => ({ ok: true, json: async () => ({ success: true }) });
 
-test('routes contact with fixed recipients; ignores injected service settings', async () => {
+test('routes contact to own API; ignores injected service settings', async () => {
     let request;
     await submitInquiry('contacto', { ...contact, _cc: 'otro@example.com', _subject: 'inyectado' }, {
         fetchImpl: async (url, options) => { request = { url, ...options }; return ok(); },
     });
-    assert.equal(request.url, 'https://formsubmit.co/ajax/josec@upefr.mx');
-    assert.equal(request.body.get('_cc'), 'franm@upefr.mx,ventas@upefr.mx');
-    assert.equal(request.body.get('_subject'), 'UPE FR | Solicitud de información');
+    assert.equal(request.url, '/api/inquiries');
+    assert.equal(request.body.get('_cc'), null);
+    assert.equal(request.body.get('_subject'), null);
+    assert.equal(request.body.get('tipo'), 'contacto');
     assert.equal(request.body.get('email'), 'prueba@example.com');
     assert.equal(request.body.get('_captcha'), null);
     assert.equal(request.headers['Content-Type'], undefined, 'browser must supply multipart boundary');
@@ -36,7 +37,7 @@ test('catalog request is a request, not automated discount delivery', async () =
 for (const [label, response] of [
     ['HTTP 429', { ok: false, json: async () => ({ success: true }) }],
     ['service rejection', { ok: true, json: async () => ({ success: 'false' }) }],
-    ['activation pending', { ok: true, json: async () => ({ success: true, message: 'Form needs activation' }) }],
+    ['non-boolean success', { ok: true, json: async () => ({ success: 'true' }) }],
     ['invalid JSON', { ok: true, json: async () => { throw new Error('invalid'); } }],
 ]) test(`does not acknowledge success on ${label}`, async () => {
     await assert.rejects(submitInquiry('contacto', contact, { fetchImpl: async () => response }), /No pudimos confirmar/);
@@ -54,7 +55,7 @@ test('blocks honeypot submissions and unknown form types', async () => {
     await assert.rejects(submitInquiry('otro', contact), /no válido/);
 });
 test('rejects oversize and unsupported attachment; accepts boundary', () => {
-    assert.throws(() => validateAttachment({ name: 'ref.pdf', size: MAX_ATTACHMENT_BYTES + 1 }), /10 MB/);
+    assert.throws(() => validateAttachment({ name: 'ref.pdf', size: MAX_ATTACHMENT_BYTES + 1 }), /2 MB/);
     assert.throws(() => validateAttachment({ name: 'script.exe', size: 10 }), /Adjunta/);
     assert.doesNotThrow(() => validateAttachment({ name: 'ref.PDF', size: MAX_ATTACHMENT_BYTES }));
 });
